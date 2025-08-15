@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -26,8 +27,6 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #94a3b8; /* slate-400 */
         }
-        /* Hero Section with Parallax Effect */
-
         .parallax-hero {
             background-image: url('HK.jpeg');
             background-attachment: fixed;
@@ -44,21 +43,24 @@
             padding: 2rem;
             overflow: hidden;
         }
-
-        
         .parallax-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.4); /* 調整透明度以確保文字清晰 */
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        /* Leaflet 地圖容器樣式 */
+        #map {
+            height: 600px; /* 設置地圖高度 */
+            width: 100%;
+            border-radius: 1.5rem; /* 與外層 div 保持一致的圓角 */
+            z-index: 1; /* 確保地圖圖層在最上層 */
         }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
-
-    <!-- 導覽列 -->
     <nav class="bg-white sticky top-0 z-50 shadow-md">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
             <a href="#" class="text-2xl font-bold text-sky-600">粵車南下</a>
@@ -67,16 +69,9 @@
                 <a href="#map-section" class="text-gray-600 hover:text-sky-600 transition duration-300">互動地圖</a>
                 <a href="#itineraries" class="text-gray-600 hover:text-sky-600 transition duration-300">行程詳情</a>
                 <a href="#guide" class="text-gray-600 hover:text-sky-600 transition duration-300">自駕錦囊</a>
-                <a href="#notyetdone" class="text-gray-600 hover:text-sky-600 transition duration-300">申請指引及詳情</a>
-                <a href="#notyetdone" class="text-gray-600 hover:text-sky-600 transition duration-300">網上抽籤及申請</a>
-                <a href="#notyetdone" class="text-gray-600 hover:text-sky-600 transition duration-300">預約出行</a>
-                <a href="#notyetdone" class="text-gray-600 hover:text-sky-600 transition duration-300">常見問題</a>
-                <a href="#notyetdone" class="text-gray-600 hover:text-sky-600 transition duration-300">聯絡我們</a>
             </div>
         </div>
     </nav>
-
-    <!-- hero section -->
     <header class="parallax-hero">
         <div class="parallax-overlay"></div>
         <div class="relative z-10 p-8">
@@ -88,42 +83,34 @@
             </p>
         </div>
     </header>
-
-    <!-- theme -->
     <section id="themes" class="container mx-auto px-4 py-16">
         <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">探索主題路線</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6">
-            <!-- 親子 -->
             <div id="theme-1" class="theme-card bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition duration-500 transform hover:scale-105 cursor-pointer border-2 border-transparent hover:border-sky-500">
                 <div class="text-5xl mb-4 text-center">👨‍👩‍👧‍👦</div>
                 <h3 class="text-xl font-semibold text-center text-gray-800">奇妙親子樂園之旅</h3>
                 <p class="mt-2 text-gray-600 text-center text-sm">適合家庭，享受輕鬆歡樂的遊樂園時光。</p>
             </div>
-            <!-- 購物美食 -->
             <div id="theme-2" class="theme-card bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition duration-500 transform hover:scale-105 cursor-pointer border-2 border-transparent hover:border-sky-500">
                 <div class="text-5xl mb-4 text-center">🛍️🍴</div>
                 <h3 class="text-xl font-semibold text-center text-gray-800">城市購物與美食之旅</h3>
                 <p class="mt-2 text-gray-600 text-center text-sm">專為潮流人士，體驗時尚與美食的完美結合。</p>
             </div>
-            <!-- healthy -->
             <div id="theme-3" class="theme-card bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition duration-500 transform hover:scale-105 cursor-pointer border-2 border-transparent hover:border-sky-500">
                 <div class="text-5xl mb-4 text-center">⛰️🌲</div>
                 <h3 class="text-xl font-semibold text-center text-gray-800">山野秘境與自然健行</h3>
                 <p class="mt-2 text-gray-600 text-center text-sm">探索香港的自然風光，遠離城市喧囂。</p>
             </div>
-            <!-- 文化藝術 -->
             <div id="theme-4" class="theme-card bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition duration-500 transform hover:scale-105 cursor-pointer border-2 border-transparent hover:border-sky-500">
                 <div class="text-5xl mb-4 text-center">🏛️🎨</div>
                 <h3 class="text-xl font-semibold text-center text-gray-800">文化藝術與歷史探索</h3>
                 <p class="mt-2 text-gray-600 text-center text-sm">深入了解香港的歷史與藝術氛圍。</p>
             </div>
-            <!-- 季節限定 -->
             <div id="theme-5" class="theme-card bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition duration-500 transform hover:scale-105 cursor-pointer border-2 border-transparent hover:border-sky-500">
                 <div class="text-5xl mb-4 text-center">🎄✨</div>
                 <h3 class="text-xl font-semibold text-center text-gray-800">璀璨聖誕夢幻之旅</h3>
                 <p class="mt-2 text-gray-600 text-center text-sm">感受濃厚的節日氣氛。</p>
             </div>
-            <!-- 官方指南 -->
             <div id="theme-6" class="theme-card bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition duration-500 transform hover:scale-105 cursor-pointer border-2 border-transparent hover:border-sky-500">
                 <div class="text-5xl mb-4 text-center">🛂📄</div>
                 <h3 class="text-xl font-semibold text-center text-gray-800">港車南下官方指南</h3>
@@ -131,55 +118,15 @@
             </div>
         </div>
     </section>
-
-    <!-- 互動地圖 -->
     <section id="map-section" class="bg-gray-100 py-16 px-4">
         <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">路線地圖一覽</h2>
         <div class="relative w-full max-w-5xl mx-auto rounded-3xl overflow-hidden shadow-xl border-4 border-white">
-            <!-- 香港地圖底圖 (Placeholder Image) -->
-            <img src="https://placehold.co/1200x800/e2e8f0/64748b?text=Hong+Kong+Map" alt="香港地圖" class="w-full h-auto">
-            
-            <!-- 景點標註群組 (預設隱藏) -->
-            <div id="pins-1" class="absolute inset-0 hidden">
-                <div class="absolute top-[60%] left-[20%] w-6 h-6 bg-red-500 rounded-full animate-pulse border-2 border-white"></div> <!-- 迪士尼/大嶼山 -->
-                <div class="absolute top-[80%] left-[50%] w-6 h-6 bg-red-500 rounded-full animate-pulse border-2 border-white"></div> <!-- 海洋公園/南區 -->
-                <div class="absolute top-[35%] left-[65%] w-6 h-6 bg-red-500 rounded-full animate-pulse border-2 border-white"></div> <!-- 科學館/尖沙咀 -->
-            </div>
-            <div id="pins-2" class="absolute inset-0 hidden">
-                <div class="absolute top-[35%] left-[65%] w-6 h-6 bg-blue-500 rounded-full animate-pulse border-2 border-white"></div> <!-- 尖沙咀 -->
-                <div class="absolute top-[42%] left-[75%] w-6 h-6 bg-blue-500 rounded-full animate-pulse border-2 border-white"></div> <!-- 銅鑼灣 -->
-                <div class="absolute top-[45%] left-[62%] w-6 h-6 bg-blue-500 rounded-full animate-pulse border-2 border-white"></div> <!-- 中環 -->
-                <div class="absolute top-[25%] left-[55%] w-6 h-6 bg-blue-500 rounded-full animate-pulse border-2 border-white"></div> <!-- 旺角 -->
-            </div>
-            <div id="pins-3" class="absolute inset-0 hidden">
-                <div class="absolute top-[40%] left-[90%] w-6 h-6 bg-green-500 rounded-full animate-pulse border-2 border-white"></div> <!-- 西貢 -->
-                <div class="absolute top-[70%] left-[85%] w-6 h-6 bg-green-500 rounded-full animate-pulse border-2 border-white"></div> <!-- 龍脊 -->
-                <div class="absolute top-[80%] left-[80%] w-6 h-6 bg-green-500 rounded-full animate-pulse border-2 border-white"></div> <!-- 赤柱 -->
-                <div class="absolute top-[10%] left-[70%] w-6 h-6 bg-green-500 rounded-full animate-pulse border-2 border-white"></div> <!-- 大美督 -->
-            </div>
-            <div id="pins-4" class="absolute inset-0 hidden">
-                <div class="absolute top-[38%] left-[55%] w-6 h-6 bg-purple-500 rounded-full animate-pulse border-2 border-white"></div> <!-- 西九 -->
-                <div class="absolute top-[45%] left-[62%] w-6 h-6 bg-purple-500 rounded-full animate-pulse border-2 border-white"></div> <!-- 中環/大館 -->
-                <div class="absolute top-[20%] left-[58%] w-6 h-6 bg-purple-500 rounded-full animate-pulse border-2 border-white"></div> <!-- 黃大仙 -->
-            </div>
-            <div id="pins-5" class="absolute inset-0 hidden">
-                <div class="absolute top-[35%] left-[65%] w-6 h-6 bg-yellow-500 rounded-full animate-pulse border-2 border-white"></div> <!-- 尖沙咀 -->
-                <div class="absolute top-[45%] left-[62%] w-6 h-6 bg-yellow-500 rounded-full animate-pulse border-2 border-white"></div> <!-- 中環 -->
-                <div class="absolute top-[60%] left-[20%] w-6 h-6 bg-yellow-500 rounded-full animate-pulse border-2 border-white"></div> <!-- 迪士尼 -->
-                <div class="absolute top-[50%] left-[70%] w-6 h-6 bg-yellow-500 rounded-full animate-pulse border-2 border-white"></div> <!-- 山頂 -->
-            </div>
-            <!-- 新增的官方指南標註 -->
-            <div id="pins-6" class="absolute inset-0 hidden">
-                <div class="absolute top-[50%] left-[5%] w-6 h-6 bg-gray-500 rounded-full animate-pulse border-2 border-white"></div> <!-- 港珠澳大橋香港口岸 -->
-            </div>
+            <div id="map"></div>
         </div>
     </section>
-
-    <!-- 行程詳情區塊 -->
     <section id="itineraries" class="container mx-auto px-4 py-16">
         <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">詳細行程規劃</h2>
         <div class="space-y-8">
-            <!-- 親子樂園行程 -->
             <div id="itinerary-1" class="itinerary-item bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-500 hidden">
                 <h3 class="text-2xl font-bold text-sky-700 mb-4">奇妙親子樂園之旅</h3>
                 <p class="mb-4 text-gray-600">適合有年幼子女的家庭，享受輕鬆愉快的行程。</p>
@@ -209,7 +156,6 @@
                     </div>
                 </div>
             </div>
-            <!-- 購物美食行程 -->
             <div id="itinerary-2" class="itinerary-item bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-500 hidden">
                 <h3 class="text-2xl font-bold text-sky-700 mb-4">城市購物與時尚美食之旅</h3>
                 <p class="mb-4 text-gray-600">適合熱愛購物、追求時尚與美食的年輕人或情侶。</p>
@@ -239,7 +185,6 @@
                     </div>
                 </div>
             </div>
-            <!-- 自然健行行程 -->
             <div id="itinerary-3" class="itinerary-item bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-500 hidden">
                 <h3 class="text-2xl font-bold text-sky-700 mb-4">山野秘境與自然健行之旅</h3>
                 <p class="mb-4 text-gray-600">適合熱愛大自然，追求寧靜與挑戰的戶外愛好者。</p>
@@ -269,7 +214,6 @@
                     </div>
                 </div>
             </div>
-            <!-- 文化藝術行程 -->
             <div id="itinerary-4" class="itinerary-item bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-500 hidden">
                 <h3 class="text-2xl font-bold text-sky-700 mb-4">文化藝術與歷史探索之旅</h3>
                 <p class="mb-4 text-gray-600">適合對歷史、藝術、建築有濃厚興趣的遊客。</p>
@@ -298,7 +242,6 @@
                     </div>
                 </div>
             </div>
-            <!-- 季節限定行程 -->
             <div id="itinerary-5" class="itinerary-item bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-500 hidden">
                 <h3 class="text-2xl font-bold text-sky-700 mb-4">璀璨聖誕夢幻之旅</h3>
                 <p class="mb-4 text-gray-600">適合希望在香港體驗濃厚聖誕氛圍，享受燈飾與節日慶典的遊客。</p>
@@ -328,7 +271,6 @@
                     </div>
                 </div>
             </div>
-            <!-- 官方指南行程 (新增) -->
             <div id="itinerary-6" class="itinerary-item bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-500 hidden">
                 <h3 class="text-2xl font-bold text-sky-700 mb-4">港車南下官方指南</h3>
                 <p class="mb-4 text-gray-600">這是關於港車南下計劃的官方指南摘要，為您的旅程提供重要參考。</p>
@@ -361,8 +303,6 @@
             </div>
         </div>
     </section>
-
-    <!-- 自駕錦囊區塊 -->
     <section id="guide" class="container mx-auto px-4 py-16">
         <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">自駕錦囊</h2>
         <div class="bg-white p-8 rounded-2xl shadow-lg max-w-3xl mx-auto space-y-6">
@@ -384,96 +324,111 @@
             </div>
         </div>
     </section>
-
-
-    
-    <!-- notyetdone -->
-    <!-- 聯絡我們區塊，使用新的樣式和結構 -->
-<section id="contact-us" class="container mx-auto px-4 py-16">
-    <div class="bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-500">
-        <!-- 主標題 -->
-        <h3 class="text-2xl font-bold text-sky-700 mb-4">聯絡我們</h3>
-        
-        <div class="space-y-6">
-            <!-- 香港運輸署區塊 -->
-            <div>
-                <h4 class="text-xl font-semibold mb-2">香港運輸署 - 過境服務分組</h4>
-                <ul class="list-disc list-inside space-y-1 text-gray-700">
-                    <li>網址：<a href="https://www.td.gov.hk" class="text-blue-500 hover:underline">www.td.gov.hk</a></li>
-                    <li>電話熱線：2804 2600</li>
-                    <li>電子郵箱： <a href="mailto:tdenq@td.gov.hk" class="text-blue-500 hover:underline">tdenq@td.gov.hk</a><br> (電話熱線及電子郵箱皆由「1823」代為處理。)</li>
-                </ul>
-            </div>
-            
-            <!-- 內地部門諮詢熱線區塊 -->
-            <div>
-                <h4 class="text-xl font-semibold mb-2">內地部門諮詢熱線</h4>
-                <ul class="list-disc list-inside space-y-1 text-gray-700">
-                    <li>- 廣東省公安廳交通管理局車管辦證大廳： 11183 及 020-83111536</li>
-                    <li>- 珠海市公安局交通警察支隊： 0756-12123</li>
-                    <li>- 拱北海關： 0756-12360</li>
-                    <li>- 珠海邊檢總站： 0756-12367</li>
-                    <li>- 省商務廳（有關內地信息管理服務系統的查詢）： 020-95198</li>
-                    <li>- 深圳海關： 0755-12360</li>
-                </ul>
-            </div>
-            
-            <!-- 珠海口岸實時通關資訊區塊 -->
-            <div>
-                <h4 class="text-xl font-semibold mb-2">珠海口岸實時通關資訊</h4>
-                <p class="text-gray-700">車主可透過「港珠澳大橋珠海口岸」或「珠海發布」微信公眾號內的「大橋口岸實時通關」服務（<a href="https://traffic-info.gzazhka.com:5015/#/" class="text-blue-500 hover:underline" target="_blank">traffic-info.gzazhka.com:5015/#/</a>），查看珠海口岸的車輛實時通關情況。</p>
-            </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-
-
-
-
-    
-    <!-- 頁腳 -->
     <footer class="bg-gray-800 text-white text-center py-6 px-4 mt-16 rounded-t-3xl shadow-inner">
         <p>&copy; 2025 粵車南下。版權所有。</p>
     </footer>
 
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
+        // 初始化地圖，設置中心點為香港，並帶有縮放級別
+        const map = L.map('map').setView([22.302711, 114.174154], 12);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        let currentMarkers = [];
+        let currentRoutes = [];
+
+        // 定義各主題的景點資料
+        const locations = {
+            'itinerary-1': {
+                points: [
+                    { latlng: [22.3134, 114.0416], name: '港珠澳大橋香港口岸' },
+                    { latlng: [22.3130, 114.0435], name: '香港迪士尼樂園' },
+                    { latlng: [22.2858, 114.1593], name: '海洋公園' },
+                    { latlng: [22.3276, 114.1627], name: '深水埗' },
+                    { latlng: [22.2982, 114.1738], name: '香港太空館' }
+                ],
+                routes: [
+                    [[22.3134, 114.0416], [22.3130, 114.0435]], // Day 1: 口岸到迪士尼
+                    [[22.3130, 114.0435], [22.2858, 114.1593]], // Day 2: 迪士尼到海洋公園
+                    [[22.2858, 114.1593], [22.3276, 114.1627]] // Day 2: 海洋公園到深水埗
+                ]
+            },
+            'itinerary-2': {
+                points: [
+                    { latlng: [22.2982, 114.1738], name: '尖沙咀' },
+                    { latlng: [22.2783, 114.1804], name: '銅鑼灣' },
+                    { latlng: [22.2811, 114.1583], name: '中環' },
+                    { latlng: [22.3193, 114.1694], name: '旺角' }
+                ],
+                routes: [
+                    [[22.2982, 114.1738], [22.2783, 114.1804]], // 尖沙咀到銅鑼灣
+                    [[22.2783, 114.1804], [22.2811, 114.1583]], // 銅鑼灣到中環
+                    [[22.2811, 114.1583], [22.3193, 114.1694]] // 中環到旺角
+                ]
+            },
+            // ... 您可以在這裡添加更多主題的景點和路線資料
+        };
+
+        // 清空地圖上所有的標記和路線
+        function clearMap() {
+            currentMarkers.forEach(marker => map.removeLayer(marker));
+            currentRoutes.forEach(route => map.removeLayer(route));
+            currentMarkers = [];
+            currentRoutes = [];
+        }
+
+        // 在地圖上繪製標記和路線
+        function drawMap(itineraryId) {
+            clearMap();
+
+            const data = locations[itineraryId];
+            if (!data) return;
+
+            // 添加標記
+            data.points.forEach(point => {
+                const marker = L.marker(point.latlng).addTo(map);
+                marker.bindPopup(`<b>${point.name}</b>`).openPopup();
+                currentMarkers.push(marker);
+            });
+
+            // 添加路線
+            data.routes.forEach(route => {
+                const polyline = L.polyline(route, { color: 'blue', weight: 4 }).addTo(map);
+                currentRoutes.push(polyline);
+            });
+
+            // 自動調整地圖視圖以顯示所有標記和路線
+            if (currentMarkers.length > 0 || currentRoutes.length > 0) {
+                const allPoints = data.points.map(p => p.latlng);
+                const bounds = L.latLngBounds(allPoints);
+                map.fitBounds(bounds, { padding: [50, 50] });
+            }
+        }
+
         // 獲取所有主題卡片元素
         const themeCards = document.querySelectorAll('.theme-card');
-        // 獲取所有行程詳情元素
         const itineraryItems = document.querySelectorAll('.itinerary-item');
-        // 獲取所有地圖上的景點標註群組
-        const mapPins = document.querySelectorAll('#map-section > div[id^="pins-"]');
 
         // 為每個主題卡片添加點擊事件監聽器
         themeCards.forEach(card => {
             card.addEventListener('click', () => {
-                // 獲取當前點擊卡片的ID，例如 'theme-1'
                 const themeId = card.id;
-                // 從ID中提取數字，例如 '1'
                 const themeIndex = themeId.split('-')[1];
 
-                // 移除所有卡片的 active 狀態
                 themeCards.forEach(c => c.classList.remove('border-sky-500'));
-                // 為當前點擊的卡片添加 active 狀態
                 card.classList.add('border-sky-500');
 
-                // 隱藏所有地圖景點標註
-                mapPins.forEach(pins => pins.classList.add('hidden'));
-                // 顯示對應主題的地圖景點標註
-                document.getElementById(`pins-${themeIndex}`).classList.remove('hidden');
-
-                // 隱藏所有行程詳情
                 itineraryItems.forEach(item => item.classList.add('hidden'));
-                // 顯示對應主題的行程詳情
                 const targetItinerary = document.getElementById(`itinerary-${themeIndex}`);
                 if (targetItinerary) {
                     targetItinerary.classList.remove('hidden');
-                    // 滾動到對應的行程詳情區塊
                     targetItinerary.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
+
+                // 調用新寫的函式來繪製地圖
+                drawMap(`itinerary-${themeIndex}`);
             });
         });
 
@@ -481,15 +436,13 @@
         document.addEventListener('DOMContentLoaded', () => {
             const defaultCard = document.getElementById('theme-1');
             const defaultItinerary = document.getElementById('itinerary-1');
-            const defaultPins = document.getElementById('pins-1');
-            
-            if (defaultCard && defaultItinerary && defaultPins) {
+            if (defaultCard && defaultItinerary) {
                 defaultCard.classList.add('border-sky-500');
                 defaultItinerary.classList.remove('hidden');
-                defaultPins.classList.remove('hidden');
             }
+            // 預設繪製第一個主題的地圖
+            drawMap('itinerary-1');
         });
     </script>
-
 </body>
 </html>
