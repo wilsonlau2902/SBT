@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>粵車南下 | 香港3日2夜自駕遊</title>
-    <!-- 引入 Tailwind CSS CDN -->
+    <title>粵車南下 (SBT) | 香港3日2夜自駕遊</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- 引入 Inter 字體 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -15,7 +13,6 @@
             font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
         }
-        /* 自定義滾動條樣式 */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -28,6 +25,32 @@
         }
         ::-webkit-scrollbar-thumb:hover {
             background: #94a3b8; /* slate-400 */
+        }
+        /* Hero Section with Parallax Effect */
+        .parallax-hero {
+           
+            background-image: url('https://raw.githubusercontent.com/octocat/Spoon-Knife/main/Hk.jpeg');
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 2rem;
+            overflow: hidden; /* 防止背景圖片溢出 */
+        }
+        .parallax-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4); /* 調整透明度以確保文字清晰 */
         }
     </style>
 </head>
@@ -46,14 +69,17 @@
         </div>
     </nav>
 
-    <!-- 主頁面：標題與簡介 -->
-    <header class="bg-sky-600 text-white py-20 px-4 text-center rounded-b-3xl shadow-xl">
-        <h1 class="text-4xl md:text-5xl font-extrabold leading-tight tracking-wide">
-            【粵車南下】香港3日2夜自駕深度遊
-        </h1>
-        <p class="mt-4 text-lg md:text-xl font-light opacity-90 max-w-2xl mx-auto">
-            為自駕遊旅客量身打造，探索香港的每一個角落。我們不只是提供行程，更是一個為您而設的**一站式規劃工具**。
-        </p>
+    <!-- 英雄區塊與視差效果 -->
+    <header class="parallax-hero">
+        <div class="parallax-overlay"></div>
+        <div class="relative z-10 p-8">
+            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight tracking-wide mb-4 animate-fade-in">
+                【粵車南下】香港3日2夜自駕深度遊
+            </h1>
+            <p class="mt-4 text-lg md:text-xl font-light opacity-90 max-w-3xl mx-auto animate-fade-in-up">
+                為自駕遊旅客量身打造，探索香港的每一個角落。我們不只是提供行程，更是一個為您而設的**一站式規劃工具**。
+            </p>
+        </div>
     </header>
 
     <!-- 主題探索區塊 -->
@@ -137,7 +163,7 @@
             </div>
             <!-- 新增的官方指南標註 -->
             <div id="pins-6" class="absolute inset-0 hidden">
-                 <div class="absolute top-[50%] left-[5%] w-6 h-6 bg-gray-500 rounded-full animate-pulse border-2 border-white"></div> <!-- 港珠澳大橋香港口岸 -->
+                <div class="absolute top-[50%] left-[5%] w-6 h-6 bg-gray-500 rounded-full animate-pulse border-2 border-white"></div> <!-- 港珠澳大橋香港口岸 -->
             </div>
         </div>
     </section>
