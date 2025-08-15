@@ -27,9 +27,9 @@
             background: #94a3b8; /* slate-400 */
         }
         /* Hero Section with Parallax Effect */
+
         .parallax-hero {
-           
-            background-image: url('https://raw.githubusercontent.com/octocat/Spoon-Knife/main/Hk.jpeg');
+            background-image: url('HK.jpeg');
             background-attachment: fixed;
             background-position: center;
             background-repeat: no-repeat;
@@ -42,8 +42,10 @@
             text-align: center;
             color: white;
             padding: 2rem;
-            overflow: hidden; /* 防止背景圖片溢出 */
+            overflow: hidden;
         }
+
+        
         .parallax-overlay {
             position: absolute;
             top: 0;
@@ -65,11 +67,11 @@
                 <a href="#map-section" class="text-gray-600 hover:text-sky-600 transition duration-300">互動地圖</a>
                 <a href="#itineraries" class="text-gray-600 hover:text-sky-600 transition duration-300">行程詳情</a>
                 <a href="#guide" class="text-gray-600 hover:text-sky-600 transition duration-300">自駕錦囊</a>
-                <a href="#guide" class="text-gray-600 hover:text-sky-600 transition duration-300">申請指引及詳情</a>
-                <a href="#guide" class="text-gray-600 hover:text-sky-600 transition duration-300">網上抽籤及申請</a>
-                <a href="#guide" class="text-gray-600 hover:text-sky-600 transition duration-300">預約出行</a>
-                <a href="#guide" class="text-gray-600 hover:text-sky-600 transition duration-300">常見問題</a>
-                <a href="#guide" class="text-gray-600 hover:text-sky-600 transition duration-300">聯絡我們</a>
+                <a href="#notyetdone" class="text-gray-600 hover:text-sky-600 transition duration-300">申請指引及詳情</a>
+                <a href="#notyetdone" class="text-gray-600 hover:text-sky-600 transition duration-300">網上抽籤及申請</a>
+                <a href="#notyetdone" class="text-gray-600 hover:text-sky-600 transition duration-300">預約出行</a>
+                <a href="#notyetdone" class="text-gray-600 hover:text-sky-600 transition duration-300">常見問題</a>
+                <a href="#notyetdone" class="text-gray-600 hover:text-sky-600 transition duration-300">聯絡我們</a>
             </div>
         </div>
     </nav>
@@ -374,15 +376,64 @@
             </div>
             <div class="space-y-2">
                 <h3 class="text-xl font-semibold text-gray-800">3. 預訂停車位</h3>
-                <p class="text-gray-600">在節假日或週末，市區停車位緊張，建議使用停車位預訂App或查詢商場的停車位資訊。</p>
+                <p class="text-gray-600">在節假日或週末，市區停車位緊張，建議使用停車位預訂App（例如政府的香港出行易）或查詢商場的停車位資訊。</p>
             </div>
             <div class="space-y-2">
                 <h3 class="text-xl font-semibold text-gray-800">4. 電子收費（e-Toll）</h3>
-                <p class="text-gray-600">香港大部分隧道和收費路段已採用電子收費，請提前了解相關資訊，或使用指定的電子收費App。</p>
+                <p class="text-gray-600">香港大部分隧道和收費路段已採用電子收費，請提前了解相關資訊。</p>
             </div>
         </div>
     </section>
 
+
+    
+    <!-- notyetdone -->
+    <!-- 聯絡我們區塊，使用新的樣式和結構 -->
+<section id="contact-us" class="container mx-auto px-4 py-16">
+    <div class="bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-500">
+        <!-- 主標題 -->
+        <h3 class="text-2xl font-bold text-sky-700 mb-4">聯絡我們</h3>
+        
+        <div class="space-y-6">
+            <!-- 香港運輸署區塊 -->
+            <div>
+                <h4 class="text-xl font-semibold mb-2">香港運輸署 - 過境服務分組</h4>
+                <ul class="list-disc list-inside space-y-1 text-gray-700">
+                    <li>網址：<a href="https://www.td.gov.hk" class="text-blue-500 hover:underline">www.td.gov.hk</a></li>
+                    <li>電話熱線：2804 2600</li>
+                    <li>電子郵箱： <a href="mailto:tdenq@td.gov.hk" class="text-blue-500 hover:underline">tdenq@td.gov.hk</a><br> (電話熱線及電子郵箱皆由「1823」代為處理。)</li>
+                </ul>
+            </div>
+            
+            <!-- 內地部門諮詢熱線區塊 -->
+            <div>
+                <h4 class="text-xl font-semibold mb-2">內地部門諮詢熱線</h4>
+                <ul class="list-disc list-inside space-y-1 text-gray-700">
+                    <li>- 廣東省公安廳交通管理局車管辦證大廳： 11183 及 020-83111536</li>
+                    <li>- 珠海市公安局交通警察支隊： 0756-12123</li>
+                    <li>- 拱北海關： 0756-12360</li>
+                    <li>- 珠海邊檢總站： 0756-12367</li>
+                    <li>- 省商務廳（有關內地信息管理服務系統的查詢）： 020-95198</li>
+                    <li>- 深圳海關： 0755-12360</li>
+                </ul>
+            </div>
+            
+            <!-- 珠海口岸實時通關資訊區塊 -->
+            <div>
+                <h4 class="text-xl font-semibold mb-2">珠海口岸實時通關資訊</h4>
+                <p class="text-gray-700">車主可透過「港珠澳大橋珠海口岸」或「珠海發布」微信公眾號內的「大橋口岸實時通關」服務（<a href="https://traffic-info.gzazhka.com:5015/#/" class="text-blue-500 hover:underline" target="_blank">traffic-info.gzazhka.com:5015/#/</a>），查看珠海口岸的車輛實時通關情況。</p>
+            </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+    
     <!-- 頁腳 -->
     <footer class="bg-gray-800 text-white text-center py-6 px-4 mt-16 rounded-t-3xl shadow-inner">
         <p>&copy; 2025 粵車南下。版權所有。</p>
