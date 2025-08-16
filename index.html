@@ -302,4 +302,192 @@
                         <h4 class="text-xl font-semibold mb-2">過關流程與注意事項</h4>
                         <ul class="list-disc list-inside space-y-1 text-gray-700">
                             <li>**過關檢查：** 駕駛者和車內所有乘客需持有效證件（如回鄉證）通過邊境檢查。</li>
-                            <li>**停車限制：** 需留意香港的道路交通標
+                            <li>**停車限制：** 需留意香港的道路交通標誌，尤其是在市區，部分道路禁止非香港車輛行駛或設有停車限制。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="guide" class="container mx-auto px-4 py-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">自駕錦囊</h2>
+        <div class="bg-white p-8 rounded-2xl shadow-lg max-w-3xl mx-auto space-y-6">
+            <div class="space-y-2">
+                <h3 class="text-xl font-semibold text-gray-800">1. 注意交通規則</h3>
+                <p class="text-gray-600">香港與內地駕駛方向相反，請務必小心駕駛，並熟悉交通標誌和道路規則。</p>
+            </div>
+            <div class="space-y-2">
+                <h3 class="text-xl font-semibold text-gray-800">2. 善用「泊車轉乘」</h3>
+                <p class="text-gray-600">在市區可將車停在酒店或大型商場，改用便捷的港鐵或巴士遊覽，以節省時間和停車費用。</p>
+            </div>
+            <div class="space-y-2">
+                <h3 class="text-xl font-semibold text-gray-800">3. 預訂停車位</h3>
+                <p class="text-gray-600">在節假日或週末，市區停車位緊張，建議使用停車位預訂App（例如政府的香港出行易）或查詢商場的停車位資訊。</p>
+            </div>
+            <div class="space-y-2">
+                <h3 class="text-xl font-semibold text-gray-800">4. 電子收費</h3>
+                <p class="text-gray-600">香港大部分隧道和收費路段已採用電子收費，請提前了解相關資訊。</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="notyetdone" class="container mx-auto px-4 py-16">
+        <div class="bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-500 max-w-3xl mx-auto text-center">
+            <h3 class="text-2xl font-bold text-sky-700 mb-4">Haha, This Feature is Not Ready Yet!</h3>
+            <p class="text-gray-600">我們正在努力完善此功能，請耐心等待。</p>
+        </div>
+    </section>
+
+    <section id="contact-us" class="container mx-auto px-4 py-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">聯絡我們</h2>
+        <div class="bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-500 max-w-3xl mx-auto">
+            <div class="space-y-6">
+                <div>
+                    <h4 class="text-xl font-semibold mb-2">香港運輸署 - 過境服務分組</h4>
+                    <ul class="list-disc list-inside space-y-1 text-gray-700">
+                        <li>網址：<a href="https://www.td.gov.hk" class="text-blue-500 hover:underline">www.td.gov.hk</a></li>
+                        <li>電話熱線：2804 2600</li>
+                        <li>電子郵箱： <a href="mailto:tdenq@td.gov.hk" class="text-blue-500 hover:underline">tdenq@td.gov.hk</a><br> (電話熱線及電子郵箱皆由「1823」代為處理。)</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-semibold mb-2">內地部門諮詢熱線</h4>
+                    <ul class="list-disc list-inside space-y-1 text-gray-700">
+                        <li>- 廣東省公安廳交通管理局車管辦證大廳： 11183 及 020-83111536</li>
+                        <li>- 珠海市公安局交通警察支隊： 0756-12123</li>
+                        <li>- 拱北海關： 0756-12360</li>
+                        <li>- 珠海邊檢總站： 0756-12367</li>
+                        <li>- 省商務廳（有關內地信息管理服務系統的查詢）： 020-95198</li>
+                        <li>- 深圳海關： 0755-12360</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-semibold mb-2">珠海口岸實時通關資訊</h4>
+                    <p class="text-gray-700">車主可透過「港珠澳大橋珠海口岸」或「珠海發布」微信公眾號內的「大橋口岸實時通關」服務（<a href="https://traffic-info.gzazhka.com:5015/#/" class="text-blue-500 hover:underline" target="_blank">traffic-info.gzazhka.com:5015/#/</a>），查看珠海口岸的車輛實時通關情況。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-800 text-white text-center py-6 px-4 mt-16 rounded-t-3xl shadow-inner">
+        <p>&copy; 2025 粵車南下。Wilson版權所有。</p>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // 初始化地圖，設置中心點為香港，並帶有縮放級別
+        const map = L.map('map').setView([22.302711, 114.174154], 12);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        let currentMarkers = [];
+        let currentRoutes = [];
+
+        // 定義各主題的景點資料
+        const locations = {
+            'itinerary-1': {
+                points: [
+                    { latlng: [22.3134, 114.0416], name: '港珠澳大橋香港口岸' },
+                    { latlng: [22.3130, 114.0435], name: '香港迪士尼樂園' },
+                    { latlng: [22.2858, 114.1593], name: '海洋公園' },
+                    { latlng: [22.3276, 114.1627], name: '深水埗' },
+                    { latlng: [22.2982, 114.1738], name: '香港太空館' }
+                ],
+                routes: [
+                    [[22.3134, 114.0416], [22.3130, 114.0435]], // Day 1: 口岸到迪士尼
+                    [[22.3130, 114.0435], [22.2858, 114.1593]], // Day 2: 迪士尼到海洋公園
+                    [[22.2858, 114.1593], [22.3276, 114.1627]] // Day 2: 海洋公園到深水埗
+                ]
+            },
+            'itinerary-2': {
+                points: [
+                    { latlng: [22.2982, 114.1738], name: '尖沙咀' },
+                    { latlng: [22.2783, 114.1804], name: '銅鑼灣' },
+                    { latlng: [22.2811, 114.1583], name: '中環' },
+                    { latlng: [22.3193, 114.1694], name: '旺角' }
+                ],
+                routes: [
+                    [[22.2982, 114.1738], [22.2783, 114.1804]], // 尖沙咀到銅鑼灣
+                    [[22.2783, 114.1804], [22.2811, 114.1583]], // 銅鑼灣到中環
+                    [[22.2811, 114.1583], [22.3193, 114.1694]] // 中環到旺角
+                ]
+            },
+            // ... 您可以在這裡添加更多主題的景點和路線資料
+        };
+
+        // 清空地圖上所有的標記和路線
+        function clearMap() {
+            currentMarkers.forEach(marker => map.removeLayer(marker));
+            currentRoutes.forEach(route => map.removeLayer(route));
+            currentMarkers = [];
+            currentRoutes = [];
+        }
+
+        // 在地圖上繪製標記和路線
+        function drawMap(itineraryId) {
+            clearMap();
+
+            const data = locations[itineraryId];
+            if (!data) return;
+
+            // 添加標記
+            data.points.forEach(point => {
+                const marker = L.marker(point.latlng).addTo(map);
+                marker.bindPopup(`<b>${point.name}</b>`).openPopup();
+                currentMarkers.push(marker);
+            });
+
+            // 添加路線
+            data.routes.forEach(route => {
+                const polyline = L.polyline(route, { color: 'blue', weight: 4 }).addTo(map);
+                currentRoutes.push(polyline);
+            });
+
+            // 自動調整地圖視圖以顯示所有標記和路線
+            if (currentMarkers.length > 0 || currentRoutes.length > 0) {
+                const allPoints = data.points.map(p => p.latlng);
+                const bounds = L.latLngBounds(allPoints);
+                map.fitBounds(bounds, { padding: [50, 50] });
+            }
+        }
+
+        // 獲取所有主題卡片元素
+        const themeCards = document.querySelectorAll('.theme-card');
+        const itineraryItems = document.querySelectorAll('.itinerary-item');
+
+        // 為每個主題卡片添加點擊事件監聽器
+        themeCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const themeId = card.id;
+                const themeIndex = themeId.split('-')[1];
+
+                themeCards.forEach(c => c.classList.remove('border-sky-500'));
+                card.classList.add('border-sky-500');
+
+                itineraryItems.forEach(item => item.classList.add('hidden'));
+                const targetItinerary = document.getElementById(`itinerary-${themeIndex}`);
+                if (targetItinerary) {
+                    targetItinerary.classList.remove('hidden');
+                    targetItinerary.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+
+                // 調用新寫的函式來繪製地圖
+                drawMap(`itinerary-${themeIndex}`);
+            });
+        });
+
+        // 頁面加載時，預設顯示第一個主題的內容
+        document.addEventListener('DOMContentLoaded', () => {
+            const defaultCard = document.getElementById('theme-1');
+            const defaultItinerary = document.getElementById('itinerary-1');
+            if (defaultCard && defaultItinerary) {
+                defaultCard.classList.add('border-sky-500');
+                defaultItinerary.classList.remove('hidden');
+            }
+            // 預設繪製第一個主題的地圖
+            drawMap('itinerary-1');
+        });
+    </script>
+</body>
+</html>
