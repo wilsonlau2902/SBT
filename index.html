@@ -1,489 +1,305 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>粵車南下 (SBT) | 香港3日2夜自駕遊</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            scroll-behavior: smooth;
-        }
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f1f5f9; /* slate-100 */
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #cbd5e1; /* slate-300 */
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8; /* slate-400 */
-        }
-        .parallax-hero {
-            background-image: url('HK.jpeg');
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            position: relative;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            padding: 2rem;
-            overflow: hidden;
-        }
-        .parallax-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.4);
-        }
-        /* Leaflet 地圖容器樣式 */
-        #map {
-            height: 600px; /* 設置地圖高度 */
-            width: 100%;
-            border-radius: 1.5rem; /* 與外層 div 保持一致的圓角 */
-            z-index: 1; /* 確保地圖圖層在最上層 */
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>粵車南下 (SBT) | 香港3日2夜自駕遊</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9; /* slate-100 */
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1; /* slate-300 */
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; /* slate-400 */
+        }
+        .parallax-hero {
+            background-image: url('HK.jpeg');
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 2rem;
+            overflow: hidden;
+        }
+        .parallax-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        /* Leaflet 地圖容器樣式 */
+        #map {
+            height: 600px; /* 設置地圖高度 */
+            width: 100%;
+            border-radius: 1.5rem; /* 與外層 div 保持一致的圓角 */
+            z-index: 1; /* 確保地圖圖層在最上層 */
+        }
+    </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
-    <nav class="bg-white sticky top-0 z-50 shadow-md">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-sky-600">粵車南下</a>
-            <div class="space-x-4 hidden md:flex">
-                <a href="#themes" class="text-gray-600 hover:text-sky-600 transition duration-300">探索主題</a>
-                <a href="#map-section" class="text-gray-600 hover:text-sky-600 transition duration-300">互動地圖</a>
-                <a href="#itineraries" class="text-gray-600 hover:text-sky-600 transition duration-300">行程詳情</a>
-                <a href="#guide" class="text-gray-600 hover:text-sky-600 transition duration-300">自駕錦囊</a>
-                <a href="#notyetdone" class="text-gray-600 hover:text-sky-600 transition duration-300">申請指引及詳情</a>
-                <a href="#notyetdone" class="text-gray-600 hover:text-sky-600 transition duration-300">網上抽籤及申請</a>
-                <a href="#notyetdone" class="text-gray-600 hover:text-sky-600 transition duration-300">預約出行</a>
-                <a href="#notyetdone" class="text-gray-600 hover:text-sky-600 transition duration-300">常見問題</a>
-                <a href="#contact-us" class="text-gray-600 hover:text-sky-600 transition duration-300">聯絡我們</a>
+    <nav class="bg-white sticky top-0 z-50 shadow-md">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-sky-600">粵車南下</a>
+            <div class="space-x-4 hidden md:flex">
+                <a href="#themes" class="text-gray-600 hover:text-sky-600 transition duration-300">探索主題</a>
+                <a href="#map-section" class="text-gray-600 hover:text-sky-600 transition duration-300">互動地圖</a>
+                <a href="#itineraries" class="text-gray-600 hover:text-sky-600 transition duration-300">行程詳情</a>
+                <a href="#guide" class="text-gray-600 hover:text-sky-600 transition duration-300">自駕錦囊</a>
+                <a href="#notyetdone" class="text-gray-600 hover:text-sky-600 transition duration-300">申請指引及詳情</a>
+                <a href="#notyetdone" class="text-gray-600 hover:text-sky-600 transition duration-300">網上抽籤及申請</a>
+                <a href="#notyetdone" class="text-gray-600 hover:text-sky-600 transition duration-300">預約出行</a>
+                <a href="#notyetdone" class="text-gray-600 hover:text-sky-600 transition duration-300">常見問題</a>
+                <a href="#contact-us" class="text-gray-600 hover:text-sky-600 transition duration-300">聯絡我們</a>
 
 
 
-        
-            </div>
-        </div>
-    </nav>
-    <header class="parallax-hero">
-        <div class="parallax-overlay"></div>
-        <div class="relative z-10 p-8">
-            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight tracking-wide mb-4 animate-fade-in">
-                港遊
-            </h1>
-            <p class="mt-4 text-lg md:text-xl font-light opacity-90 max-w-3xl mx-auto animate-fade-in-up">
-                - 港真，值得一遊
-            </p>
-        </div>
-    </header>
-    <section id="themes" class="container mx-auto px-4 py-16">
-        <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">探索主題路線</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6">
-            <div id="theme-1" class="theme-card bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition duration-500 transform hover:scale-105 cursor-pointer border-2 border-transparent hover:border-sky-500">
-                <div class="text-5xl mb-4 text-center">👨‍👩‍👧‍👦</div>
-                <h3 class="text-xl font-semibold text-center text-gray-800">奇妙親子樂園之旅</h3>
-                <p class="mt-2 text-gray-600 text-center text-sm">適合家庭，享受輕鬆歡樂的遊樂園時光。</p>
-            </div>
-            <div id="theme-2" class="theme-card bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition duration-500 transform hover:scale-105 cursor-pointer border-2 border-transparent hover:border-sky-500">
-                <div class="text-5xl mb-4 text-center">🛍️🍴</div>
-                <h3 class="text-xl font-semibold text-center text-gray-800">城市購物與美食之旅</h3>
-                <p class="mt-2 text-gray-600 text-center text-sm">專為潮流人士，體驗時尚與美食的完美結合。</p>
-            </div>
-            <div id="theme-3" class="theme-card bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition duration-500 transform hover:scale-105 cursor-pointer border-2 border-transparent hover:border-sky-500">
-                <div class="text-5xl mb-4 text-center">⛰️🌲</div>
-                <h3 class="text-xl font-semibold text-center text-gray-800">山野秘境與自然健行</h3>
-                <p class="mt-2 text-gray-600 text-center text-sm">探索香港的自然風光，遠離城市喧囂。</p>
-            </div>
-            <div id="theme-4" class="theme-card bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition duration-500 transform hover:scale-105 cursor-pointer border-2 border-transparent hover:border-sky-500">
-                <div class="text-5xl mb-4 text-center">🏛️🎨</div>
-                <h3 class="text-xl font-semibold text-center text-gray-800">文化藝術與歷史探索</h3>
-                <p class="mt-2 text-gray-600 text-center text-sm">深入了解香港的歷史與藝術氛圍。</p>
-            </div>
-            <div id="theme-5" class="theme-card bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition duration-500 transform hover:scale-105 cursor-pointer border-2 border-transparent hover:border-sky-500">
-                <div class="text-5xl mb-4 text-center">🎄✨</div>
-                <h3 class="text-xl font-semibold text-center text-gray-800">璀璨聖誕夢幻之旅</h3>
-                <p class="mt-2 text-gray-600 text-center text-sm">感受濃厚的節日氣氛。</p>
-            </div>
-            <div id="theme-6" class="theme-card bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition duration-500 transform hover:scale-105 cursor-pointer border-2 border-transparent hover:border-sky-500">
-                <div class="text-5xl mb-4 text-center">🛂📄</div>
-                <h3 class="text-xl font-semibold text-center text-gray-800">港車南下官方指南</h3>
-                <p class="mt-2 text-gray-600 text-center text-sm">官方申請及注意事項，為您提供完整參考。</p>
-            </div>
-        </div>
-    </section>
-    <section id="map-section" class="bg-gray-100 py-16 px-4">
-        <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">路線地圖一覽</h2>
-        <div class="relative w-full max-w-5xl mx-auto rounded-3xl overflow-hidden shadow-xl border-4 border-white">
-            <div id="map"></div>
-        </div>
-    </section>
-    <section id="itineraries" class="container mx-auto px-4 py-16">
-        <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">詳細行程規劃</h2>
-        <div class="space-y-8">
-            <div id="itinerary-1" class="itinerary-item bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-500 hidden">
-                <h3 class="text-2xl font-bold text-sky-700 mb-4">奇妙親子樂園之旅</h3>
-                <p class="mb-4 text-gray-600">適合有年幼子女的家庭，享受輕鬆愉快的行程。</p>
-                <div class="space-y-6">
-                    <div>
-                        <h4 class="text-xl font-semibold mb-2">Day 1：香港迪士尼樂園</h4>
-                        <ul class="list-disc list-inside space-y-1 text-gray-700">
-                            <li>**上午：** 從港珠澳大橋香港口岸入境，驅車前往大嶼山酒店辦理入住。</li>
-                            <li>**下午：** 前往香港迪士尼樂園，將車停泊於**迪士尼公共停車場**。享受充滿奇妙魔法的下午。</li>
-                            <li>**晚上：** 於樂園內觀賞煙花匯演，晚餐後駕車返回酒店休息。</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="text-xl font-semibold mb-2">Day 2：海洋公園與深水埗</h4>
-                        <ul class="list-disc list-inside space-y-1 text-gray-700">
-                            <li>**上午：** 驅車前往南區的**海洋公園**，將車停在**園區停車場**。</li>
-                            <li>**下午：** 離開海洋公園後，將車停在深水埗的**西九龍中心停車場**，步行前往**D2 Place**、**基隆街**等文創小店。</li>
-                            <li>**晚上：** 在深水埗品嚐地道小吃或特色餐廳。</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="text-xl font-semibold mb-2">Day 3：香港太空館與回程</h4>
-                        <ul class="list-disc list-inside space-y-1 text-gray-700">
-                            <li>**上午：** 駕車前往尖沙咀，將車停在**海港城或星光行的停車場**。參觀**香港太空館**或**香港科學館**。</li>
-                            <li>**下午：** 用餐後，駕車經由西九龍快速公路，前往港珠澳大橋香港口岸。</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div id="itinerary-2" class="itinerary-item bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-500 hidden">
-                <h3 class="text-2xl font-bold text-sky-700 mb-4">城市購物與時尚美食之旅</h3>
-                <p class="mb-4 text-gray-600">適合熱愛購物、追求時尚與美食的年輕人或情侶。</p>
-                <div class="space-y-6">
-                    <div>
-                        <h4 class="text-xl font-semibold mb-2">Day 1：尖沙咀海濱購物</h4>
-                        <ul class="list-disc list-inside space-y-1 text-gray-700">
-                            <li>**上午：** 入境後驅車前往尖沙咀酒店辦理入住，將車停在**酒店停車場**。</li>
-                            <li>**下午：** 從酒店步行前往**海港城**及周邊的廣東道名店街。</li>
-                            <li>**晚上：** 在海港城或K11 MUSEA的餐廳享用晚餐，漫步**星光大道**。</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="text-xl font-semibold mb-2">Day 2：銅鑼灣與中環探索</h4>
-                        <ul class="list-disc list-inside space-y-1 text-gray-700">
-                            <li>**上午：** 乘坐港鐵從尖沙咀前往銅鑼灣，逛遍**時代廣場**、**希慎廣場**、**SOGO**等大型百貨。</li>
-                            <li>**下午：** 繼續乘坐港鐵前往中環，將車停在**國際金融中心（IFC）停車場**，步行前往**PMQ元創方**、**荷李活道**。</li>
-                            <li>**晚上：** 探索中環**蘭桂坊**或**蘇豪區**。</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="text-xl font-semibold mb-2">Day 3：旺角潮流文化與回程</h4>
-                        <ul class="list-disc list-inside space-y-1 text-gray-700">
-                            <li>**上午：** 駕車前往旺角，將車停在**朗豪坊停車場**，體驗**女人街**、**波鞋街**的熱鬧氛圍。</li>
-                            <li>**下午：** 用餐後駕車返回港珠澳大橋香港口岸。</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div id="itinerary-3" class="itinerary-item bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-500 hidden">
-                <h3 class="text-2xl font-bold text-sky-700 mb-4">山野秘境與自然健行之旅</h3>
-                <p class="mb-4 text-gray-600">適合熱愛大自然，追求寧靜與挑戰的戶外愛好者。</p>
-                <div class="space-y-6">
-                    <div>
-                        <h4 class="text-xl font-semibold mb-2">Day 1：西貢海鮮與地質公園</h4>
-                        <ul class="list-disc list-inside space-y-1 text-gray-700">
-                            <li>**上午：** 入境後驅車前往西貢，將車停泊於**西貢市中心公共停車場**。</li>
-                            <li>**下午：** 在西貢碼頭乘坐街渡，前往**橋咀洲**或**地質公園**。</li>
-                            <li>**晚上：** 返回西貢市中心，在海邊品嚐新鮮捕獲的海鮮大餐。</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="text-xl font-semibold mb-2">Day 2：龍脊遠足與赤柱海濱</h4>
-                        <ul class="list-disc list-inside space-y-1 text-gray-700">
-                            <li>**上午：** 驅車前往港島南區，將車停在**石澳道公共停車場**，挑戰**龍脊**遠足徑。</li>
-                            <li>**下午：** 駕車前往**赤柱**，將車停在**赤柱廣場或大街停車場**，漫步**赤柱市集**。</li>
-                            <li>**晚上：** 在赤柱海邊的酒吧或餐廳用餐。</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="text-xl font-semibold mb-2">Day 3：大美督騎行與回程</h4>
-                        <ul class="list-disc list-inside space-y-1 text-gray-700">
-                            <li>**上午：** 驅車前往大埔**大美督**，將車停在**大美督公共停車場**，租借單車環繞**船灣淡水湖**騎行。</li>
-                            <li>**下午：** 在大美督用膳後，駕車前往港珠澳大橋香港口岸。</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div id="itinerary-4" class="itinerary-item bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-500 hidden">
-                <h3 class="text-2xl font-bold text-sky-700 mb-4">文化藝術與歷史探索之旅</h3>
-                <p class="mb-4 text-gray-600">適合對歷史、藝術、建築有濃厚興趣的遊客。</p>
-                <div class="space-y-6">
-                    <div>
-                        <h4 class="text-xl font-semibold mb-2">Day 1：西九文化區與油麻地</h4>
-                        <ul class="list-disc list-inside space-y-1 text-gray-700">
-                            <li>**上午：** 入境後，驅車前往西九龍**西九文化區**，將車停在**藝術公園停車場**。參觀**M+博物館**或**香港故宮文化博物館**。</li>
-                            <li>**晚上：** 駕車前往油麻地，將車停在**廟街附近停車場**，逛**廟街夜市**，並到**油麻地戲院**拍照。</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="text-xl font-semibold mb-2">Day 2：中環舊城區與大館</h4>
-                        <ul class="list-disc list-inside space-y-1 text-gray-700">
-                            <li>**上午：** 駕車前往中環，將車停在**大館停車場**。深入探索**大館**的歷史與文化。</li>
-                            <li>**下午：** 步行前往**文武廟**、**太平山街**。</li>
-                            <li>**晚上：** 在中環蘇豪區或上環品嚐各國美食。</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="text-xl font-semibold mb-2">Day 3：黃大仙祠與回程</h4>
-                        <ul class="list-disc list-inside space-y-1 text-gray-700">
-                            <li>**上午：** 駕車前往九龍的**黃大仙祠**，將車停在**祠內或附近商場停車場**，參拜祈福。</li>
-                            <li>**下午：** 用餐後，駕車返回港珠澳大橋香港口岸。</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div id="itinerary-5" class="itinerary-item bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-500 hidden">
-                <h3 class="text-2xl font-bold text-sky-700 mb-4">璀璨聖誕夢幻之旅</h3>
-                <p class="mb-4 text-gray-600">適合希望在香港體驗濃厚聖誕氛圍，享受燈飾與節日慶典的遊客。</p>
-                <div class="space-y-6">
-                    <div>
-                        <h4 class="text-xl font-semibold mb-2">Day 1：尖沙咀聖誕燈飾與海濱漫步</h4>
-                        <ul class="list-disc list-inside space-y-1 text-gray-700">
-                            <li>**上午：** 入境後，驅車前往尖沙咀酒店辦理入住並停車。</li>
-                            <li>**下午：** 步行前往**海港城**、**K11 MUSEA**等商場欣賞聖誕裝飾。</li>
-                            <li>**晚上：** 在尖沙咀海濱欣賞**維港的聖誕燈飾**。</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="text-xl font-semibold mb-2">Day 2：迪士尼聖誕活動與商場巡禮</h4>
-                        <ul class="list-disc list-inside space-y-1 text-gray-700">
-                            <li>**上午：** 駕車前往**香港迪士尼樂園**，將車停在樂園停車場，體驗主題活動。</li>
-                            <li>**下午：** 離開迪士尼後，駕車或乘港鐵前往中環，將車停在**IFC國際金融中心**，欣賞聖誕佈置。</li>
-                            <li>**晚上：** 步行前往**皇后像廣場**，感受聖誕氣氛。</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="text-xl font-semibold mb-2">Day 3：山頂觀景與回程</h4>
-                        <ul class="list-disc list-inside space-y-1 text-gray-700">
-                            <li>**上午：** 駕車前往**太平山頂**，將車停在**山頂廣場停車場**，俯瞰維港和城市美景。</li>
-                            <li>**下午：** 在山頂用膳，購買手信後，駕車返回港珠澳大橋香港口岸。</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div id="itinerary-6" class="itinerary-item bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-500 hidden">
-                <h3 class="text-2xl font-bold text-sky-700 mb-4">港車南下官方指南</h3>
-                <p class="mb-4 text-gray-600">這是關於港車南下計劃的官方指南摘要，為您的旅程提供重要參考。</p>
-                <div class="space-y-6">
-                    <div>
-                        <h4 class="text-xl font-semibold mb-2">申請資格與文件</h4>
-                        <ul class="list-disc list-inside space-y-1 text-gray-700">
-                            <li>**資格要求：** 申請人須為內地居民，持有有效內地駕照，車輛需為非營運的9座或以下小型汽車。</li>
-                            <li>**所需文件：** 內地身份證、駕照、車輛登記文件、車輛保險等。所有文件需在網上系統提交。</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="text-xl font-semibold mb-2">交通與保險要求</h4>
-                        <ul class="list-disc list-inside space-y-1 text-gray-700">
-                            <li>**香港保險：** 需購買香港本地的汽車保險，並確保保險期覆蓋整個在港逗留期間。</li>
-                            <li>**車輛檢驗：** 車輛需符合香港的車輛安全與環保標準，並取得「封閉道路通行許可證」。</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="text-xl font-semibold mb-2">過關流程與注意事項</h4>
-                        <ul class="list-disc list-inside space-y-1 text-gray-700">
-                            <li>**過關檢查：** 駕駛者和車內所有乘客需持有效證件（如回鄉證）通過邊境檢查。</li>
-                            <li>**停車限制：** 需留意香港的道路交通標誌，尤其是在市區，部分道路禁止非香港車輛行駛或設有停車限制。</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            
-            <div id="contact-us" class="itinerary-item bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-500 hidden">
-                <h3 class="text-2xl font-bold text-sky-700 mb-4">聯絡我們</h3>
-                <div class="space-y-6">
-                    <div>
-                        <h4 class="text-xl font-semibold mb-2">香港運輸署 - 過境服務分組</h4>
-                        <ul class="list-disc list-inside space-y-1 text-gray-700">
-                            <li>網址：<a href="https://www.td.gov.hk" class="text-blue-500 hover:underline">www.td.gov.hk</a></li>
-                            <li>電話熱線：2804 2600</li>
-                            <li>電子郵箱： <a href="mailto:tdenq@td.gov.hk" class="text-blue-500 hover:underline">tdenq@td.gov.hk</a><br> (電話熱線及電子郵箱皆由「1823」代為處理。)</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="text-xl font-semibold mb-2">內地部門諮詢熱線</h4>
-                        <ul class="list-disc list-inside space-y-1 text-gray-700">
-                            <li>- 廣東省公安廳交通管理局車管辦證大廳： 11183 及 020-83111536</li>
-                            <li>- 珠海市公安局交通警察支隊： 0756-12123</li>
-                            <li>- 拱北海關： 0756-12360</li>
-                            <li>- 珠海邊檢總站： 0756-12367</li>
-                            <li>- 省商務廳（有關內地信息管理服務系統的查詢）： 020-95198</li>
-                            <li>- 深圳海關： 0755-12360</li>
-                        </ul>
-                    </div>
-                <div>
-                    <h4 class="text-xl font-semibold mb-2">珠海口岸實時通關資訊</h4>
-                        <p class="text-gray-700">車主可透過「港珠澳大橋珠海口岸」或「珠海發布」微信公眾號內的「大橋口岸實時通關」服務（<a href="https://traffic-info.gzazhka.com:5015/#/" class="text-blue-500 hover:underline" target="_blank">traffic-info.gzazhka.com:5015/#/</a>），查看珠海口岸的車輛實時通關情況。</p>
-                </div>
-
-
-                <div id="notyetdone" class="itinerary-item bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-500 hidden">
-                    <h3 class="text-2xl font-bold text-sky-700 mb-4">haha 未做好</h3>
-                </div>
-    
-            </div>
-            </div>
-    </section>
-    <section id="guide" class="container mx-auto px-4 py-16">
-        <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">自駕錦囊</h2>
-        <div class="bg-white p-8 rounded-2xl shadow-lg max-w-3xl mx-auto space-y-6">
-            <div class="space-y-2">
-                <h3 class="text-xl font-semibold text-gray-800">1. 注意交通規則</h3>
-                <p class="text-gray-600">香港與內地駕駛方向相反，請務必小心駕駛，並熟悉交通標誌和道路規則。</p>
-            </div>
-            <div class="space-y-2">
-                <h3 class="text-xl font-semibold text-gray-800">2. 善用「泊車轉乘」</h3>
-                <p class="text-gray-600">在市區可將車停在酒店或大型商場，改用便捷的港鐵或巴士遊覽，以節省時間和停車費用。</p>
-            </div>
-            <div class="space-y-2">
-                <h3 class="text-xl font-semibold text-gray-800">3. 預訂停車位</h3>
-                <p class="text-gray-600">在節假日或週末，市區停車位緊張，建議使用停車位預訂App（例如政府的香港出行易）或查詢商場的停車位資訊。</p>
-            </div>
-            <div class="space-y-2">
-                <h3 class="text-xl font-semibold text-gray-800">4. 電子收費（e-Toll）</h3>
-                <p class="text-gray-600">香港大部分隧道和收費路段已採用電子收費，請提前了解相關資訊。</p>
-            </div>
-        </div>
-    </section>
-    <footer class="bg-gray-800 text-white text-center py-6 px-4 mt-16 rounded-t-3xl shadow-inner">
-        <p>&copy; 2025 粵車南下。Wilson版權所有。</p>
-    </footer>
-
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script>
-        // 初始化地圖，設置中心點為香港，並帶有縮放級別
-        const map = L.map('map').setView([22.302711, 114.174154], 12);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
-
-        let currentMarkers = [];
-        let currentRoutes = [];
-
-        // 定義各主題的景點資料
-        const locations = {
-            'itinerary-1': {
-                points: [
-                    { latlng: [22.3134, 114.0416], name: '港珠澳大橋香港口岸' },
-                    { latlng: [22.3130, 114.0435], name: '香港迪士尼樂園' },
-                    { latlng: [22.2858, 114.1593], name: '海洋公園' },
-                    { latlng: [22.3276, 114.1627], name: '深水埗' },
-                    { latlng: [22.2982, 114.1738], name: '香港太空館' }
-                ],
-                routes: [
-                    [[22.3134, 114.0416], [22.3130, 114.0435]], // Day 1: 口岸到迪士尼
-                    [[22.3130, 114.0435], [22.2858, 114.1593]], // Day 2: 迪士尼到海洋公園
-                    [[22.2858, 114.1593], [22.3276, 114.1627]] // Day 2: 海洋公園到深水埗
-                ]
-            },
-            'itinerary-2': {
-                points: [
-                    { latlng: [22.2982, 114.1738], name: '尖沙咀' },
-                    { latlng: [22.2783, 114.1804], name: '銅鑼灣' },
-                    { latlng: [22.2811, 114.1583], name: '中環' },
-                    { latlng: [22.3193, 114.1694], name: '旺角' }
-                ],
-                routes: [
-                    [[22.2982, 114.1738], [22.2783, 114.1804]], // 尖沙咀到銅鑼灣
-                    [[22.2783, 114.1804], [22.2811, 114.1583]], // 銅鑼灣到中環
-                    [[22.2811, 114.1583], [22.3193, 114.1694]] // 中環到旺角
-                ]
-            },
-            // ... 您可以在這裡添加更多主題的景點和路線資料
-        };
-
-        // 清空地圖上所有的標記和路線
-        function clearMap() {
-            currentMarkers.forEach(marker => map.removeLayer(marker));
-            currentRoutes.forEach(route => map.removeLayer(route));
-            currentMarkers = [];
-            currentRoutes = [];
-        }
-
-        // 在地圖上繪製標記和路線
-        function drawMap(itineraryId) {
-            clearMap();
-
-            const data = locations[itineraryId];
-            if (!data) return;
-
-            // 添加標記
-            data.points.forEach(point => {
-                const marker = L.marker(point.latlng).addTo(map);
-                marker.bindPopup(`<b>${point.name}</b>`).openPopup();
-                currentMarkers.push(marker);
-            });
-
-            // 添加路線
-            data.routes.forEach(route => {
-                const polyline = L.polyline(route, { color: 'blue', weight: 4 }).addTo(map);
-                currentRoutes.push(polyline);
-            });
-
-            // 自動調整地圖視圖以顯示所有標記和路線
-            if (currentMarkers.length > 0 || currentRoutes.length > 0) {
-                const allPoints = data.points.map(p => p.latlng);
-                const bounds = L.latLngBounds(allPoints);
-                map.fitBounds(bounds, { padding: [50, 50] });
-            }
-        }
-
-        // 獲取所有主題卡片元素
-        const themeCards = document.querySelectorAll('.theme-card');
-        const itineraryItems = document.querySelectorAll('.itinerary-item');
-
-        // 為每個主題卡片添加點擊事件監聽器
-        themeCards.forEach(card => {
-            card.addEventListener('click', () => {
-                const themeId = card.id;
-                const themeIndex = themeId.split('-')[1];
-
-                themeCards.forEach(c => c.classList.remove('border-sky-500'));
-                card.classList.add('border-sky-500');
-
-                itineraryItems.forEach(item => item.classList.add('hidden'));
-                const targetItinerary = document.getElementById(`itinerary-${themeIndex}`);
-                if (targetItinerary) {
-                    targetItinerary.classList.remove('hidden');
-                    targetItinerary.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-
-                // 調用新寫的函式來繪製地圖
-                drawMap(`itinerary-${themeIndex}`);
-            });
-        });
-
-        // 頁面加載時，預設顯示第一個主題的內容
-        document.addEventListener('DOMContentLoaded', () => {
-            const defaultCard = document.getElementById('theme-1');
-            const defaultItinerary = document.getElementById('itinerary-1');
-            if (defaultCard && defaultItinerary) {
-                defaultCard.classList.add('border-sky-500');
-                defaultItinerary.classList.remove('hidden');
-            }
-            // 預設繪製第一個主題的地圖
-            drawMap('itinerary-1');
-        });
-    </script>
-</body>
-</html>
+        
+            </div>
+        </div>
+    </nav>
+    <header class="parallax-hero">
+        <div class="parallax-overlay"></div>
+        <div class="relative z-10 p-8">
+            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight tracking-wide mb-4 animate-fade-in">
+                港遊
+            </h1>
+            <p class="mt-4 text-lg md:text-xl font-light opacity-90 max-w-3xl mx-auto animate-fade-in-up">
+                - 港真，值得一遊
+            </p>
+        </div>
+    </header>
+    <section id="themes" class="container mx-auto px-4 py-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">探索主題路線</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6">
+            <div id="theme-1" class="theme-card bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition duration-500 transform hover:scale-105 cursor-pointer border-2 border-transparent hover:border-sky-500">
+                <div class="text-5xl mb-4 text-center">👨‍👩‍👧‍👦</div>
+                <h3 class="text-xl font-semibold text-center text-gray-800">奇妙親子樂園之旅</h3>
+                <p class="mt-2 text-gray-600 text-center text-sm">適合家庭，享受輕鬆歡樂的遊樂園時光。</p>
+            </div>
+            <div id="theme-2" class="theme-card bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition duration-500 transform hover:scale-105 cursor-pointer border-2 border-transparent hover:border-sky-500">
+                <div class="text-5xl mb-4 text-center">🛍️🍴</div>
+                <h3 class="text-xl font-semibold text-center text-gray-800">城市購物與美食之旅</h3>
+                <p class="mt-2 text-gray-600 text-center text-sm">專為潮流人士，體驗時尚與美食的完美結合。</p>
+            </div>
+            <div id="theme-3" class="theme-card bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition duration-500 transform hover:scale-105 cursor-pointer border-2 border-transparent hover:border-sky-500">
+                <div class="text-5xl mb-4 text-center">⛰️🌲</div>
+                <h3 class="text-xl font-semibold text-center text-gray-800">山野秘境與自然健行</h3>
+                <p class="mt-2 text-gray-600 text-center text-sm">探索香港的自然風光，遠離城市喧囂。</p>
+            </div>
+            <div id="theme-4" class="theme-card bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition duration-500 transform hover:scale-105 cursor-pointer border-2 border-transparent hover:border-sky-500">
+                <div class="text-5xl mb-4 text-center">🏛️🎨</div>
+                <h3 class="text-xl font-semibold text-center text-gray-800">文化藝術與歷史探索</h3>
+                <p class="mt-2 text-gray-600 text-center text-sm">深入了解香港的歷史與藝術氛圍。</p>
+            </div>
+            <div id="theme-5" class="theme-card bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition duration-500 transform hover:scale-105 cursor-pointer border-2 border-transparent hover:border-sky-500">
+                <div class="text-5xl mb-4 text-center">🎄✨</div>
+                <h3 class="text-xl font-semibold text-center text-gray-800">璀璨聖誕夢幻之旅</h3>
+                <p class="mt-2 text-gray-600 text-center text-sm">感受濃厚的節日氣氛。</p>
+            </div>
+            <div id="theme-6" class="theme-card bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition duration-500 transform hover:scale-105 cursor-pointer border-2 border-transparent hover:border-sky-500">
+                <div class="text-5xl mb-4 text-center">🛂📄</div>
+                <h3 class="text-xl font-semibold text-center text-gray-800">港車南下官方指南</h3>
+                <p class="mt-2 text-gray-600 text-center text-sm">官方申請及注意事項，為您提供完整參考。</p>
+            </div>
+        </div>
+    </section>
+    <section id="map-section" class="bg-gray-100 py-16 px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">路線地圖一覽</h2>
+        <div class="relative w-full max-w-5xl mx-auto rounded-3xl overflow-hidden shadow-xl border-4 border-white">
+            <div id="map"></div>
+        </div>
+    </section>
+    <section id="itineraries" class="container mx-auto px-4 py-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">詳細行程規劃</h2>
+        <div class="space-y-8">
+            <div id="itinerary-1" class="itinerary-item bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-500 hidden">
+                <h3 class="text-2xl font-bold text-sky-700 mb-4">奇妙親子樂園之旅</h3>
+                <p class="mb-4 text-gray-600">適合有年幼子女的家庭，享受輕鬆愉快的行程。</p>
+                <div class="space-y-6">
+                    <div>
+                        <h4 class="text-xl font-semibold mb-2">Day 1：香港迪士尼樂園</h4>
+                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                            <li>**上午：** 從港珠澳大橋香港口岸入境，驅車前往大嶼山酒店辦理入住。</li>
+                            <li>**下午：** 前往香港迪士尼樂園，將車停泊於**迪士尼公共停車場**。享受充滿奇妙魔法的下午。</li>
+                            <li>**晚上：** 於樂園內觀賞煙花匯演，晚餐後駕車返回酒店休息。</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-semibold mb-2">Day 2：海洋公園與深水埗</h4>
+                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                            <li>**上午：** 驅車前往南區的**海洋公園**，將車停在**園區停車場**。</li>
+                            <li>**下午：** 離開海洋公園後，將車停在深水埗的**西九龍中心停車場**，步行前往**D2 Place**、**基隆街**等文創小店。</li>
+                            <li>**晚上：** 在深水埗品嚐地道小吃或特色餐廳。</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-semibold mb-2">Day 3：香港太空館與回程</h4>
+                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                            <li>**上午：** 駕車前往尖沙咀，將車停在**海港城或星光行的停車場**。參觀**香港太空館**或**香港科學館**。</li>
+                            <li>**下午：** 用餐後，駕車經由西九龍快速公路，前往港珠澳大橋香港口岸。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div id="itinerary-2" class="itinerary-item bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-500 hidden">
+                <h3 class="text-2xl font-bold text-sky-700 mb-4">城市購物與時尚美食之旅</h3>
+                <p class="mb-4 text-gray-600">適合熱愛購物、追求時尚與美食的年輕人或情侶。</p>
+                <div class="space-y-6">
+                    <div>
+                        <h4 class="text-xl font-semibold mb-2">Day 1：尖沙咀海濱購物</h4>
+                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                            <li>**上午：** 入境後驅車前往尖沙咀酒店辦理入住，將車停在**酒店停車場**。</li>
+                            <li>**下午：** 從酒店步行前往**海港城**及周邊的廣東道名店街。</li>
+                            <li>**晚上：** 在海港城或K11 MUSEA的餐廳享用晚餐，漫步**星光大道**。</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-semibold mb-2">Day 2：銅鑼灣與中環探索</h4>
+                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                            <li>**上午：** 乘坐港鐵從尖沙咀前往銅鑼灣，逛遍**時代廣場**、**希慎廣場**、**SOGO**等大型百貨。</li>
+                            <li>**下午：** 繼續乘坐港鐵前往中環，將車停在**國際金融中心（IFC）停車場**，步行前往**PMQ元創方**、**荷李活道**。</li>
+                            <li>**晚上：** 探索中環**蘭桂坊**或**蘇豪區**。</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-semibold mb-2">Day 3：旺角潮流文化與回程</h4>
+                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                            <li>**上午：** 駕車前往旺角，將車停在**朗豪坊停車場**，體驗**女人街**、**波鞋街**的熱鬧氛圍。</li>
+                            <li>**下午：** 用餐後駕車返回港珠澳大橋香港口岸。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div id="itinerary-3" class="itinerary-item bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-500 hidden">
+                <h3 class="text-2xl font-bold text-sky-700 mb-4">山野秘境與自然健行之旅</h3>
+                <p class="mb-4 text-gray-600">適合熱愛大自然，追求寧靜與挑戰的戶外愛好者。</p>
+                <div class="space-y-6">
+                    <div>
+                        <h4 class="text-xl font-semibold mb-2">Day 1：西貢海鮮與地質公園</h4>
+                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                            <li>**上午：** 入境後驅車前往西貢，將車停泊於**西貢市中心公共停車場**。</li>
+                            <li>**下午：** 在西貢碼頭乘坐街渡，前往**橋咀洲**或**地質公園**。</li>
+                            <li>**晚上：** 返回西貢市中心，在海邊品嚐新鮮捕獲的海鮮大餐。</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-semibold mb-2">Day 2：龍脊遠足與赤柱海濱</h4>
+                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                            <li>**上午：** 驅車前往港島南區，將車停在**石澳道公共停車場**，挑戰**龍脊**遠足徑。</li>
+                            <li>**下午：** 駕車前往**赤柱**，將車停在**赤柱廣場或大街停車場**，漫步**赤柱市集**。</li>
+                            <li>**晚上：** 在赤柱海邊的酒吧或餐廳用餐。</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-semibold mb-2">Day 3：大美督騎行與回程</h4>
+                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                            <li>**上午：** 驅車前往大埔**大美督**，將車停在**大美督公共停車場**，租借單車環繞**船灣淡水湖**騎行。</li>
+                            <li>**下午：** 在大美督用膳後，駕車前往港珠澳大橋香港口岸。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div id="itinerary-4" class="itinerary-item bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-500 hidden">
+                <h3 class="text-2xl font-bold text-sky-700 mb-4">文化藝術與歷史探索之旅</h3>
+                <p class="mb-4 text-gray-600">適合對歷史、藝術、建築有濃厚興趣的遊客。</p>
+                <div class="space-y-6">
+                    <div>
+                        <h4 class="text-xl font-semibold mb-2">Day 1：西九文化區與油麻地</h4>
+                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                            <li>**上午：** 入境後，驅車前往西九龍**西九文化區**，將車停在**藝術公園停車場**。參觀**M+博物館**或**香港故宮文化博物館**。</li>
+                            <li>**晚上：** 駕車前往油麻地，將車停在**廟街附近停車場**，逛**廟街夜市**，並到**油麻地戲院**拍照。</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-semibold mb-2">Day 2：中環舊城區與大館</h4>
+                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                            <li>**上午：** 駕車前往中環，將車停在**大館停車場**。深入探索**大館**的歷史與文化。</li>
+                            <li>**下午：** 步行前往**文武廟**、**太平山街**。</li>
+                            <li>**晚上：** 在中環蘇豪區或上環品嚐各國美食。</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-semibold mb-2">Day 3：黃大仙祠與回程</h4>
+                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                            <li>**上午：** 駕車前往九龍的**黃大仙祠**，將車停在**祠內或附近商場停車場**，參拜祈福。</li>
+                            <li>**下午：** 用餐後，駕車返回港珠澳大橋香港口岸。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div id="itinerary-5" class="itinerary-item bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-500 hidden">
+                <h3 class="text-2xl font-bold text-sky-700 mb-4">璀璨聖誕夢幻之旅</h3>
+                <p class="mb-4 text-gray-600">適合希望在香港體驗濃厚聖誕氛圍，享受燈飾與節日慶典的遊客。</p>
+                <div class="space-y-6">
+                    <div>
+                        <h4 class="text-xl font-semibold mb-2">Day 1：尖沙咀聖誕燈飾與海濱漫步</h4>
+                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                            <li>**上午：** 入境後，驅車前往尖沙咀酒店辦理入住並停車。</li>
+                            <li>**下午：** 步行前往**海港城**、**K11 MUSEA**等商場欣賞聖誕裝飾。</li>
+                            <li>**晚上：** 在尖沙咀海濱欣賞**維港的聖誕燈飾**。</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-semibold mb-2">Day 2：迪士尼聖誕活動與商場巡禮</h4>
+                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                            <li>**上午：** 駕車前往**香港迪士尼樂園**，將車停在樂園停車場，體驗主題活動。</li>
+                            <li>**下午：** 離開迪士尼後，駕車或乘港鐵前往中環，將車停在**IFC國際金融中心**，欣賞聖誕佈置。</li>
+                            <li>**晚上：** 步行前往**皇后像廣場**，感受聖誕氣氛。</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-semibold mb-2">Day 3：山頂觀景與回程</h4>
+                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                            <li>**上午：** 駕車前往**太平山頂**，將車停在**山頂廣場停車場**，俯瞰維港和城市美景。</li>
+                            <li>**下午：** 在山頂用膳，購買手信後，駕車返回港珠澳大橋香港口岸。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div id="itinerary-6" class="itinerary-item bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-500 hidden">
+                <h3 class="text-2xl font-bold text-sky-700 mb-4">港車南下官方指南</h3>
+                <p class="mb-4 text-gray-600">這是關於港車南下計劃的官方指南摘要，為您的旅程提供重要參考。</p>
+                <div class="space-y-6">
+                    <div>
+                        <h4 class="text-xl font-semibold mb-2">申請資格與文件</h4>
+                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                            <li>**資格要求：** 申請人須為內地居民，持有有效內地駕照，車輛需為非營運的9座或以下小型汽車。</li>
+                            <li>**所需文件：** 內地身份證、駕照、車輛登記文件、車輛保險等。所有文件需在網上系統提交。</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-semibold mb-2">交通與保險要求</h4>
+                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                            <li>**香港保險：** 需購買香港本地的汽車保險，並確保保險期覆蓋整個在港逗留期間。</li>
+                            <li>**車輛檢驗：** 車輛需符合香港的車輛安全與環保標準，並取得「封閉道路通行許可證」。</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-semibold mb-2">過關流程與注意事項</h4>
+                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                            <li>**過關檢查：** 駕駛者和車內所有乘客需持有效證件（如回鄉證）通過邊境檢查。</li>
+                            <li>**停車限制：** 需留意香港的道路交通標
