@@ -136,7 +136,8 @@
                 <h3 class="text-xl font-semibold text-center text-gray-800">（極力推薦🌟）</h3>
                 <p class="mt-2 text-gray-600 text-center text-sm">香港最具代表性的地標，見全部精華。</p>
             </div>
-        </div><h2></h2>
+        </div>
+        <br>
         <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">
             <a href="https://www.discoverhongkong.com/tc/plan.html" target="_blank" class="text-blue-600 hover:text-blue-800">更多旅游詳情，請參閲：香港旅游發展局</a></h2>
         
@@ -153,8 +154,15 @@
     <section id="itineraries" class="container mx-auto px-4 py-16">
         <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">詳細行程規劃</h2>
         <div class="space-y-8">
-            <div id="itinerary-1" class="itinerary-item bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-500 hidden">
-                <h3 class="text-2xl font-bold text-sky-700 mb-4">親子同樂</h3>
+            <!-- Theme 1 Container -->
+            <div id="theme-itinerary-1" class="hidden">
+                <div class="flex space-x-4 mb-4">
+                    <button class="day-tab px-4 py-2 bg-sky-500 text-white rounded-lg hover:bg-sky-600 transition" data-day="1">Day 1</button>
+                    <button class="day-tab px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition" data-day="2">Day 2</button>
+                    <button class="day-tab px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition" data-day="3">Day 3</button>
+                </div>
+            <div id="itinerary-1-day1" class="itinerary-day bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-500">
+                <h3 class="text-2xl font-bold text-sky-700 mb-4">親子同樂 - Day 1</h3>
                 <p class="mb-4 text-gray-600">適合家庭，享受輕鬆愉快的行程。</p>
                 <p class="mb-4 text-gray-600">交通與停車策略： 入住主題樂園、東涌或大嶼山附近的酒店，可將車停在酒店或樂園的公共停車場。市區博物館和港島的探索則建議泊車後轉乘港鐵/電車（叮叮車）等其他公共交通工具。</p>
                 <div class="space-y-6">
@@ -167,6 +175,8 @@
                         </ul>
                     </div>
                     <div>
+                    <div id="itinerary-1-day2" class="itinerary-day bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-500 hidden">
+
                         <h4 class="text-xl font-semibold mb-2">Day 2：尖沙咀區 - 博物館、古跡與海景</h4>
                         <ul class="list-disc list-inside space-y-1 text-gray-700">
                             <li>上午： 駕車前往尖沙咀，將車停在附近商場的停車場。參觀區內的香港太空館/香港科學館/歷史博物館，讓小朋友在互動中學習。</li>
