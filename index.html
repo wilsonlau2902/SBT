@@ -70,7 +70,7 @@
 <body class="bg-gray-50 text-gray-800">
     <nav class="bg-white sticky top-0 z-50 shadow-md">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-sky-600">粵車南下 Southbound Travel Scheme(SBT)</a>
+            <a href="#" class="text-2xl font-bold text-sky-600">粵車南下   Southbound Travel Scheme</a>
             <div class="space-x-4 hidden md:flex">
                 <a href="#themes" class="text-gray-600 hover:text-sky-600 transition duration-300">探索主題</a>
                 <a href="#map-section" class="text-gray-600 hover:text-sky-600 transition duration-300">互動地圖</a>
@@ -136,7 +136,7 @@
                 <h3 class="text-xl font-semibold text-center text-gray-800">（極力推薦🌟）</h3>
                 <p class="mt-2 text-gray-600 text-center text-sm">香港最具代表性的地標，見全部精華。</p>
             </div>
-        </div>
+        </div><h2></h2>
         <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">
             <a href="https://www.discoverhongkong.com/tc/plan.html" target="_blank" class="text-blue-600 hover:text-blue-800">更多旅游詳情，請參閲：香港旅游發展局</a></h2>
         
@@ -412,113 +412,199 @@
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
-
         let currentMarkers = [];
         let currentRoutes = [];
-
-        // 定義各主題的景點資料
+        // 定義各主題的景點資料 - 現在按日子分割，使用佔位符
         const locations = {
-            'itinerary-1': {
-                points: [
-                    { latlng: [22.3134, 114.0416], name: '港珠澳大橋香港口岸' },
-                    { latlng: [22.3130, 114.0435], name: '香港迪士尼樂園' },
-                    { latlng: [22.2858, 114.1593], name: '海洋公園' },
-                    { latlng: [22.3276, 114.1627], name: '深水埗' },
-                    { latlng: [22.2982, 114.1738], name: '香港太空館' }
-                ],
-                routes: [
-                    [[22.3134, 114.0416], [22.3130, 114.0435]], // Day 1: 口岸到迪士尼
-                    [[22.3130, 114.0435], [22.2858, 114.1593]], // Day 2: 迪士尼到海洋公園
-                    [[22.2858, 114.1593], [22.3276, 114.1627]] // Day 2: 海洋公園到深水埗
-                ]
+            '1': {
+                '1': {
+                    points: [
+                        { latlng: [22.3134, 114.0416], name: '港珠澳大橋香港口岸' },
+                        { latlng: [22.3130, 114.0435], name: '香港迪士尼樂園' }
+                    ],
+                    routes: [
+                        [[22.3134, 114.0416], [22.3130, 114.0435]] // Day 1 route
+                    ]
+                },
+                '2': {
+                    points: [
+                        { latlng: [22.2858, 114.1593], name: '海洋公園' },
+                        { latlng: [22.3276, 114.1627], name: '深水埗' }
+                    ],
+                    routes: [
+                        [[22.3130, 114.0435], [22.2858, 114.1593]], // From Day 1 end to Day 2
+                        [[22.2858, 114.1593], [22.3276, 114.1627]]
+                    ]
+                },
+                '3': {
+                    points: [
+                        { latlng: [22.2982, 114.1738], name: '香港太空館' }
+                    ],
+                    routes: [
+                        [[22.3276, 114.1627], [22.2982, 114.1738]] // Placeholder route from Day 2 end
+                    ]
+                }
             },
-            'itinerary-2': {
-                points: [
-                    { latlng: [22.2982, 114.1738], name: '尖沙咀' },
-                    { latlng: [22.2783, 114.1804], name: '銅鑼灣' },
-                    { latlng: [22.2811, 114.1583], name: '中環' },
-                    { latlng: [22.3193, 114.1694], name: '旺角' }
-                ],
-                routes: [
-                    [[22.2982, 114.1738], [22.2783, 114.1804]], // 尖沙咀到銅鑼灣
-                    [[22.2783, 114.1804], [22.2811, 114.1583]], // 銅鑼灣到中環
-                    [[22.2811, 114.1583], [22.3193, 114.1694]] // 中環到旺角
-                ]
+            '2': {
+                '1': {
+                    points: [
+                        { latlng: [22.2982, 114.1738], name: '尖沙咀' }
+                    ],
+                    routes: []
+                },
+                '2': {
+                    points: [
+                        { latlng: [22.2783, 114.1804], name: '銅鑼灣' },
+                        { latlng: [22.2811, 114.1583], name: '中環' }
+                    ],
+                    routes: [
+                        [[22.2982, 114.1738], [22.2783, 114.1804]], // Day 2 routes
+                        [[22.2783, 114.1804], [22.2811, 114.1583]]
+                    ]
+                },
+                '3': {
+                    points: [
+                        { latlng: [22.3193, 114.1694], name: '旺角' }
+                    ],
+                    routes: [
+                        [[22.2811, 114.1583], [22.3193, 114.1694]] // Day 3 route
+                    ]
+                }
             },
-            // ... 您可以在這裡添加更多主題的景點和路線資料
+            '3': { // Placeholder for Theme 3
+                '1': {
+                    points: [{ latlng: [22.3964, 114.1095], name: 'Sai Kung (Placeholder)' }],
+                    routes: []
+                },
+                '2': {
+                    points: [{ latlng: [22.2489, 114.1753], name: 'Dragon\'s Back (Placeholder)' }],
+                    routes: [[[22.3964, 114.1095], [22.2489, 114.1753]]]
+                },
+                '3': {
+                    points: [{ latlng: [22.4486, 114.1642], name: 'Tai Mei Tuk (Placeholder)' }],
+                    routes: [[[22.2489, 114.1753], [22.4486, 114.1642]]]
+                }
+            },
+            '4': { // Placeholder for Theme 4
+                '1': {
+                    points: [{ latlng: [22.3036, 114.1602], name: 'West Kowloon (Placeholder)' }],
+                    routes: []
+                },
+                '2': {
+                    points: [{ latlng: [22.2840, 114.1595], name: 'Central (Placeholder)' }],
+                    routes: [[[22.3036, 114.1602], [22.2840, 114.1595]]]
+                },
+                '3': {
+                    points: [{ latlng: [22.3352, 114.1761], name: 'Wong Tai Sin (Placeholder)' }],
+                    routes: [[[22.2840, 114.1595], [22.3352, 114.1761]]]
+                }
+            },
+            '5': { // Placeholder for Theme 5
+                '1': {
+                    points: [{ latlng: [22.2982, 114.1738], name: 'Tsim Sha Tsui (Placeholder)' }],
+                    routes: []
+                },
+                '2': {
+                    points: [{ latlng: [22.3130, 114.0435], name: 'Disneyland (Placeholder)' }],
+                    routes: [[[22.2982, 114.1738], [22.3130, 114.0435]]]
+                },
+                '3': {
+                    points: [{ latlng: [22.2707, 114.1501], name: 'The Peak (Placeholder)' }],
+                    routes: [[[22.3130, 114.0435], [22.2707, 114.1501]]]
+                }
+            },
+            '6': { // Placeholder for Theme 6
+                '1': {
+                    points: [{ latlng: [22.3036, 114.1602], name: 'West Kowloon (Placeholder)' }],
+                    routes: []
+                },
+                '2': {
+                    points: [{ latlng: [22.2840, 114.1595], name: 'Central (Placeholder)' }],
+                    routes: [[[22.3036, 114.1602], [22.2840, 114.1595]]]
+                },
+                '3': {
+                    points: [{ latlng: [22.3352, 114.1761], name: 'Wong Tai Sin (Placeholder)' }],
+                    routes: [[[22.2840, 114.1595], [22.3352, 114.1761]]]
+                }
+            }
         };
-
-        // 清空地圖上所有的標記和路線
+        // 清空地圖
         function clearMap() {
             currentMarkers.forEach(marker => map.removeLayer(marker));
             currentRoutes.forEach(route => map.removeLayer(route));
             currentMarkers = [];
             currentRoutes = [];
         }
-
-        // 在地圖上繪製標記和路線
-        function drawMap(itineraryId) {
+        // 繪製地圖 - 現在支援日子
+        function drawMap(themeIndex, day) {
             clearMap();
-
-            const data = locations[itineraryId];
+            const data = locations[themeIndex]?.[day];
             if (!data) return;
-
-            // 添加標記
             data.points.forEach(point => {
                 const marker = L.marker(point.latlng).addTo(map);
                 marker.bindPopup(`<b>${point.name}</b>`).openPopup();
                 currentMarkers.push(marker);
             });
-
-            // 添加路線
             data.routes.forEach(route => {
                 const polyline = L.polyline(route, { color: 'blue', weight: 4 }).addTo(map);
                 currentRoutes.push(polyline);
             });
-
-            // 自動調整地圖視圖以顯示所有標記和路線
             if (currentMarkers.length > 0 || currentRoutes.length > 0) {
                 const allPoints = data.points.map(p => p.latlng);
                 const bounds = L.latLngBounds(allPoints);
                 map.fitBounds(bounds, { padding: [50, 50] });
             }
         }
-
-        // 獲取所有主題卡片元素
+        // 切換日子
+        function switchDay(themeIndex, day) {
+            const days = document.querySelectorAll(`#theme-itinerary-${themeIndex} .itinerary-day`);
+            const tabs = document.querySelectorAll(`#theme-itinerary-${themeIndex} .day-tab`);
+            days.forEach(d => d.classList.add('hidden'));
+            tabs.forEach(t => {
+                t.classList.remove('bg-sky-500', 'text-white');
+                t.classList.add('bg-gray-200', 'text-gray-800');
+            });
+            document.getElementById(`itinerary-${themeIndex}-day${day}`).classList.remove('hidden');
+            tabs[day - 1].classList.add('bg-sky-500', 'text-white');
+            tabs[day - 1].classList.remove('bg-gray-200', 'text-gray-800');
+            drawMap(themeIndex, day); // 更新地圖為該日子！
+        }
+        // 主邏輯
         const themeCards = document.querySelectorAll('.theme-card');
-        const itineraryItems = document.querySelectorAll('.itinerary-item');
-
-        // 為每個主題卡片添加點擊事件監聽器
+        const themeContainers = document.querySelectorAll('[id^="theme-itinerary-"]');
         themeCards.forEach(card => {
             card.addEventListener('click', () => {
                 const themeId = card.id;
                 const themeIndex = themeId.split('-')[1];
-
                 themeCards.forEach(c => c.classList.remove('border-sky-500'));
                 card.classList.add('border-sky-500');
-
-                itineraryItems.forEach(item => item.classList.add('hidden'));
-                const targetItinerary = document.getElementById(`itinerary-${themeIndex}`);
-                if (targetItinerary) {
-                    targetItinerary.classList.remove('hidden');
-                    targetItinerary.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                themeContainers.forEach(container => container.classList.add('hidden'));
+                const targetContainer = document.getElementById(`theme-itinerary-${themeIndex}`);
+                if (targetContainer) {
+                    targetContainer.classList.remove('hidden');
+                    targetContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    switchDay(themeIndex, 1); // 預設 Day 1 並更新地圖
                 }
-
-                // 調用新寫的函式來繪製地圖
-                drawMap(`itinerary-${themeIndex}`);
             });
         });
-
-        // 頁面加載時，預設顯示第一個主題的內容
+        // 添加日子tab事件
+        document.querySelectorAll('.day-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                const day = tab.dataset.day;
+                const themeContainer = tab.closest('[id^="theme-itinerary-"]');
+                const themeIndex = themeContainer.id.split('-')[2];
+                switchDay(themeIndex, day);
+            });
+        });
+        // 頁面載入預設
         document.addEventListener('DOMContentLoaded', () => {
             const defaultCard = document.getElementById('theme-1');
-            const defaultItinerary = document.getElementById('itinerary-1');
-            if (defaultCard && defaultItinerary) {
+            const defaultContainer = document.getElementById('theme-itinerary-1');
+            if (defaultCard && defaultContainer) {
                 defaultCard.classList.add('border-sky-500');
-                defaultItinerary.classList.remove('hidden');
+                defaultContainer.classList.remove('hidden');
+                switchDay(1, 1); // 載入 Day 1 地圖
             }
-            // 預設繪製第一個主題的地圖
-            drawMap('itinerary-1');
         });
     </script>
 </body>
