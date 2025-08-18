@@ -43,6 +43,13 @@
             padding: 2rem;
             overflow: hidden;
         }
+        /* NEW: Media query for mobile views */
+@media (max-width: 768px) {
+    .parallax-hero {
+        background-attachment: scroll; /* Switch to scroll for mobile compatibility */
+        /* No changes needed to position or size—they're already perfect for centering and cropping! */
+    }
+}
         .parallax-overlay {
             position: absolute;
             top: 0;
@@ -127,7 +134,7 @@
                 <div class="text-5xl mb-4 text-center">🌉🏙️</div>
                 <h3 class="text-xl font-semibold text-center text-gray-800">經典全覽</h3>
                 <h3 class="text-xl font-semibold text-center text-gray-800">（極力推薦🌟）</h3>
-                <p class="mt-2 text-gray-600 text-center text-sm">香港最具代表性的地標，見全部精華</p>
+                <p class="mt-2 text-gray-600 text-center text-sm">香港最具代表性的地標，見全部精華。</p>
             </div>
         </div>
         <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">
