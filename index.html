@@ -18,14 +18,14 @@
             width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: #f1f5f9;
+            background: #f1f5f9; /* slate-100 */
         }
         ::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
+            background: #cbd5e1; /* slate-300 */
             border-radius: 4px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
+            background: #94a3b8; /* slate-400 */
         }
         .parallax-hero {
             background-image: url('HK.jpeg');
@@ -43,11 +43,13 @@
             padding: 2rem;
             overflow: hidden;
         }
-        @media (max-width: 768px) {
-            .parallax-hero {
-                background-attachment: scroll;
-            }
-        }
+        /* NEW: Media query for mobile views */
+@media (max-width: 768px) {
+    .parallax-hero {
+        background-attachment: scroll; /* Switch to scroll for mobile compatibility */
+        /* No changes needed to position or size—they're already perfect for centering and cropping! */
+    }
+}
         .parallax-overlay {
             position: absolute;
             top: 0;
@@ -56,11 +58,12 @@
             height: 100%;
             background-color: rgba(0, 0, 0, 0.4);
         }
+        /* Leaflet 地圖容器樣式 */
         #map {
-            height: 600px;
+            height: 600px; /* 設置地圖高度 */
             width: 100%;
-            border-radius: 1.5rem;
-            z-index: 1;
+            border-radius: 1.5rem; /* 與外層 div 保持一致的圓角 */
+            z-index: 1; /* 確保地圖圖層在最上層 */
         }
     </style>
 </head>
@@ -78,6 +81,10 @@
                 <a href="notyetdone.html" class="text-gray-600 hover:text-sky-600 transition duration-300">預約出行</a>
                 <a href="notyetdone.html" class="text-gray-600 hover:text-sky-600 transition duration-300">常見問題</a>
                 <a href="contact.html" class="text-gray-600 hover:text-sky-600 transition duration-300">聯絡我們</a>
+
+
+
+        
             </div>
         </div>
     </nav>
@@ -93,818 +100,888 @@
     </div>
 </header>
 
-<section id="themes" class="container mx-auto px-4 py-16">
-    <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">探索主題路線</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6">
-        <div id="theme-1" class="theme-card bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition duration-500 transform hover:scale-105 cursor-pointer border-2 border-transparent">
-            <div class="text-5xl mb-4 text-center">👨‍👩‍👧‍👦🎊</div>
-            <h3 class="text-xl font-semibold text-center text-gray-800">親子同樂</h3>
-            <p class="mt-2 text-gray-600 text-center text-sm">適合家庭，享受輕鬆愉快的行程。</p>
-        </div>
-        <div id="theme-2" class="theme-card bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition duration-500 transform hover:scale-105 cursor-pointer border-2 border-transparent">
-            <div class="text-5xl mb-4 text-center">🛍️🍴</div>
-            <h3 class="text-xl font-semibold text-center text-gray-800">購物美食</h3>
-            <p class="mt-2 text-gray-600 text-center text-sm">體驗時尚與美食的完美結合。</p>
-        </div>
-        <div id="theme-3" class="theme-card bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition duration-500 transform hover:scale-105 cursor-pointer border-2 border-transparent">
-            <div class="text-5xl mb-4 text-center">⛰️🌲</div>
-            <h3 class="text-xl font-semibold text-center text-gray-800">戶外探索</h3>
-            <p class="mt-2 text-gray-600 text-center text-sm">探索香港的自然風光，遠離城市喧囂。</p>
-        </div>
-        <div id="theme-4" class="theme-card bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition duration-500 transform hover:scale-105 cursor-pointer border-2 border-transparent">
-            <div class="text-5xl mb-4 text-center">🏛️🎨</div>
-            <h3 class="text-xl font-semibold text-center text-gray-800">文藝歷史</h3>
-            <p class="mt-2 text-gray-600 text-center text-sm">深入了解香港的文化、歷史與藝術氛圍。</p>
-        </div>
-        <div id="theme-5" class="theme-card bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition duration-500 transform hover:scale-105 cursor-pointer border-2 border-transparent">
-            <div class="text-5xl mb-4 text-center">🎄✨</div>
-            <h3 class="text-xl font-semibold text-center text-gray-800">璀璨聖誕</h3>
-            <p class="mt-2 text-gray-600 text-center text-sm">感受一年一度濃厚的節日氣氛。</p>
-        </div>
-        <div id="theme-6" class="theme-card bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition duration-500 transform hover:scale-105 cursor-pointer border-2 border-transparent">
-            <div class="text-5xl mb-4 text-center">🌉🏙️</div>
-            <h3 class="text-xl font-semibold text-center text-gray-800">經典全覽</h3>
-            <h3 class="text-xl font-semibold text-center text-gray-800">（極力推薦🌟）</h3>
-            <p class="mt-2 text-gray-600 text-center text-sm">香港最具代表性的地標，見全部精華。</p>
-        </div>
-    </div>
-    <br>
-    <br>
-    <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">
-        <a href="https://www.discoverhongkong.com/tc/plan.html" target="_blank" class="text-blue-600 hover:text-blue-800">更多旅游詳情，請參閲：香港旅游發展局</a></h2>
-</section>
 
-<section id="map-section" class="bg-gray-100 py-16 px-4">
-    <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">路線地圖一覽</h2>
-    <div class="relative w-full max-w-5xl mx-auto rounded-3xl overflow-hidden shadow-xl border-4 border-white">
-        <div id="map"></div>
-    </div>
-</section>
-<section id="itineraries" class="container mx-auto px-4 py-16">
-    <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">詳細行程規劃</h2>
-    <div class="space-y-8">
-        <!-- Theme 1 Container -->
-        <div id="theme-itinerary-1" class="hidden">
-            <div class="flex space-x-4 mb-4">
-                <button class="day-tab px-4 py-2 bg-sky-500 text-white rounded-lg hover:bg-sky-600 transition" data-day="1">Day 1</button>
-                <button class="day-tab px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition" data-day="2">Day 2</button>
-                <button class="day-tab px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition" data-day="3">Day 3</button>
+    
+    <section id="themes" class="container mx-auto px-4 py-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">探索主題路線</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6">
+            <div id="theme-1" class="theme-card bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition duration-500 transform hover:scale-105 cursor-pointer border-2 border-transparent hover:border-sky-500">
+                <div class="text-5xl mb-4 text-center">👨‍👩‍👧‍👦🎊</div>
+                <h3 class="text-xl font-semibold text-center text-gray-800">親子同樂</h3>
+                <p class="mt-2 text-gray-600 text-center text-sm">適合家庭，享受輕鬆愉快的行程。</p>
             </div>
+            <div id="theme-2" class="theme-card bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition duration-500 transform hover:scale-105 cursor-pointer border-2 border-transparent hover:border-sky-500">
+                <div class="text-5xl mb-4 text-center">🛍️🍴</div>
+                <h3 class="text-xl font-semibold text-center text-gray-800">購物美食</h3>
+                <p class="mt-2 text-gray-600 text-center text-sm">體驗時尚與美食的完美結合。</p>
+            </div>
+            <div id="theme-3" class="theme-card bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition duration-500 transform hover:scale-105 cursor-pointer border-2 border-transparent hover:border-sky-500">
+                <div class="text-5xl mb-4 text-center">⛰️🌲</div>
+                <h3 class="text-xl font-semibold text-center text-gray-800">戶外探索</h3>
+                <p class="mt-2 text-gray-600 text-center text-sm">探索香港的自然風光，遠離城市喧囂。</p>
+            </div>
+            <div id="theme-4" class="theme-card bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition duration-500 transform hover:scale-105 cursor-pointer border-2 border-transparent hover:border-sky-500">
+                <div class="text-5xl mb-4 text-center">🏛️🎨</div>
+                <h3 class="text-xl font-semibold text-center text-gray-800">文藝歷史</h3>
+                <p class="mt-2 text-gray-600 text-center text-sm">深入了解香港的文化、歷史與藝術氛圍。</p>
+            </div>
+            <div id="theme-5" class="theme-card bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition duration-500 transform hover:scale-105 cursor-pointer border-2 border-transparent hover:border-sky-500">
+                <div class="text-5xl mb-4 text-center">🎄✨</div>
+                <h3 class="text-xl font-semibold text-center text-gray-800">璀璨聖誕</h3>
+                <p class="mt-2 text-gray-600 text-center text-sm">感受一年一度濃厚的節日氣氛。</p>
+            </div>
+            <div id="theme-6" class="theme-card bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition duration-500 transform hover:scale-105 cursor-pointer border-2 border-transparent hover:border-sky-500">
+                <div class="text-5xl mb-4 text-center">🌉🏙️</div>
+                <h3 class="text-xl font-semibold text-center text-gray-800">經典全覽</h3>
+                <h3 class="text-xl font-semibold text-center text-gray-800">（極力推薦🌟）</h3>
+                <p class="mt-2 text-gray-600 text-center text-sm">香港最具代表性的地標，見全部精華。</p>
+            </div>
+        </div>
+        <br>
+        <br>
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">
+            <a href="https://www.discoverhongkong.com/tc/plan.html" target="_blank" class="text-blue-600 hover:text-blue-800">更多旅游詳情，請參閲：香港旅游發展局</a></h2>
+        
+    </section>
+
+
+    
+    <section id="map-section" class="bg-gray-100 py-16 px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">路線地圖一覽</h2>
+        <div class="relative w-full max-w-5xl mx-auto rounded-3xl overflow-hidden shadow-xl border-4 border-white">
+            <div id="map"></div>
+        </div>
+    </section>
+    <section id="itineraries" class="container mx-auto px-4 py-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">詳細行程規劃</h2>
+        <div class="space-y-8">
+<!-- Theme 1 Container -->
+
+            <div id="theme-itinerary-1" class="hidden">
+                <div class="flex space-x-4 mb-4">
+                    <button class="day-tab px-4 py-2 bg-sky-500 text-white rounded-lg hover:bg-sky-600 transition" data-day="1">Day 1</button>
+                    <button class="day-tab px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition" data-day="2">Day 2</button>
+                    <button class="day-tab px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition" data-day="3">Day 3</button>
+                </div>
+
+                
             <div id="itinerary-1-day1" class="itinerary-day bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-500">
                 <h3 class="text-2xl font-bold text-sky-700 mb-4">親子同樂 - Day 1</h3>
                 <p class="mb-4 text-gray-600">適合家庭，享受輕鬆愉快的行程。</p>
-                <p class="mb-4 text-gray-600">交通與停車策略： 入住主題樂園、東涌或大嶼山附近的酒店，可將車停在酒店或樂園的公共停車場。市區博物館和港...</p>
+                <p class="mb-4 text-gray-600">交通與停車策略： 入住主題樂園、東涌或大嶼山附近的酒店，可將車停在酒店或樂園的公共停車場。市區博物館和港島的探索則建議泊車後轉乘港鐵/電車（叮叮車）等其他公共交通工具。</p>
                 <div class="space-y-6">
                     <div>
                         <h4 class="text-xl font-semibold mb-2">大嶼山 – 主題樂園/天壇大佛/昂坪纜車</h4>
                         <ul class="list-disc list-inside space-y-1 text-gray-700">
-                            <li>上午： 從港珠澳大橋香港口岸入境後，驅車前往位於主題樂園、東涌或大嶼山附近的酒店辦理入住。參觀大嶼山附近經典景點...</li>
+                            <li>上午： 從港珠澳大橋香港口岸入境後，驅車前往位於主題樂園、東涌或大嶼山附近的酒店辦理入住。參觀大嶼山附近經典景點例如天壇大佛（世界最高青銅坐佛）、昂坪纜車（世界十大纜車體驗）、百年古剎寶蓮禪寺。</li>
                             <li>下午： 前往附近主題樂園，將車停泊於樂園公共停車場。享受一個充滿奇妙魔法的下午。</li>
                             <li>晚上： 於樂園內觀賞煙花匯演/活動表演，晚餐後駕車返回酒店休息。</li>
                         </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div id="itinerary-1-day2" class="itinerary-day bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-500 hidden">
+
+ <div id="itinerary-1-day2" class="itinerary-day bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-500">
                 <h3 class="text-2xl font-bold text-sky-700 mb-4">親子同樂 - Day 2</h3>
                 <p class="mb-4 text-gray-600">適合家庭，享受輕鬆愉快的行程。</p>
-                <p class="mb-4 text-gray-600">交通與停車策略： 入住主題樂園、東涌或大嶼山附近的酒店，可將車停在酒店或樂園的公共停車場。市區博物館和港...</p>
+                <p class="mb-4 text-gray-600">交通與停車策略： 入住主題樂園、東涌或大嶼山附近的酒店，可將車停在酒店或樂園的公共停車場。市區博物館和港島的探索則建議泊車後轉乘港鐵/電車（叮叮車）等其他公共交通工具。</p>
                 <div class="space-y-6">
                     <div>
                         <h4 class="text-xl font-semibold mb-2">尖沙咀區 - 博物館、古跡與海景</h4>
                         <ul class="list-disc list-inside space-y-1 text-gray-700">
-                            <li>上午： 駕車前往尖沙咀，將車停在附近商場的停車場。參觀區內的香港太空館/香港科學館/歷史博物館，讓小朋友在互動中學習...</li>
-                            <li>下午： 用餐後，可以在碼頭附近的商場以及周邊的廣東道逛國際名牌連鎖店，購買一家人各自心儀的產品。附近的經典景點例...</li>
-                            <li>晚上： 在附近的餐廳享用晚餐，然後漫步星光大道，欣賞維港沿海夜景，可選擇乘搭渡輪遊維港。附近有不少古跡景點，如1881...</li>
+                            <li>上午： 駕車前往尖沙咀，將車停在附近商場的停車場。參觀區內的香港太空館/香港科學館/歷史博物館，讓小朋友在互動中學習。</li>
+                            <li>下午： 用餐後，可以在碼頭附近的商場以及周邊的廣東道逛國際名牌連鎖店，購買一家人各自心儀的產品。附近的經典景點例如重慶大廈等亦值得一探。（文化大雜燴，聚居了香港不同的族裔） </li>
+                            <li>晚上： 在附近的餐廳享用晚餐，然後漫步星光大道，欣賞維港沿海夜景，可選擇乘搭渡輪遊維港。附近有不少古跡景點，如1881（前身為水警總區總部的法定古跡），鐘樓（前身為舊火車站的法定古跡，鐘樓附近還有富豪雪糕車）等也值得一逛。</li>
                         </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div id="itinerary-1-day3" class="itinerary-day bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-500 hidden">
+
+
+ <div id="itinerary-1-day3" class="itinerary-day bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-500">
                 <h3 class="text-2xl font-bold text-sky-700 mb-4">親子同樂 - Day 3</h3>
                 <p class="mb-4 text-gray-600">適合家庭，享受輕鬆愉快的行程。</p>
-                <p class="mb-4 text-gray-600">交通與停車策略： 入住主題樂園、東涌或大嶼山附近的酒店，可將車停在酒店或樂園的公共停車場。市區博物館和港...</p>
+                <p class="mb-4 text-gray-600">交通與停車策略： 入住主題樂園、東涌或大嶼山附近的酒店，可將車停在酒店或樂園的公共停車場。市區博物館和港島的探索則建議泊車後轉乘港鐵/電車（叮叮車）等其他公共交通工具。</p>
                 <div class="space-y-6">
                     <div>
                         <h4 class="text-xl font-semibold mb-2">中環，太平山與回程</h4>
                         <ul class="list-disc list-inside space-y-1 text-gray-700">
                             <li>上午： 駕車前往中環，將車停在附近。參觀港島的摩天大樓以及富有中西交匯特色的建築群，感受香港快與慢的魅力。</li>
-                            <li>下午： 用餐後，可返回中環搭山頂纜車，前往凌霄閣觀賞日落景觀以及過渡的夜景，最後駕車返回港珠澳大橋香港口岸，結束...</li>
+                            <li>下午： 用餐後，可返回中環搭山頂纜車，前往凌霄閣觀賞日落景觀以及過渡的夜景，最後駕車返回港珠澳大橋香港口岸，結束愉快的旅程。</li>
                         </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- Theme 2 Container -->
-        <div id="theme-itinerary-2" class="hidden">
-            <div class="flex space-x-4 mb-4">
-                <button class="day-tab px-4 py-2 bg-sky-500 text-white rounded-lg hover:bg-sky-600 transition" data-day="1">Day 1</button>
-                <button class="day-tab px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition" data-day="2">Day 2</button>
-                <button class="day-tab px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition" data-day="3">Day 3</button>
-            </div>
-            <div id="itinerary-2-day1" class="itinerary-day bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-500 hidden">
+
+<!-- Theme 2 Container -->
+            <div id="theme-itinerary-2" class="hidden">
+                <div class="flex space-x-4 mb-4">
+                    <button class="day-tab px-4 py-2 bg-sky-500 text-white rounded-lg hover:bg-sky-600 transition" data-day="1">Day 1</button>
+                    <button class="day-tab px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition" data-day="2">Day 2</button>
+                    <button class="day-tab px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition" data-day="3">Day 3</button>
+                </div>
+
+            <div id="itinerary-2-day1" class="itinerary-item bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-500 hidden">
+                
                 <h3 class="text-2xl font-bold text-sky-700 mb-4">購物美食 - Day 1</h3>
                 <p class="mb-4 text-gray-600">體驗時尚與美食的完美結合。</p>
                 <p class="mb-4 text-gray-600">交通與停車策略： 建議將車停在酒店或大型商場停車場，在市區內則多利用港鐵等公共交通，方便快捷。</p>
+
                 <div class="space-y-6">
                     <div>
                         <h4 class="text-xl font-semibold mb-2">尖沙咀海濱購物</h4>
                         <ul class="list-disc list-inside space-y-1 text-gray-700">
                             <li>上午： 入境後驅車前往尖沙咀區附近的酒店辦理入住，將車停在酒店停車場。</li>
-                            <li>下午： 從酒店步行前往碼頭附近的商場以及周邊的廣東道名店街，享受來自世界各地的購物體驗以及香港所有商品免關稅的優勢。</li>
+                            <li>下午： 從酒店步行前往碼頭附近的商場以及周邊的廣東道名店街，享受來自世界各地的購物體驗以及香港所有商品免關稅的優惠。</li>
                             <li>晚上： 在附近的餐廳享用晚餐，然後漫步星光大道，欣賞維港沿海夜景，可選擇乘搭渡輪遊維港。</li>
                         </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div id="itinerary-2-day2" class="itinerary-day bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-500 hidden">
+
+                 <div id="itinerary-2-day2" class="itinerary-item bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-500 hidden">
+                
                 <h3 class="text-2xl font-bold text-sky-700 mb-4">購物美食 - Day 2</h3>
                 <p class="mb-4 text-gray-600">體驗時尚與美食的完美結合。</p>
+
                 <div class="space-y-6">
                     <div>
                         <h4 class="text-xl font-semibold mb-2">銅鑼灣與中環探索</h4>
                         <ul class="list-disc list-inside space-y-1 text-gray-700">
                             <li>上午： 乘坐港鐵從尖沙咀前往銅鑼灣（“香港涉谷”，購物天堂），逛遍附近的大型百貨。</li>
-                            <li>下午： 繼續乘坐港鐵前往中環，步行前往太平山街、荷李活道（被《Time Out》評爲全球最型格的街道）、砵典乍街、中環半山扶手電梯等地標。</li>
+                            <li>下午： 繼續乘坐港鐵前往中環，步行前往太平山街、荷李活道（被《Time Out》評爲全球最型格的街道）、砵典乍街、中環半山扶手電梯、中環街市（法定古跡）等，欣賞街頭藝術與獨立小店，享受另類購物體驗。</li>
                             <li>晚上： 探索中環蘭桂坊或蘇豪區的酒吧及特色餐廳，體驗夜生活。</li>
                         </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div id="itinerary-2-day3" class="itinerary-day bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-500 hidden">
+
+
+                <div id="itinerary-2-day3" class="itinerary-item bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-500 hidden">
+                
                 <h3 class="text-2xl font-bold text-sky-700 mb-4">購物美食 - Day 3</h3>
                 <p class="mb-4 text-gray-600">體驗時尚與美食的完美結合。</p>
+
                 <div class="space-y-6">
                     <div>
                         <h4 class="text-xl font-semibold mb-2">旺角潮流文化與回程</h4>
                         <ul class="list-disc list-inside space-y-1 text-gray-700">
-                            <li>上午： 駕車從尖沙咀前往旺角，將車停在商場停車場，體驗廟街、女人街商圈（以女人街（通菜街）、波鞋街（花園街）、西洋菜南街、金魚街）。</li>
+                            <li>上午： 駕車從尖沙咀前往旺角，將車停在商場停車場，體驗廟街、女人街商圈（以女人街（通菜街）、波鞋街（花園街）、西洋菜南街、金魚街，構成一個商圈）等地道熱鬧氛圍，該區售賣各式各樣的商品，是選購服飾、紀念品和享受街頭小食的熱門地點。</li>
                             <li>下午： 用餐後駕車返回港珠澳大橋香港口岸，結束愉快的旅程。</li>
                         </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- Theme 3 Container -->
-        <div id="theme-itinerary-3" class="hidden">
-            <div class="flex space-x-4 mb-4">
-                <button class="day-tab px-4 py-2 bg-sky-500 text-white rounded-lg hover:bg-sky-600 transition" data-day="1">Day 1</button>
-                <button class="day-tab px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition" data-day="2">Day 2</button>
-                <button class="day-tab px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition" data-day="3">Day 3</button>
-            </div>
-            <div id="itinerary-3-day1" class="itinerary-day bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-500">
-                <h3 class="text-2xl font-bold text-sky-700 mb-4">戶外探索 - Day 1</h3>
-                <p class="mb-4 text-gray-600">探索香港的自然風光，遠離城市喧囂。</p>
-                <p class="mb-4 text-gray-600">交通與停車策略： 駕車可直達郊野公園的起點或入口，並利用附近的公共停車場。</p>
-                <div class="space-y-6">
-                    <div>
-                        <h4 class="text-xl font-semibold mb-2">西貢海鮮與聯合國地質公園</h4>
-                        <ul class="list-disc list-inside space-y-1 text-gray-700">
-                            <li>上午： 入境後，建議選擇港島附近的酒店，安頓後經北角驅車往北，前往有「香港後花園」之稱的西貢，將車停泊於西貢市...</li>
-                            <li>下午： 在西貢碼頭乘坐街渡，前往橋咀洲或香港聯合國教科文組織世界地質公園，欣賞香港獨特的火山岩地貌。</li>
-                            <li>晚上： 返回西貢市中心，在海邊品嚐新鮮捕獲的海鮮大餐。</li>
-                        </ul>
+
+<!-- Theme 3 Container -->
+            <div id="theme-itinerary-3" class="hidden">
+                <div class="flex space-x-4 mb-4">
+                    <button class="day-tab px-4 py-2 bg-sky-500 text-white rounded-lg hover:bg-sky-600 transition" data-day="1">Day 1</button>
+                    <button class="day-tab px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition" data-day="2">Day 2</button>
+                    <button class="day-tab px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition" data-day="3">Day 3</button>
+                </div>
+
+
+<div id="itinerary-3-day1" class="itinerary-day bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-500">
+                    <h3 class="text-2xl font-bold text-sky-700 mb-4">戶外探索 - Day 1</h3>
+                    <p class="mb-4 text-gray-600">探索香港的自然風光，遠離城市喧囂。</p>
+                    <p class="mb-4 text-gray-600">交通與停車策略： 駕車可直達郊野公園的起點或入口，並利用附近的公共停車場。</p>
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="text-xl font-semibold mb-2">西貢海鮮與聯合國地質公園</h4>
+                            <ul class="list-disc list-inside space-y-1 text-gray-700">
+                                <li>上午： 入境後，建議選擇港島附近的酒店，安頓後經北角驅車往北，前往有「香港後花園」之稱的西貢，將車停泊於西貢市中心公共停車場。</li>
+                                <li>下午： 在西貢碼頭乘坐街渡，前往橋咀洲或香港聯合國教科文組織世界地質公園，欣賞香港獨特的火山岩地貌。</li>
+                                <li>晚上： 返回西貢市中心，在海邊品嚐新鮮捕獲的海鮮大餐。</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div id="itinerary-3-day2" class="itinerary-day bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-500 hidden">
-                <h3 class="text-2xl font-bold text-sky-700 mb-4">戶外探索 - Day 2</h3>
-                <p class="mb-4 text-gray-600">探索香港的自然風光，遠離城市喧囂。</p>
-                <div class="space-y-6">
-                    <div>
-                        <h4 class="text-xl font-semibold mb-2">龍脊遠足與赤柱海濱</h4>
-                        <ul class="list-disc list-inside space-y-1 text-gray-700">
-                            <li>上午： 驅車前往柴灣，將車停在附近公共停車場。轉乘公共交通，挑戰曾被《時代》雜誌評為「亞洲最佳市區遠足徑」的龍脊...</li>
-                            <li>下午： 從龍脊的終點轉乘公共交通返回柴灣。駕車前往赤柱，將車停在赤柱廣場或大街停車場，漫步赤柱市集，感受異國風...</li>
-                            <li>晚上： 在赤柱海邊的酒吧或餐廳用餐。</li>
-                        </ul>
+
+
+                   <div id="itinerary-3-day2" class="itinerary-day bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-500 hidden">
+                    <h3 class="text-2xl font-bold text-sky-700 mb-4">戶外探索 - Day 2</h3>
+                    <p class="mb-4 text-gray-600">探索香港的自然風光，遠離城市喧囂。</p>
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="text-xl font-semibold mb-2">龍脊遠足與赤柱海濱</h4>
+                            <ul class="list-disc list-inside space-y-1 text-gray-700">
+                                <li>上午： 驅車前往柴灣，將車停在附近公共停車場。轉乘公共交通，挑戰曾被《時代》雜誌評為「亞洲最佳市區遠足徑」的龍脊。</li>
+                                <li>下午： 從龍脊的終點轉乘公共交通返回柴灣。駕車前往赤柱，將車停在赤柱廣場或大街停車場，漫步赤柱市集，感受異國風情。著名景點有美利樓（殖民時代建築，古典設計）等</li>
+                                <li>晚上： 在赤柱海邊的酒吧或餐廳用餐。</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div id="itinerary-3-day3" class="itinerary-day bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-500 hidden">
-                <h3 class="text-2xl font-bold text-sky-700 mb-4">戶外探索 - Day 3</h3>
-                <p class="mb-4 text-gray-600">探索香港的自然風光，遠離城市喧囂。</p>
-                <div class="space-y-6">
-                    <div>
-                        <h4 class="text-xl font-semibold mb-2">大嶼山與回程</h4>
-                        <ul class="list-disc list-inside space-y-1 text-gray-700">
-                            <li>上午： 驅車前往大嶼山，體驗不同景點例如天壇大佛（世界最高青銅坐佛）、昂坪纜車（世界十大纜車體驗）、百年古剎寶蓮...</li>
+
+
+
+<div id="itinerary-3-day3" class="itinerary-day bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-500 hidden">
+                    <h3 class="text-2xl font-bold text-sky-700 mb-4">戶外探索 - Day 3</h3>
+                    <p class="mb-4 text-gray-600">探索香港的自然風光，遠離城市喧囂。</p>
+    
+    
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="text-xl font-semibold mb-2">大嶼山與回程</h4>
+                            <ul class="list-disc list-inside space-y-1 text-gray-700">
+                            <li>上午： 驅車前往大嶼山，體驗不同景點例如天壇大佛（世界最高青銅坐佛）、昂坪纜車（世界十大纜車體驗）、百年古剎寶蓮禪寺等，可以遠眺身後的香港市景和海景，以及大嶼山的綠意山景。</li>
                             <li>下午： 在大嶼山用膳後，駕車返回港珠澳大橋香港口岸，結束愉快的旅程。</li>
-                        </ul>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- Theme 4 Container -->
-        <div id="theme-itinerary-4" class="hidden">
-            <div class="flex space-x-4 mb-4">
-                <button class="day-tab px-4 py-2 bg-sky-500 text-white rounded-lg hover:bg-sky-600 transition" data-day="1">Day 1</button>
-                <button class="day-tab px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition" data-day="2">Day 2</button>
-                <button class="day-tab px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition" data-day="3">Day 3</button>
-            </div>
-            <div id="itinerary-4-day1" class="itinerary-day bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-500">
-                <h3 class="text-2xl font-bold text-sky-700 mb-4">文藝歷史 - Day 1</h3>
-                <p class="mb-4 text-gray-600">深入了解香港的文化、歷史與藝術氛圍。</p>
-                <p class="mb-4 text-gray-600">交通與停車策略： 建議將車停在不同區域的公共停車場，例如西九文化區的地下停車場，多利用步行和港鐵，深...</p>
-                <div class="space-y-6">
-                    <div>
-                        <h4 class="text-xl font-semibold mb-2">西九文化區與油麻地</h4>
-                        <ul class="list-disc list-inside space-y-1 text-gray-700">
-                            <li>上午： 入境後，驅車前往尖沙咀區，入住酒店，然後前往附近西九文化區，將車停在藝術公園停車場。參觀M+博物館（視覺...</li>
-                            <li>下午： 參觀完博物館後，可駕車前往油麻地，將車停在廟街附近停車場，品嘗附件地道的茶餐廳，瞭解茶餐廳文化。用膳後...</li>
-                            <li>晚上：步行一段前往旺角，體驗女人街商圈（以女人街（通菜街）、波鞋街（花園街）、西洋菜南街、金魚街，構成一個商...</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div id="itinerary-4-day2" class="itinerary-day bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-500 hidden">
-                <h3 class="text-2xl font-bold text-sky-700 mb-4">文藝歷史 - Day 2</h3>
-                <p class="mb-4 text-gray-600">深入了解香港的文化、歷史與藝術氛圍。</p>
-                <div class="space-y-6">
-                    <div>
-                        <h4 class="text-xl font-semibold mb-2">中環舊城區與大館</h4>
-                        <ul class="list-disc list-inside space-y-1 text-gray-700">
-                            <li>上午： 駕車前往中環，將車停在中區警署建築群（大館）停車場。深入探索大館的歷史與文化。</li>
-                            <li>下午： 步行前往文武廟、太平山街、荷李活道（《Time Out》全球最型格街道）、砵典乍街、中環街市、中環半山扶手電梯（...</li>
-                            <li>晚上： 在中環蘇豪區或上環品嚐各國美食。亦可探索中環蘭桂坊或蘇豪區的酒吧及，體驗香港的夜生活文化。（每逢周三和...</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div id="itinerary-4-day3" class="itinerary-day bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-500 hidden">
-                <h3 class="text-2xl font-bold text-sky-700 mb-4">文藝歷史 - Day 3</h3>
-                <p class="mb-4 text-gray-600">深入了解香港的文化、歷史與藝術氛圍。</p>
-                <div class="space-y-6">
-                    <div>
-                        <h4 class="text-xl font-semibold mb-2">壁畫、宗教之旅與回程</h4>
-                        <ul class="list-disc list-inside space-y-1 text-gray-700">
-                            <li>上午： 駕車前往中環，將車停在附近停車場，繼續中環和上環區的探索。附近一帶為壁畫區，無數國内外畫家的壁畫作品環...</li>
-                            <li>下午： 附近用餐後，臨近可步行隨心探索。若對宗教文化有興趣，推薦中環些利街清真寺（香港最古老的清真寺）、中環聖...</li>
-                            <li>晚上： 最後駕車返回港珠澳大橋香港口岸，結束愉快的旅程。</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Theme 5 Container -->
-        <div id="theme-itinerary-5" class="hidden">
-            <div class="flex space-x-4 mb-4">
-                <button class="day-tab px-4 py-2 bg-sky-500 text-white rounded-lg hover:bg-sky-600 transition" data-day="1">Day 1</button>
-                <button class="day-tab px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition" data-day="2">Day 2</button>
-                <button class="day-tab px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition" data-day="3">Day 3</button>
-            </div>
-            <div id="itinerary-5-day1" class="itinerary-day bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-500">
-                <h3 class="text-2xl font-bold text-sky-700 mb-4">璀璨聖誕 - Day 1</h3>
-                <p class="mb-4 text-gray-600">感受一年一度濃厚的節日氣氛，享受燈飾與節日慶典。</p>
-                <p class="mb-4 text-gray-600">交通與停車策略： 建議在熱門地區將車停在商場或酒店，然後步行或轉乘港鐵，避免在繁忙的聖誕期間駕車在市...</p>
-                <div class="space-y-6">
-                    <div>
-                        <h4 class="text-xl font-semibold mb-2">尖沙咀聖誕燈飾與海濱漫步</h4>
-                        <ul class="list-disc list-inside space-y-1 text-gray-700">
-                            <li>上午： 入境後，驅車前往尖沙咀的酒店辦理入住並停車。</li>
-                            <li>下午： 步行前往西九龍文化區內浪漫的聖誕小鎮，巨型聖誕樹掛滿鮮艷奪目的裝飾，聳立在小鎮中央。別具特色的小鹿及獨...</li>
-                            <li>晚上： 可選在西九龍文化區就餐，也可選步行回尖沙咀，沿着星光大道漫步，在節日燈飾的映照下欣賞維多利亞港的美景...</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div id="itinerary-5-day2" class="itinerary-day bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-500 hidden">
-                <h3 class="text-2xl font-bold text-sky-700 mb-4">璀璨聖誕 - Day 2</h3>
-                <p class="mb-4 text-gray-600">感受一年一度濃厚的節日氣氛，享受燈飾與節日慶典。</p>
-                <div class="space-y-6">
-                    <div>
-                        <h4 class="text-xl font-semibold mb-2">主題樂園</h4>
-                        <ul class="list-disc list-inside space-y-1 text-gray-700">
-                            <li>上午和下午 駕車前往香港的主題樂園，將車停在樂園停車場，體驗園區內的聖誕主題活動。</li>
-                            <li>晚上： 於樂園內觀賞煙花或特色匯演，晚餐後駕車返回酒店休息。</li>
-                        </ul>
-                        <h4 class="text-xl font-semibold mb-2">商場巡禮(如果不喜歡主題樂園的可選)</h4>
-                        <ul class="list-disc list-inside space-y-1 text-gray-700">
-                            <li>上午：駕車或乘港鐵前往中環，將車停在附近商場，欣賞其華麗的聖誕佈置和燈飾。</li>
-                            <li>下午： 步行前往砵典乍街，有物美價廉的聖誕服裝、紀念品和裝飾。這些街區售賣經典聖誕服飾如聖誕帽、紅色斗篷、鹿角...</li>
-                            <li>晚上： 步行至蘭桂坊，此處是香港最熱鬧的夜生活集中地。本地人及遊客都會盛裝打扮，來到這裡盡情狂歡，感受一年一度...</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div id="itinerary-5-day3" class="itinerary-day bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-500 hidden">
-                <h3 class="text-2xl font-bold text-sky-700 mb-4">璀璨聖誕 - Day 3</h3>
-                <p class="mb-4 text-gray-600">感受一年一度濃厚的節日氣氛，享受燈飾與節日慶典。</p>
-                <div class="space-y-6">
-                    <div>
-                        <h4 class="text-xl font-semibold mb-2">山頂觀景與回程</h4>
-                        <ul class="list-disc list-inside space-y-1 text-gray-700">
-                            <li>上午： 駕車前往太平山頂，將車停在山頂廣場停車場，俯瞰維港和城市美景。</li>
-                            <li>下午： 在山頂的餐廳用膳，最後駕車返回港珠澳大橋香港口岸，結束愉快的旅程。</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Theme 6 Container -->
-        <div id="theme-itinerary-6" class="hidden">
-            <div class="flex space-x-4 mb-4">
-                <button class="day-tab px-4 py-2 bg-sky-500 text-white rounded-lg hover:bg-sky-600 transition" data-day="1">Day 1</button>
-                <button class="day-tab px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition" data-day="2">Day 2</button>
-                <button class="day-tab px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition" data-day="3">Day 3</button>
-            </div>
-            <div id="itinerary-6-day1" class="itinerary-day bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-500">
-                <h3 class="text-2xl font-bold text-sky-700 mb-4">經典全覽 - Day 1</h3>
-                <p class="mb-4 text-gray-600">香港最具代表性的地標，見全部精華</p>
-                <p class="mb-4 text-gray-600">交通與停車策略： 旅程規劃以方便為先。第一天和第三天主要使用車輛，將車停在靠近景點的大型停車場；第二...</p>
-                <div class="space-y-6">
-                    <div>
-                        <h4 class="text-xl font-semibold mb-2">文化藝術與維港夜景</h4>
-                        <ul class="list-disc list-inside space-y-1 text-gray-700">
-                            <li>上午：入境後，驅車前往尖沙咀區，入住酒店，然後前往附近西九文化區，將車停在藝術公園停車場。參觀M+博物館（視覺文...</li>
-                            <li>下午：駕車前往尖沙咀附近商場，享受輕鬆購物時光。</li>
-                            <li>晚上：在尖沙咀享用晚餐後，漫步星光大道，欣賞聞名全球的維多利亞港夜景，感受香港的璀璨魅力。</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div id="itinerary-6-day2" class="itinerary-day bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-500 hidden">
-                <h3 class="text-2xl font-bold text-sky-700 mb-4">經典全覽 - Day 2</h3>
-                <p class="mb-4 text-gray-600">香港最具代表性的地標，見全部精華</p>
-                <div class="space-y-6">
-                    <div>
-                        <h4 class="text-xl font-semibold mb-2">經典購物與地道文化</h4>
-                        <ul class="list-disc list-inside space-y-1 text-gray-700">
-                            <li>上午： 將車輛停放在酒店，改用公共交通出行。乘坐天星小輪前往中環。步行探索文武廟、太平山街、荷李活道（《Time Out...</li>
-                            <li>下午： 乘坐港鐵/電車（叮叮車）等其他公共交通工具，轉往港島的銅鑼灣（“香港涉谷”，購物天堂），沿途飽覽海景，在...</li>
-                            <li>晚上：  在中環蘇豪區或上環品嚐各國美食。亦可探索中環蘭桂坊或蘇豪區的酒吧及，體驗香港的夜生活（每逢周三和周日,...</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div id="itinerary-6-day3" class="itinerary-day bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-500 hidden">
-                <h3 class="text-2xl font-bold text-sky-700 mb-4">經典全覽 - Day 3</h3>
-                <p class="mb-4 text-gray-600">香港最具代表性的地標，見全部精華</p>
-                <div class="space-y-6">
-                    <div>
-                        <h4 class="text-xl font-semibold mb-2">地道文化與回程</h4>
-                        <ul class="list-disc list-inside space-y-1 text-gray-700">
-                            <li>上午和下午：駕車前往旺角，並在附近停車場停泊。感受香港最地道的市井文化。您可以逛廟街、女人街商圈（以女人街（...</li>
-                            <li>晚上：最後駕車返回港珠澳大橋香港口岸，結束愉快的旅程。</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
-<section id="official-guide" class="container mx-auto px-4 py-16">
-    <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">港車南下官方指南🛂📄</h2>
-    <div class="bg-white p-8 rounded-2xl shadow-lg max-w-3xl mx-auto">
-        <p class="mb-4 text-gray-600">這是關於港車南下計劃的官方指南摘要，為您的旅程提供重要參考。</p>
-        <div class="space-y-6">
-            <div>
-                <h4 class="text-xl font-semibold mb-2">申請資格與文件</h4>
-                <ul class="list-disc list-inside space-y-1 text-gray-700">
-                    <li>資格要求： 申請人須為內地居民，持有有效內地駕照，車輛需為小型汽車。</li>
-                    <li>所需文件： 內地身份證、駕照、車輛登記文件、車輛保險等。</li>
-                </ul>
+<!-- Theme 4 Container -->
+            <div id="theme-itinerary-4" class="hidden">
+                <div class="flex space-x-4 mb-4">
+                    <button class="day-tab px-4 py-2 bg-sky-500 text-white rounded-lg hover:bg-sky-600 transition" data-day="1">Day 1</button>
+                    <button class="day-tab px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition" data-day="2">Day 2</button>
+                    <button class="day-tab px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition" data-day="3">Day 3</button>
+                </div>
+
+                
+                <div id="itinerary-4-day1" class="itinerary-day bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-500">
+                    <h3 class="text-2xl font-bold text-sky-700 mb-4">文藝歷史 - Day 1</h3>
+                    <p class="mb-4 text-gray-600">深入了解香港的文化、歷史與藝術氛圍。</p>
+                    <p class="mb-4 text-gray-600">交通與停車策略： 建議將車停在不同區域的公共停車場，例如西九文化區的地下停車場，多利用步行和港鐵，深入探索舊城區和文藝區。</p>
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="text-xl font-semibold mb-2">西九文化區與油麻地</h4>
+                            <ul class="list-disc list-inside space-y-1 text-gray-700">
+                                <li>上午： 入境後，驅車前往尖沙咀區，入住酒店，然後前往附近西九文化區，將車停在藝術公園停車場。參觀M+博物館（視覺文化博物館）或香港故宮文化博物館，文化區的海景亦非常壯麗。</li>
+                                <li>下午： 參觀完博物館後，可駕車前往油麻地，將車停在廟街附近停車場，品嘗附件地道的茶餐廳，瞭解茶餐廳文化。用膳後，逛廟街夜市，並可到油麻地戲院或紅磚屋等歷史建築參觀。</li>
+                                <li>晚上：步行一段前往旺角，體驗女人街商圈（以女人街（通菜街）、波鞋街（花園街）、西洋菜南街、金魚街，構成一個商圈），該區售賣各式各樣的商品，是選購文創紀念品和享受街頭文化和美食的熱門地點。</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+<div id="itinerary-4-day2" class="itinerary-day bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-500 hidden">
+                    <h3 class="text-2xl font-bold text-sky-700 mb-4">文藝歷史 - Day 2</h3>
+                    <p class="mb-4 text-gray-600">深入了解香港的文化、歷史與藝術氛圍。</p>
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="text-xl font-semibold mb-2">中環舊城區與大館</h4>
+                            <ul class="list-disc list-inside space-y-1 text-gray-700">
+                                <li>上午： 駕車前往中環，將車停在中區警署建築群（大館）停車場。深入探索大館的歷史與文化。</li>
+                                <li>下午： 步行前往文武廟、太平山街、荷李活道（《Time Out》全球最型格街道）、砵典乍街、中環街市、中環半山扶手電梯（電影《重慶森林》的取景地）等附近景點，感受中環舊城區的獨特魅力，以及香港這個國際都會，中西融合的特色。</li>
+                                <li>晚上： 在中環蘇豪區或上環品嚐各國美食。亦可探索中環蘭桂坊或蘇豪區的酒吧及，體驗香港的夜生活文化。（每逢周三和周日，亦可前往跑馬地，體驗香港百年賽馬文化）</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="itinerary-4-day3" class="itinerary-day bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-500 hidden">
+                    <h3 class="text-2xl font-bold text-sky-700 mb-4">文藝歷史 - Day 3</h3>
+                    <p class="mb-4 text-gray-600">深入了解香港的文化、歷史與藝術氛圍。</p>
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="text-xl font-semibold mb-2">壁畫、宗教之旅與回程</h4>
+                            <ul class="list-disc list-inside space-y-1 text-gray-700">
+                                <li>上午： 駕車前往中環，將車停在附近停車場，繼續中環和上環區的探索。附近一帶為壁畫區，無數國内外畫家的壁畫作品環繞在社區。</li>
+                                <li>下午： 附近用餐後，臨近可步行隨心探索。若對宗教文化有興趣，推薦中環些利街清真寺（香港最古老的清真寺）、中環聖約翰座堂（香港最古老的教堂）、上環文武廟（香港最古老的寺廟之一）</li>
+                                <li>晚上： 最後駕車返回港珠澳大橋香港口岸，結束愉快的旅程。</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div>
-                <h4 class="text-xl font-semibold mb-2">交通與保險要求</h4>
-                <ul class="list-disc list-inside space-y-1 text-gray-700">
-                    <li>香港保險： 需購買香港本地的汽車保險，並確保保險期覆蓋整個在港逗留期間。</li>
-                    <li>車輛檢驗： 車輛需符合香港的車輛安全與環保標準，並取得「封閉道路通行許可證」。</li>
-                </ul>
+
+<!-- Theme 5 Container --> 
+
+            <div id="theme-itinerary-5" class="hidden">
+                <div class="flex space-x-4 mb-4">
+                    <button class="day-tab px-4 py-2 bg-sky-500 text-white rounded-lg hover:bg-sky-600 transition" data-day="1">Day 1</button>
+                    <button class="day-tab px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition" data-day="2">Day 2</button>
+                    <button class="day-tab px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition" data-day="3">Day 3</button>
+                </div>
+
+<div id="itinerary-5-day1" class="itinerary-day bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-500">
+                    <h3 class="text-2xl font-bold text-sky-700 mb-4">璀璨聖誕 - Day 1</h3>
+                    <p class="mb-4 text-gray-600">感受一年一度濃厚的節日氣氛，享受燈飾與節日慶典。</p>
+                    <p class="mb-4 text-gray-600">交通與停車策略： 建議在熱門地區將車停在商場或酒店，然後步行或轉乘港鐵，避免在繁忙的聖誕期間駕車在市區內移動。</p>
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="text-xl font-semibold mb-2">尖沙咀聖誕燈飾與海濱漫步</h4>
+                            <ul class="list-disc list-inside space-y-1 text-gray-700">
+                                <li>上午： 入境後，驅車前往尖沙咀的酒店辦理入住並停車。</li>
+                                <li>下午： 步行前往西九龍文化區內浪漫的聖誕小鎮，巨型聖誕樹掛滿鮮艷奪目的裝飾，聳立在小鎮中央。別具特色的小鹿及獨特擺設環繞小鎮四周，營造濃厚的浪漫氛圍。</li>
+                                <li>晚上： 可選在西九龍文化區就餐，也可選步行回尖沙咀，沿着星光大道漫步，在節日燈飾的映照下欣賞維多利亞港的美景。附近商場也有精心佈置的聖誕主題裝飾。尖沙咀海濱還能欣賞維港的聖誕燈飾，並可在附近餐廳享用節日晚餐。</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="itinerary-5-day2" class="itinerary-day bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-500 hidden">
+                    <h3 class="text-2xl font-bold text-sky-700 mb-4">璀璨聖誕 - Day 2</h3>
+                    <p class="mb-4 text-gray-600">感受一年一度濃厚的節日氣氛，享受燈飾與節日慶典。</p>
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="text-xl font-semibold mb-2">主題樂園</h4>
+                            <ul class="list-disc list-inside space-y-1 text-gray-700">
+                                <li>上午和下午 駕車前往香港的主題樂園，將車停在樂園停車場，體驗園區內的聖誕主題活動。</li>
+                                <li>晚上： 於樂園內觀賞煙花或特色匯演，晚餐後駕車返回酒店休息。</li>
+                            </ul>
+                            <h4 class="text-xl font-semibold mb-2">商場巡禮(如果不喜歡主題樂園的可選)</h4>
+                            <ul class="list-disc list-inside space-y-1 text-gray-700">
+                                <li>上午：駕車或乘港鐵前往中環，將車停在附近商場，欣賞其華麗的聖誕佈置和燈飾。</li>
+                                <li>下午： 步行前往砵典乍街，有物美價廉的聖誕服裝、紀念品和裝飾。這些街區售賣經典聖誕服飾如聖誕帽、紅色斗篷、鹿角頭飾和各類閃亮配件。順路可以欣賞精心佈置的聖誕主題裝飾。</li>
+                                <li>晚上： 步行至蘭桂坊，此處是香港最熱鬧的夜生活集中地。本地人及遊客都會盛裝打扮，來到這裡盡情狂歡，感受一年一度的聖誕氣氛。</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="itinerary-5-day3" class="itinerary-day bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-500 hidden">
+                    <h3 class="text-2xl font-bold text-sky-700 mb-4">璀璨聖誕 - Day 3</h3>
+                    <p class="mb-4 text-gray-600">感受一年一度濃厚的節日氣氛，享受燈飾與節日慶典。</p>
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="text-xl font-semibold mb-2">山頂觀景與回程</h4>
+                            <ul class="list-disc list-inside space-y-1 text-gray-700">
+                                <li>上午： 駕車前往太平山頂，將車停在山頂廣場停車場，俯瞰維港和城市美景。</li>
+                                <li>下午： 在山頂的餐廳用膳，最後駕車返回港珠澳大橋香港口岸，結束愉快的旅程。</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div>
-                <h4 class="text-xl font-semibold mb-2">過關流程與注意事項</h4>
-                <ul class="list-disc list-inside space-y-1 text-gray-700">
-                    <li>過關檢查： 駕駛者和車內所有乘客需持有效證件通過邊境檢查。</li>
-                    <li>停車限制： 需留意香港的道路交通標誌，尤其是在市區，部分道路禁止非香港車輛行駛或設有停車限制。</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>
-<section id="guide" class="container mx-auto px-4 py-16">
-    <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">自駕錦囊</h2>
-    <div class="bg-white p-8 rounded-2xl shadow-lg max-w-3xl mx-auto space-y-6">
-        <div class="space-y-2">
-            <h3 class="text-xl font-semibold text-gray-800">1. 注意交通規則</h3>
-            <p class="text-gray-600">香港與內地駕駛方向相反，請務必小心駕駛，並熟悉交通標誌和道路規則。</p>
-        </div>
-        <div class="space-y-2">
-            <h3 class="text-xl font-semibold text-gray-800">2. 善用「泊車轉乘」</h3>
-            <p class="text-gray-600">在市區可將車停在酒店或大型商場，改用便捷的港鐵或巴士遊覽，以節省時間和停車費用。</p>
-        </div>
-        <div class="space-y-2">
-            <h3 class="text-xl font-semibold text-gray-800">3. 預訂停車位</h3>
-            <p class="text-gray-600">在節假日或週末，市區停車位緊張，建議使用停車位預訂App（例如政府的香港出行易）或查詢商場的停車位資訊。</p>
-        </div>
-        <div class="space-y-2">
-            <h3 class="text-xl font-semibold text-gray-800">4. 電子收費（e-Toll）</h3>
-            <p class="text-gray-600">香港大部分隧道和收費路段已採用電子收費，請提前了解相關資訊。</p>
-        </div>
-    </div>
-</section>
-<footer class="bg-gray-800 text-white text-center py-6 px-4 mt-16 rounded-t-3xl shadow-inner">
-    <p>&copy; 2025 粵車南下。Wilson版權所有。</p>
-</footer>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script>
-    // 初始化地圖，設置中心點為香港，並帶有縮放級別
+
+<!-- Theme 6 Container --> 
+
+            <div id="theme-itinerary-6" class="hidden">
+                <div class="flex space-x-4 mb-4">
+                    <button class="day-tab px-4 py-2 bg-sky-500 text-white rounded-lg hover:bg-sky-600 transition" data-day="1">Day 1</button>
+                    <button class="day-tab px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition" data-day="2">Day 2</button>
+                    <button class="day-tab px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition" data-day="3">Day 3</button>
+                </div>
+
+                <div id="itinerary-6-day1" class="itinerary-day bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-500">
+                    <h3 class="text-2xl font-bold text-sky-700 mb-4">經典全覽 - Day 1</h3>
+                    <p class="mb-4 text-gray-600">香港最具代表性的地標，見全部精華</p>
+                    <p class="mb-4 text-gray-600">交通與停車策略： 旅程規劃以方便為先。第一天和第三天主要使用車輛，將車停在靠近景點的大型停車場；第二天則建議將車輛停在酒店，然後使用便捷的港鐵，深入探索市區，避免交通擁堵。</p>
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="text-xl font-semibold mb-2">文化藝術與維港夜景</h4>
+                            <ul class="list-disc list-inside space-y-1 text-gray-700">
+                                <li>上午：入境後，驅車前往尖沙咀區，入住酒店，然後前往附近西九文化區，將車停在藝術公園停車場。參觀M+博物館（視覺文化博物館）或香港故宮文化博物館，文化區的海景亦非常壯麗。</li>
+                                <li>下午：駕車前往尖沙咀附近商場，享受輕鬆購物時光。</li>
+                                <li>晚上：在尖沙咀享用晚餐後，漫步星光大道，欣賞聞名全球的維多利亞港夜景，感受香港的璀璨魅力。</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+<div id="itinerary-6-day2" class="itinerary-day bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-500 hidden">
+                    <h3 class="text-2xl font-bold text-sky-700 mb-4">經典全覽 - Day 2</h3>
+                    <p class="mb-4 text-gray-600">香港最具代表性的地標，見全部精華</p>
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="text-xl font-semibold mb-2">經典購物與地道文化</h4>
+                            <ul class="list-disc list-inside space-y-1 text-gray-700">
+                                <li>上午： 將車輛停放在酒店，改用公共交通出行。乘坐天星小輪前往中環。步行探索文武廟、太平山街、荷李活道（《Time Out》全球最型格街道）、砵典乍街、中環街市、中環半山扶手電梯（電影《重慶森林》的取景地）等附近景點，感受中環舊城區的獨特魅力，以及香港這個國際都會，中西融合的特色。另外附近亦是香港的商業中心，高樓林立。這裡融合了新舊和中西文化，能讓您在充滿歷史感的街道上，發現不同的小驚喜，例如設計師小店與街頭塗鴉。</li>
+                                <li>下午： 乘坐港鐵/電車（叮叮車）等其他公共交通工具，轉往港島的銅鑼灣（“香港涉谷”，購物天堂），沿途飽覽海景，在銅鑼灣逛遍附近的大型百貨。港島附近也有不同的打卡位置（例如石塘咀山道，中環“三件套”等）</li>
+                                <li>晚上：  在中環蘇豪區或上環品嚐各國美食。亦可探索中環蘭桂坊或蘇豪區的酒吧及，體驗香港的夜生活（每逢周三和周日，亦可前往跑馬地，體驗香港百年賽馬文化）。</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
 
-const placeholder = 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400&h=250&fit=crop';
 
-const locations = {
-    '1': {
-        '1': {
-            points: [
-                { latlng: [22.31724695756069, 113.95341955545919], name: '港珠澳大橋香港口岸', img: placeholder },
-                { latlng: [22.25391519215563, 113.90497327116455], name: '天壇大佛', img: placeholder },
-                { latlng: [22.290385398196207, 113.93827696191224], name: '昂坪纜車', img: placeholder },
-                { latlng: [22.255443552078173, 113.90809798319489], name: '寶蓮禪寺', img: placeholder },
-                { latlng: [22.255443552078173, 113.90809798319489], name: '心經簡林', img: placeholder },
-                { latlng: [22.3134, 114.0416], name: '香港迪士尼樂園', img: placeholder }
-            ],
-            routes: [
-                [[22.3134, 114.0416], [22.2525, 113.9031]],
-                [[22.2525, 113.9031], [22.2565, 113.9016]],
-                [[22.2565, 113.9016], [22.2546, 113.9063]],
-                [[22.2546, 113.9063], [22.3130, 114.0435]]
-            ]
-        },
-        '2': {
-            points: [
-                { latlng: [22.294272100430565, 114.17197233280869], name: '香港太空館', img: placeholder },
-                { latlng: [22.301187078358126, 114.17763989752605], name: '香港科學館', img: placeholder },
-                { latlng: [22.301829720571003, 114.17720742168758], name: '香港歷史博物館', img: placeholder },
-                { latlng: [22.296318451849594, 114.17239203430267], name: '重慶大廈', img: placeholder },
-                { latlng: [22.296167358578135, 114.16919749931279], name: '廣東道', img: placeholder },
-                { latlng: [22.29305860851323, 114.174075923015185], name: '星光大道', img: placeholder },
-                { latlng: [22.295467359132243, 114.16982531952144], name: '1881', img: placeholder },
-                { latlng: [22.293557070748573, 114.16954154835847], name: '鐘樓', img: placeholder },
-                { latlng: [22.294131829531953, 114.16848965725947], name: '尖沙咀天星碼頭', img: placeholder }
-            ],
-            routes: [
-                [[22.3130, 114.0435], [22.2982, 114.1738]],
-                [[22.2982, 114.1738], [22.2941, 114.1720]],
-                [[22.2941, 114.1720], [22.3010, 114.1775]],
-                [[22.3010, 114.1775], [22.2912, 114.1701]],
-                [[22.2912, 114.1701], [22.2892, 114.1715]],
-                [[22.2892, 114.1715], [22.2955, 114.1699]],
-                [[22.2955, 114.1699], [22.2895, 114.1683]]
-            ]
-        },
-        '3': {
-            points: [
-                { latlng: [22.28072846600863, 114.15784384398205], name: '中環', img: placeholder },
-                { latlng: [22.271516388850166, 114.14996988623358], name: '太平山頂', img: placeholder },
-                { latlng: [22.31724695756069, 113.95341955545919], name: '港珠澳大橋香港口岸', img: placeholder }
-            ],
-            routes: [
-                [[22.2895, 114.1683], [22.2859, 114.1581]],
-                [[22.2859, 114.1581], [22.2758, 114.1455]]
-            ]
-        }
-    },
-    '2': {
-        '1': {
-            points: [
-                { latlng: [22.31724695756069, 113.95341955545919], name: '港珠澳大橋香港口岸', img: placeholder },
-                { latlng: [22.2982, 114.1738], name: '尖沙咀', img: placeholder },
-                { latlng: [22.295203858334524, 114.17056039047556], name: '廣東道', img: placeholder },
-                { latlng: [22.29308133626364, 114.17411979901902], name: '星光大道', img: placeholder },
-                { latlng: [22.294131829531953, 114.16848965725947], name: '尖沙咀天星碼頭', img: placeholder }
-            ],
-            routes: [
-                [[22.2982, 114.1738], [22.2978, 114.1681]],
-                [[22.2978, 114.1681], [22.298, 114.172]],
-                [[22.298, 114.172], [22.2892, 114.1715]]
-            ]
-        },
-        '2': {
-            points: [
-                { latlng: [22.2783, 114.1804], name: '銅鑼灣', img: placeholder },
-                { latlng: [22.2859, 114.1581], name: '中環', img: placeholder },
-                { latlng: [22.2842, 114.1502], name: '太平山街', img: placeholder },
-                { latlng: [22.2842, 114.1502], name: '荷李活道', img: placeholder },
-                { latlng: [22.2833, 114.1559], name: '砵典乍街', img: placeholder },
-                { latlng: [22.2833, 114.1559], name: '中環街市', img: placeholder },
-                { latlng: [22.2833, 114.1559], name: '中環半山扶手電梯', img: placeholder },
-                { latlng: [22.2809, 114.1555], name: '蘭桂坊', img: placeholder },
-                { latlng: [22.2760, 114.1517], name: '蘇豪區', img: placeholder }
-            ],
-            routes: [
-                [[22.2892, 114.1715], [22.2783, 114.1804]],
-                [[22.2783, 114.1804], [22.2737, 114.1760]],
-                [[22.2737, 114.1760], [22.2859, 114.1581]],
-                [[22.2859, 114.1581], [22.2842, 114.1502]],
-                [[22.2842, 114.1502], [22.2833, 114.1559]],
-                [[22.2833, 114.1559], [22.2809, 114.1555]],
-                [[22.2809, 114.1555], [22.2760, 114.1517]]
-            ]
-        },
-        '3': {
-            points: [
-                { latlng: [22.3193, 114.1694], name: '旺角', img: placeholder },
-                { latlng: [22.3176, 114.1675], name: '廟街', img: placeholder },
-                { latlng: [22.3200, 114.1694], name: '女人街', img: placeholder },
-                { latlng: [22.3200, 114.1690], name: '波鞋街', img: placeholder },
-                { latlng: [22.3200, 114.1694], name: '西洋菜南街', img: placeholder },
-                { latlng: [22.3200, 114.1694], name: '金魚街', img: placeholder },
-                { latlng: [22.31724695756069, 113.95341955545919], name: '港珠澳大橋香港口岸', img: placeholder }
-            ],
-            routes: [
-                [[22.2760, 114.1517], [22.3193, 114.1694]],
-                [[22.3193, 114.1694], [22.3176, 114.1675]],
-                [[22.3176, 114.1675], [22.3200, 114.1694]],
-                [[22.3200, 114.1694], [22.3200, 114.1690]]
-            ]
-        }
-    },
-    '3': {
-        '1': {
-            points: [
-                { latlng: [22.31724695756069, 113.95341955545919], name: '港珠澳大橋香港口岸', img: placeholder },
-                { latlng: [22.3964, 114.1095], name: '西貢', img: placeholder },
-                { latlng: [22.3740, 114.2700], name: '橋咀洲', img: placeholder },
-                { latlng: [22.3740, 114.2700], name: '地質公園', img: placeholder }
-            ],
-            routes: [
-                [[22.3134, 114.0416], [22.3964, 114.1095]],
-                [[22.3964, 114.1095], [22.3740, 114.2700]]
-            ]
-        },
-        '2': {
-            points: [
-                { latlng: [22.2489, 114.1753], name: '柴灣', img: placeholder },
-                { latlng: [22.2489, 114.1753], name: '龍脊', img: placeholder },
-                { latlng: [22.2489, 114.1753], name: '赤柱廣場', img: placeholder },
-                { latlng: [22.2180, 114.2122], name: '赤柱市集', img: placeholder },
-                { latlng: [22.2180, 114.2122], name: '美利樓', img: placeholder }
-            ],
-            routes: [
-                [[22.3740, 114.2700], [22.2489, 114.1753]],
-                [[22.2489, 114.1753], [22.2180, 114.2122]]
-            ]
-        },
-        '3': {
-            points: [
-                { latlng: [22.31724695756069, 113.95341955545919], name: '港珠澳大橋香港口岸', img: placeholder },
-                { latlng: [22.25391519215563, 113.90497327116455], name: '天壇大佛', img: placeholder },
-                { latlng: [22.290385398196207, 113.93827696191224], name: '昂坪纜車', img: placeholder },
-                { latlng: [22.255443552078173, 113.90809798319489], name: '寶蓮禪寺', img: placeholder },
-                { latlng: [22.255443552078173, 113.90809798319489], name: '心經簡林', img: placeholder }
-            ],
-            routes: [
-                [[22.2180, 114.2122], [22.2525, 113.9031]],
-                [[22.2525, 113.9031], [22.2565, 113.9016]],
-                [[22.2565, 113.9016], [22.2546, 113.9063]]
-            ]
-        }
-    },
-    '4': {
-        '1': {
-            points: [
-                { latlng: [22.31724695756069, 113.95341955545919], name: '港珠澳大橋香港口岸', img: placeholder },
-                { latlng: [22.3036, 114.1602], name: '西九文化區', img: placeholder },
-                { latlng: [22.3009, 114.1596], name: 'M+博物館', img: placeholder },
-                { latlng: [22.3016, 114.1555], name: '香港故宮文化博物館', img: placeholder },
-                { latlng: [22.3130, 114.1705], name: '油麻地', img: placeholder },
-                { latlng: [22.3130, 114.1705], name: '廟街', img: placeholder },
-                { latlng: [22.3130, 114.1705], name: '油麻地戲院', img: placeholder },
-                { latlng: [22.3130, 114.1705], name: '紅磚屋', img: placeholder },
-                { latlng: [22.3193, 114.1694], name: '旺角', img: placeholder },
-                { latlng: [22.3176, 114.1675], name: '廟街', img: placeholder },
-                { latlng: [22.3200, 114.1694], name: '女人街', img: placeholder },
-                { latlng: [22.3200, 114.1690], name: '波鞋街', img: placeholder },
-                { latlng: [22.3200, 114.1694], name: '西洋菜南街', img: placeholder },
-                { latlng: [22.3200, 114.1694], name: '金魚街', img: placeholder }
-            ],
-            routes: [
-                [[22.3134, 114.0416], [22.3036, 114.1602]],
-                [[22.3036, 114.1602], [22.3009, 114.1596]],
-                [[22.3009, 114.1596], [22.3016, 114.1555]],
-                [[22.3016, 114.1555], [22.3130, 114.1705]]
-            ]
-        },
-        '2': {
-            points: [
-                { latlng: [22.2859, 114.1581], name: '中環', img: placeholder },
-                { latlng: [22.2840, 114.1595], name: '大館', img: placeholder },
-                { latlng: [22.2840, 114.1502], name: '文武廟', img: placeholder },
-                { latlng: [22.2842, 114.1502], name: '太平山街', img: placeholder },
-                { latlng: [22.2842, 114.1502], name: '荷李活道', img: placeholder },
-                { latlng: [22.2833, 114.1559], name: '砵典乍街', img: placeholder },
-                { latlng: [22.2833, 114.1559], name: '中環街市', img: placeholder },
-                { latlng: [22.2814, 114.1540], name: '中環半山扶手電梯', img: placeholder },
-                { latlng: [22.2809, 114.1555], name: '蘭桂坊', img: placeholder },
-                { latlng: [22.2760, 114.1517], name: '蘇豪區', img: placeholder },
-                { latlng: [22.2760, 114.1517], name: '跑馬地', img: placeholder }
-            ],
-            routes: [
-                [[22.3130, 114.1705], [22.2859, 114.1581]],
-                [[22.2859, 114.1581], [22.2840, 114.1595]],
-                [[22.2840, 114.1595], [22.2840, 114.1502]],
-                [[22.2840, 114.1502], [22.2842, 114.1502]],
-                [[22.2842, 114.1502], [22.2833, 114.1559]],
-                [[22.2833, 114.1559], [22.2814, 114.1540]],
-                [[22.2814, 114.1540], [22.2809, 114.1555]],
-                [[22.2809, 114.1555], [22.2760, 114.1517]]
-            ]
-        },
-        '3': {
-            points: [
-                { latlng: [22.31724695756069, 113.95341955545919], name: '港珠澳大橋香港口岸', img: placeholder },
-                { latlng: [22.2859, 114.1581], name: '中環', img: placeholder },
-                { latlng: [22.2814, 114.1540], name: '些利街清真寺', img: placeholder },
-                { latlng: [22.2820, 114.1550], name: '聖約翰座堂', img: placeholder },
-                { latlng: [22.2840, 114.1502], name: '文武廟', img: placeholder }
-            ],
-            routes: [
-                [[22.2760, 114.1517], [22.2859, 114.1581]],
-                [[22.2859, 114.1581], [22.2814, 114.1540]],
-                [[22.2814, 114.1540], [22.2820, 114.1550]],
-                [[22.2820, 114.1550], [22.2840, 114.1502]]
-            ]
-        }
-    },
-    '5': {
-        '1': {
-            points: [
-                { latlng: [22.31724695756069, 113.95341955545919], name: '港珠澳大橋香港口岸', img: placeholder },
-                { latlng: [22.2982, 114.1738], name: '尖沙咀', img: placeholder },
-                { latlng: [22.3036, 114.1602], name: '西九文化區', img: placeholder },
-                { latlng: [22.2892, 114.1715], name: '星光大道', img: placeholder }
-            ],
-            routes: [
-                [[22.2982, 114.1738], [22.3036, 114.1602]],
-                [[22.3036, 114.1602], [22.2892, 114.1715]]
-            ]
-        },
-        '2': {
-            points: [
-                { latlng: [22.3130, 114.0435], name: '香港迪士尼樂園', img: placeholder },
-                { latlng: [22.2859, 114.1581], name: '中環', img: placeholder },
-                { latlng: [22.2833, 114.1559], name: '砵典乍街', img: placeholder },
-                { latlng: [22.2809, 114.1555], name: '蘭桂坊', img: placeholder },
-                { latlng: [22.2760, 114.1517], name: '蘇豪區', img: placeholder }
-            ],
-            routes: [
-                [[22.2892, 114.1715], [22.3130, 114.0435]],
-                [[22.3130, 114.0435], [22.2859, 114.1581]],
-                [[22.2859, 114.1581], [22.2833, 114.1559]],
-                [[22.2833, 114.1559], [22.2809, 114.1555]]
-            ]
-        },
-        '3': {
-            points: [
-                { latlng: [22.31724695756069, 113.95341955545919], name: '港珠澳大橋香港口岸', img: placeholder },
-                { latlng: [22.2758, 114.1455], name: '太平山頂', img: placeholder }
-            ],
-            routes: [
-                [[22.2809, 114.1555], [22.2758, 114.1455]]
-            ]
-        }
-    },
-    '6': {
-        '1': {
-            points: [
-                { latlng: [22.31724695756069, 113.95341955545919], name: '港珠澳大橋香港口岸', img: placeholder },
-                { latlng: [22.3036, 114.1602], name: '西九文化區', img: placeholder },
-                { latlng: [22.3009, 114.1596], name: 'M+博物館', img: placeholder },
-                { latlng: [22.3009, 114.1596], name: '香港故宮文化博物館', img: placeholder },
-                { latlng: [22.2982, 114.1738], name: '尖沙咀', img: placeholder },
-                { latlng: [22.2892, 114.1715], name: '星光大道', img: placeholder },
-                { latlng: [22.2933, 114.1611], name: '維多利亞港', img: placeholder }
-            ],
-            routes: [
-                [[22.3134, 114.0416], [22.3036, 114.1602]],
-                [[22.3036, 114.1602], [22.3009, 114.1596]],
-                [[22.3009, 114.1596], [22.2982, 114.1738]],
-                [[22.2982, 114.1738], [22.2892, 114.1715]],
-                [[22.2892, 114.1715], [22.2933, 114.1611]]
-            ]
-        },
-        '2': {
-            points: [
-                { latlng: [22.2859, 114.1581], name: '中環', img: placeholder },
-                { latlng: [22.2840, 114.1502], name: '文武廟', img: placeholder },
-                { latlng: [22.2842, 114.1502], name: '太平山街', img: placeholder },
-                { latlng: [22.2842, 114.1502], name: '荷李活道', img: placeholder },
-                { latlng: [22.2833, 114.1559], name: '砵典乍街', img: placeholder },
-                { latlng: [22.2814, 114.1540], name: '中環半山扶手電梯', img: placeholder },
-                { latlng: [22.2783, 114.1804], name: '銅鑼灣', img: placeholder },
-                { latlng: [22.2783, 114.1804], name: '石塘咀山道', img: placeholder },
-                { latlng: [22.2783, 114.1804], name: '銅鑼灣', img: placeholder },
-                { latlng: [22.2783, 114.1804], name: '石塘咀山道', img: placeholder },
-                { latlng: [22.2783, 114.1804], name: '中環“三件套”', img: placeholder },
-                { latlng: [22.2809, 114.1555], name: '蘭桂坊', img: placeholder },
-                { latlng: [22.2760, 114.1517], name: '蘇豪區', img: placeholder },
-                { latlng: [22.2760, 114.1517], name: '跑馬地', img: placeholder }
-            ],
-            routes: [
-                [[22.2933, 114.1611], [22.2859, 114.1581]],
-                [[22.2859, 114.1581], [22.2840, 114.1502]],
-                [[22.2840, 114.1502], [22.2842, 114.1502]],
-                [[22.2842, 114.1502], [22.2833, 114.1559]],
-                [[22.2833, 114.1559], [22.2814, 114.1540]],
-                [[22.2814, 114.1540], [22.2783, 114.1804]],
-                [[22.2783, 114.1804], [22.2809, 114.1555]],
-                [[22.2809, 114.1555], [22.2760, 114.1517]]
-            ]
-        },
-        '3': {
-            points: [
-                { latlng: [22.31724695756069, 113.95341955545919], name: '港珠澳大橋香港口岸', img: placeholder },
-                { latlng: [22.3193, 114.1694], name: '旺角', img: placeholder },
-                { latlng: [22.3176, 114.1675], name: '廟街', img: placeholder },
-                { latlng: [22.3200, 114.1694], name: '女人街', img: placeholder },
-                { latlng: [22.3200, 114.1690], name: '波鞋街', img: placeholder },
-                { latlng: [22.3200, 114.1694], name: '西洋菜南街', img: placeholder },
-                { latlng: [22.3200, 114.1694], name: '金魚街', img: placeholder }
-            ],
-            routes: [
-                [[22.2760, 114.1517], [22.3193, 114.1694]],
-                [[22.3193, 114.1694], [22.3129, 114.1705]],
-                [[22.3129, 114.1705], [22.3200, 114.1694]]
-            ]
-        }
-    }
-};
+                <div id="itinerary-6-day3" class="itinerary-day bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sky-500 hidden">
+                    <h3 class="text-2xl font-bold text-sky-700 mb-4">經典全覽 - Day 3</h3>
+                    <p class="mb-4 text-gray-600">香港最具代表性的地標，見全部精華</p>
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="text-xl font-semibold mb-2">地道文化與回程</h4>
+                            <ul class="list-disc list-inside space-y-1 text-gray-700">
+                                <li>上午和下午：駕車前往旺角，並在附近停車場停泊。感受香港最地道的市井文化。您可以逛廟街、女人街商圈（以女人街（通菜街）、波鞋街（花園街）、西洋菜南街、金魚街，構成一個商圈）等，體驗與時尚商場截然不同的購物樂趣。該區是選購服飾、紀念品和享受街頭小食的熱門地點。可在旺角品嚐地道的街頭小吃和茶餐廳美食，如魚蛋、雞蛋仔，並在廟街夜市感受熱鬧氛圍。</li>
+                                <li>晚上：最後駕車返回港珠澳大橋香港口岸，結束愉快的旅程。</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
 
     
-    function clearMap() {
-        currentMarkers.forEach(marker => map.removeLayer(marker));
-        currentRoutes.forEach(route => map.removeLayer(route));
-        currentMarkers = [];
-        currentRoutes = [];
-    }
-    function drawMap(themeIndex, day) {
-        clearMap();
-        const data = locations[themeIndex]?.[day];
-        if (!data) return;
-        data.points.forEach(point => {
-            const marker = L.marker(point.latlng).addTo(map);
-            marker.bindPopup(`<b>${point.name}</b>`).openPopup();
-            currentMarkers.push(marker);
-        });
-        data.routes.forEach(route => {
-            const polyline = L.polyline(route, { color: 'blue', weight: 4 }).addTo(map);
-            currentRoutes.push(polyline);
-        });
-        if (currentMarkers.length > 0 || currentRoutes.length > 0) {
-            const allPoints = data.points.map(p => p.latlng);
-            const bounds = L.latLngBounds(allPoints);
-            map.fitBounds(bounds, { padding: [50, 50] });
+    <section id="official-guide" class="container mx-auto px-4 py-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">港車南下官方指南🛂📄</h2>
+        <div class="bg-white p-8 rounded-2xl shadow-lg max-w-3xl mx-auto">
+            <p class="mb-4 text-gray-600">這是關於港車南下計劃的官方指南摘要，為您的旅程提供重要參考。</p>
+            <div class="space-y-6">
+                <div>
+                    <h4 class="text-xl font-semibold mb-2">申請資格與文件</h4>
+                    <ul class="list-disc list-inside space-y-1 text-gray-700">
+                        <li>資格要求： 申請人須為內地居民，持有有效內地駕照，車輛需為小型汽車。</li>
+                        <li>所需文件： 內地身份證、駕照、車輛登記文件、車輛保險等。</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-semibold mb-2">交通與保險要求</h4>
+                    <ul class="list-disc list-inside space-y-1 text-gray-700">
+                        <li>香港保險： 需購買香港本地的汽車保險，並確保保險期覆蓋整個在港逗留期間。</li>
+                        <li>車輛檢驗： 車輛需符合香港的車輛安全與環保標準，並取得「封閉道路通行許可證」。</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-semibold mb-2">過關流程與注意事項</h4>
+                    <ul class="list-disc list-inside space-y-1 text-gray-700">
+                        <li>過關檢查： 駕駛者和車內所有乘客需持有效證件通過邊境檢查。</li>
+                        <li>停車限制： 需留意香港的道路交通標誌，尤其是在市區，部分道路禁止非香港車輛行駛或設有停車限制。</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="guide" class="container mx-auto px-4 py-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">自駕錦囊</h2>
+        <div class="bg-white p-8 rounded-2xl shadow-lg max-w-3xl mx-auto space-y-6">
+            <div class="space-y-2">
+                <h3 class="text-xl font-semibold text-gray-800">1. 注意交通規則</h3>
+                <p class="text-gray-600">香港與內地駕駛方向相反，請務必小心駕駛，並熟悉交通標誌和道路規則。</p>
+            </div>
+            <div class="space-y-2">
+                <h3 class="text-xl font-semibold text-gray-800">2. 善用「泊車轉乘」</h3>
+                <p class="text-gray-600">在市區可將車停在酒店或大型商場，改用便捷的港鐵或巴士遊覽，以節省時間和停車費用。</p>
+            </div>
+            <div class="space-y-2">
+                <h3 class="text-xl font-semibold text-gray-800">3. 預訂停車位</h3>
+                <p class="text-gray-600">在節假日或週末，市區停車位緊張，建議使用停車位預訂App（例如政府的香港出行易）或查詢商場的停車位資訊。</p>
+            </div>
+            <div class="space-y-2">
+                <h3 class="text-xl font-semibold text-gray-800">4. 電子收費（e-Toll）</h3>
+                <p class="text-gray-600">香港大部分隧道和收費路段已採用電子收費，請提前了解相關資訊。</p>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="bg-gray-800 text-white text-center py-6 px-4 mt-16 rounded-t-3xl shadow-inner">
+        <p>&copy; 2025 粵車南下。Wilson版權所有。</p>
+    </footer>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // 初始化地圖，設置中心點為香港，並帶有縮放級別
+        const map = L.map('map').setView([22.302711, 114.174154], 12);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+        let currentMarkers = [];
+        let currentRoutes = [];
+        // coordinate
+        const locations = {
+            '1': {
+                '1': {
+                    points: [
+                        { latlng: [22.31724695756069, 113.95341955545919], name: '港珠澳大橋香港口岸' },
+                        { latlng: [22.25391519215563, 113.90497327116455], name: '天壇大佛' },
+                        { latlng: [22.290385398196207, 113.93827696191224], name: '昂坪纜車' },
+                        { latlng: [22.255443552078173, 113.90809798319489], name: '寶蓮禪寺' },
+                        { latlng: [22.255443552078173, 113.90809798319489], name: '心經簡林' },
+                        { latlng: [22.3134, 114.0416], name: '香港迪士尼樂園' }
+                    ],
+                    routes: [
+                        [[22.3134, 114.0416], [22.2525, 113.9031]],
+                        [[22.2525, 113.9031], [22.2565, 113.9016]],
+                        [[22.2565, 113.9016], [22.2546, 113.9063]],
+                        [[22.2546, 113.9063], [22.3130, 114.0435]]
+                    ]
+                },
+                '2': {
+                    points: [
+                        { latlng: [22.294272100430565, 114.17197233280869], name: '香港太空館' },
+                        { latlng: [22.301187078358126, 114.17763989752605], name: '香港科學館' },
+                        { latlng: [22.301829720571003, 114.17720742168758], name: '香港歷史博物館' },
+                        { latlng: [22.296318451849594, 114.17239203430267], name: '重慶大廈' },
+                        { latlng: [22.296167358578135, 114.16919749931279], name: '廣東道' },
+                        { latlng: [22.29305860851323, 114.174075923015185], name: '星光大道' },
+                        { latlng: [22.295467359132243, 114.16982531952144], name: '1881' },
+                        { latlng: [22.293557070748573, 114.16954154835847], name: '鐘樓' }
+                        { latlng: [22.294131829531953, 114.16848965725947], name: '尖沙咀天星碼頭' }
+                    ],
+                    routes: [
+                        [[22.3130, 114.0435], [22.2982, 114.1738]], // From Day 1 end
+                        [[22.2982, 114.1738], [22.2941, 114.1720]],
+                        [[22.2941, 114.1720], [22.3010, 114.1775]],
+                        [[22.3010, 114.1775], [22.2912, 114.1701]],
+                        [[22.2912, 114.1701], [22.2892, 114.1715]],
+                        [[22.2892, 114.1715], [22.2955, 114.1699]],
+                        [[22.2955, 114.1699], [22.2895, 114.1683]]
+                    ]
+                },
+                '3': {
+                    points: [
+                        { latlng: [22.28072846600863, 114.15784384398205], name: '中環' },
+                        { latlng: [22.271516388850166, 114.14996988623358], name: '太平山頂' }
+                        { latlng: [22.31724695756069, 113.95341955545919], name: '港珠澳大橋香港口岸' },
+                    ],
+                    routes: [
+                        [[22.2895, 114.1683], [22.2859, 114.1581]], // From Day 2 end
+                        [[22.2859, 114.1581], [22.2758, 114.1455]]
+                    ]
+                }
+            },
+            '2': {
+                '1': {
+                    points: [
+                        { latlng: [22.31724695756069, 113.95341955545919], name: '港珠澳大橋香港口岸' },
+                        { latlng: [22.2982, 114.1738], name: '尖沙咀' },
+                        { latlng: [22.295203858334524, 114.17056039047556], name: '廣東道' },
+                        { latlng: [22.29308133626364, 114.17411979901902], name: '星光大道' }
+                        { latlng: [22.294131829531953, 114.16848965725947], name: '尖沙咀天星碼頭' }
+                    ],
+                    routes: [
+                        [[22.2982, 114.1738], [22.2978, 114.1681]],
+                        [[22.2978, 114.1681], [22.298, 114.172]],
+                        [[22.298, 114.172], [22.2892, 114.1715]]
+                    ]
+                },
+                '2': {
+                    points: [
+                        { latlng: [22.2783, 114.1804], name: '銅鑼灣' },
+                        { latlng: [22.2859, 114.1581], name: '中環' },
+                        { latlng: [22.2842, 114.1502], name: '太平山街' },
+                        { latlng: [22.2842, 114.1502], name: '荷李活道' },
+                        { latlng: [22.2833, 114.1559], name: '砵典乍街' },
+                        { latlng: [22.2833, 114.1559], name: '中環街市' },
+                        { latlng: [22.2833, 114.1559], name: '中環半山扶手電梯' },
+                        { latlng: [22.2809, 114.1555], name: '蘭桂坊' },
+                        { latlng: [22.2760, 114.1517], name: '蘇豪區' }
+                    ],
+                    routes: [
+                        [[22.2892, 114.1715], [22.2783, 114.1804]], // From Day 1 end
+                        [[22.2783, 114.1804], [22.2737, 114.1760]],
+                        [[22.2737, 114.1760], [22.2859, 114.1581]],
+                        [[22.2859, 114.1581], [22.2842, 114.1502]],
+                        [[22.2842, 114.1502], [22.2833, 114.1559]],
+                        [[22.2833, 114.1559], [22.2809, 114.1555]],
+                        [[22.2809, 114.1555], [22.2760, 114.1517]]
+                    ]
+                },
+                '3': {
+                    points: [
+                        { latlng: [22.3193, 114.1694], name: '旺角' },
+                        { latlng: [22.3176, 114.1675], name: '廟街' },
+                        { latlng: [22.3200, 114.1694], name: '女人街' },
+                        { latlng: [22.3200, 114.1690], name: '波鞋街' }
+                         { latlng: [22.3200, 114.1694], name: '西洋菜南街' },
+                         { latlng: [22.3200, 114.1694], name: '金魚街' },
+                        { latlng: [22.31724695756069, 113.95341955545919], name: '港珠澳大橋香港口岸' },
+                    ],
+                    routes: [
+                        [[22.2760, 114.1517], [22.3193, 114.1694]], // From Day 2 end
+                        [[22.3193, 114.1694], [22.3176, 114.1675]],
+                        [[22.3176, 114.1675], [22.3200, 114.1694]],
+                        [[22.3200, 114.1694], [22.3200, 114.1690]]
+                    ]
+                }
+            },
+            '3': {
+                '1': {
+                    points: [
+                        { latlng: [22.31724695756069, 113.95341955545919], name: '港珠澳大橋香港口岸' },
+                        { latlng: [22.3964, 114.1095], name: '西貢' },
+                        { latlng: [22.3740, 114.2700], name: '橋咀洲' },
+                        { latlng: [22.3740, 114.2700], name: '地質公園' }
+                    ],
+                    routes: [
+                        [[22.3134, 114.0416], [22.3964, 114.1095]],
+                        [[22.3964, 114.1095], [22.3740, 114.2700]]
+                    ]
+                },
+                '2': {
+                    points: [
+                        { latlng: [22.2489, 114.1753], name: '柴灣' },
+                        { latlng: [22.2489, 114.1753], name: '龍脊' },
+                        { latlng: [22.2489, 114.1753], name: '赤柱廣場' },
+                        { latlng: [22.2180, 114.2122], name: '赤柱市集' }
+                        { latlng: [22.2180, 114.2122], name: '美利樓' }
+                
+                    ],
+                    routes: [
+                        [[22.3740, 114.2700], [22.2489, 114.1753]],
+                        [[22.2489, 114.1753], [22.2180, 114.2122]]
+                    ]
+                },
+                '3': {
+                    points: [
+                        { latlng: [22.31724695756069, 113.95341955545919], name: '港珠澳大橋香港口岸' },
+                        { latlng: [22.25391519215563, 113.90497327116455], name: '天壇大佛' },
+                        { latlng: [22.290385398196207, 113.93827696191224], name: '昂坪纜車' },
+                        { latlng: [22.255443552078173, 113.90809798319489], name: '寶蓮禪寺' },
+                        { latlng: [22.255443552078173, 113.90809798319489], name: '心經簡林' },
+                    ],
+                    routes: [
+                        [[22.2180, 114.2122], [22.2525, 113.9031]],
+                        [[22.2525, 113.9031], [22.2565, 113.9016]],
+                        [[22.2565, 113.9016], [22.2546, 113.9063]]
+                    ]
+                }
+            },
+            '4': {
+                '1': {
+                    points: [
+                        { latlng: [22.31724695756069, 113.95341955545919], name: '港珠澳大橋香港口岸' },
+                        { latlng: [22.3036, 114.1602], name: '西九文化區' },
+                        { latlng: [22.3009, 114.1596], name: 'M+博物館' },
+                        { latlng: [22.3016, 114.1555], name: '香港故宮文化博物館' },
+                        { latlng: [22.3130, 114.1705], name: '油麻地' },
+                        { latlng: [22.3130, 114.1705], name: '廟街' },
+                        { latlng: [22.3130, 114.1705], name: '油麻地戲院' }
+                        { latlng: [22.3130, 114.1705], name: '紅磚屋' }
+
+
+                        { latlng: [22.3193, 114.1694], name: '旺角' },
+                        { latlng: [22.3176, 114.1675], name: '廟街' },
+                        { latlng: [22.3200, 114.1694], name: '女人街' },
+                        { latlng: [22.3200, 114.1690], name: '波鞋街' }
+                         { latlng: [22.3200, 114.1694], name: '西洋菜南街' },
+                         { latlng: [22.3200, 114.1694], name: '金魚街' },
+                    ],
+                    routes: [
+                        [[22.3134, 114.0416], [22.3036, 114.1602]],
+                        [[22.3036, 114.1602], [22.3009, 114.1596]],
+                        [[22.3009, 114.1596], [22.3016, 114.1555]],
+                        [[22.3016, 114.1555], [22.3130, 114.1705]]
+                    ]
+                },
+                '2': {
+                    points: [
+                        { latlng: [22.2859, 114.1581], name: '中環' },
+                        { latlng: [22.2840, 114.1595], name: '大館' },
+                        { latlng: [22.2840, 114.1502], name: '文武廟' },
+                        { latlng: [22.2842, 114.1502], name: '太平山街' },
+                        { latlng: [22.2842, 114.1502], name: '荷李活道' },
+                        { latlng: [22.2833, 114.1559], name: '砵典乍街' },
+                        { latlng: [22.2833, 114.1559], name: '中環街市' },
+                        { latlng: [22.2814, 114.1540], name: '中環半山扶手電梯' },
+                        { latlng: [22.2809, 114.1555], name: '蘭桂坊' },
+                        { latlng: [22.2760, 114.1517], name: '蘇豪區' }
+                         { latlng: [22.2760, 114.1517], name: '跑馬地' }
+                    ],
+
+                    
+                    routes: [
+                        [[22.3130, 114.1705], [22.2859, 114.1581]],
+                        [[22.2859, 114.1581], [22.2840, 114.1595]],
+                        [[22.2840, 114.1595], [22.2840, 114.1502]],
+                        [[22.2840, 114.1502], [22.2842, 114.1502]],
+                        [[22.2842, 114.1502], [22.2833, 114.1559]],
+                        [[22.2833, 114.1559], [22.2814, 114.1540]],
+                        [[22.2814, 114.1540], [22.2809, 114.1555]],
+                        [[22.2809, 114.1555], [22.2760, 114.1517]]
+                    ]
+                },
+                '3': {
+                    points: [
+                        { latlng: [22.31724695756069, 113.95341955545919], name: '港珠澳大橋香港口岸' },
+                        { latlng: [22.2859, 114.1581], name: '中環' },
+                        { latlng: [22.2814, 114.1540], name: '些利街清真寺' },
+                        { latlng: [22.2820, 114.1550], name: '聖約翰座堂' },
+                        { latlng: [22.2840, 114.1502], name: '文武廟' }
+                    ],
+                    routes: [
+                        [[22.2760, 114.1517], [22.2859, 114.1581]],
+                        [[22.2859, 114.1581], [22.2814, 114.1540]],
+                        [[22.2814, 114.1540], [22.2820, 114.1550]],
+                        [[22.2820, 114.1550], [22.2840, 114.1502]]
+                    ]
+                }
+            },
+            '5': {
+                '1': {
+                    points: [
+                        { latlng: [22.31724695756069, 113.95341955545919], name: '港珠澳大橋香港口岸' },
+                        { latlng: [22.2982, 114.1738], name: '尖沙咀' },
+                        { latlng: [22.3036, 114.1602], name: '西九文化區' },
+                        { latlng: [22.2892, 114.1715], name: '星光大道' }
+                    ],
+                    routes: [
+                        [[22.2982, 114.1738], [22.3036, 114.1602]],
+                        [[22.3036, 114.1602], [22.2892, 114.1715]]
+                    ]
+                },
+                '2': {
+                    points: [
+                        { latlng: [22.3130, 114.0435], name: '香港迪士尼樂園' },
+                        { latlng: [22.2859, 114.1581], name: '中環' },
+                        { latlng: [22.2833, 114.1559], name: '砵典乍街' },
+                        { latlng: [22.2809, 114.1555], name: '蘭桂坊' }
+                         { latlng: [22.2760, 114.1517], name: '蘇豪區' }
+                    ],
+                    routes: [
+                        [[22.2892, 114.1715], [22.3130, 114.0435]],
+                        [[22.3130, 114.0435], [22.2859, 114.1581]],
+                        [[22.2859, 114.1581], [22.2833, 114.1559]],
+                        [[22.2833, 114.1559], [22.2809, 114.1555]]
+                    ]
+                },
+                '3': {
+                    points: [
+                        { latlng: [22.31724695756069, 113.95341955545919], name: '港珠澳大橋香港口岸' },
+                        { latlng: [22.2758, 114.1455], name: '太平山頂' }
+                    ],
+                    routes: [
+                        [[22.2809, 114.1555], [22.2758, 114.1455]]
+                    ]
+                }
+            },
+            '6': {
+                '1': {
+                    points: [
+                        { latlng: [22.31724695756069, 113.95341955545919], name: '港珠澳大橋香港口岸' },
+                        { latlng: [22.3036, 114.1602], name: '西九文化區' },
+                        { latlng: [22.3009, 114.1596], name: 'M+博物館' },
+                        { latlng: [22.3009, 114.1596], name: '香港故宮文化博物館' },
+                        { latlng: [22.2982, 114.1738], name: '尖沙咀' },
+                        { latlng: [22.2892, 114.1715], name: '星光大道' },
+                        { latlng: [22.2933, 114.1611], name: '維多利亞港' }
+                    ],
+                    routes: [
+                        [[22.3134, 114.0416], [22.3036, 114.1602]],
+                        [[22.3036, 114.1602], [22.3009, 114.1596]],
+                        [[22.3009, 114.1596], [22.2982, 114.1738]],
+                        [[22.2982, 114.1738], [22.2892, 114.1715]],
+                        [[22.2892, 114.1715], [22.2933, 114.1611]]
+                    ]
+                },
+                '2': {
+                    points: [
+                        { latlng: [22.2859, 114.1581], name: '中環' },
+                        { latlng: [22.2840, 114.1502], name: '文武廟' },
+                        { latlng: [22.2842, 114.1502], name: '太平山街' },
+                        { latlng: [22.2842, 114.1502], name: '荷李活道' },
+                        { latlng: [22.2833, 114.1559], name: '砵典乍街' },
+                        { latlng: [22.2814, 114.1540], name: '中環半山扶手電梯' },
+                        { latlng: [22.2783, 114.1804], name: '銅鑼灣' },
+                        { latlng: [22.2783, 114.1804], name: '石塘咀山道' },
+                        { latlng: [22.2783, 114.1804], name: '銅鑼灣' },
+                        { latlng: [22.2783, 114.1804], name: '石塘咀山道' },
+                        { latlng: [22.2783, 114.1804], name: '中環“三件套”' },
+                        { latlng: [22.2809, 114.1555], name: '蘭桂坊' },
+                        { latlng: [22.2760, 114.1517], name: '蘇豪區' }
+                        { latlng: [22.2760, 114.1517], name: '跑馬地' }
+                        
+                    ],
+                    routes: [
+                        [[22.2933, 114.1611], [22.2859, 114.1581]],
+                        [[22.2859, 114.1581], [22.2840, 114.1502]],
+                        [[22.2840, 114.1502], [22.2842, 114.1502]],
+                        [[22.2842, 114.1502], [22.2833, 114.1559]],
+                        [[22.2833, 114.1559], [22.2814, 114.1540]],
+                        [[22.2814, 114.1540], [22.2783, 114.1804]],
+                        [[22.2783, 114.1804], [22.2809, 114.1555]],
+                        [[22.2809, 114.1555], [22.2760, 114.1517]]
+                    ]
+                },
+                '3': {
+                    points: [
+                        { latlng: [22.31724695756069, 113.95341955545919], name: '港珠澳大橋香港口岸' },
+                        { latlng: [22.3193, 114.1694], name: '旺角' },
+                        { latlng: [22.3176, 114.1675], name: '廟街' },
+                        { latlng: [22.3200, 114.1694], name: '女人街' },
+                        { latlng: [22.3200, 114.1690], name: '波鞋街' }
+                         { latlng: [22.3200, 114.1694], name: '西洋菜南街' },
+                         { latlng: [22.3200, 114.1694], name: '金魚街' },
+                    ],
+                    routes: [
+                        [[22.2760, 114.1517], [22.3193, 114.1694]],
+                        [[22.3193, 114.1694], [22.3129, 114.1705]],
+                        [[22.3129, 114.1705], [22.3200, 114.1694]]
+                    ]
+                }
+            }
+        };
+        // 清空地圖
+        function clearMap() {
+            currentMarkers.forEach(marker => map.removeLayer(marker));
+            currentRoutes.forEach(route => map.removeLayer(route));
+            currentMarkers = [];
+            currentRoutes = [];
         }
-    }
-    function switchDay(themeIndex, day) {
-        const days = document.querySelectorAll(`#theme-itinerary-${themeIndex} .itinerary-day`);
-        const tabs = document.querySelectorAll(`#theme-itinerary-${themeIndex} .day-tab`);
-        days.forEach(d => d.classList.add('hidden'));
-        tabs.forEach(t => {
-            t.classList.remove('bg-sky-500', 'text-white');
-            t.classList.add('bg-gray-200', 'text-gray-800');
+        // 繪製地圖 - 現在支援日子
+        function drawMap(themeIndex, day) {
+            clearMap();
+            const data = locations[themeIndex]?.[day];
+            if (!data) return;
+            data.points.forEach(point => {
+                const marker = L.marker(point.latlng).addTo(map);
+                marker.bindPopup(`<b>${point.name}</b>`).openPopup();
+                currentMarkers.push(marker);
+            });
+            data.routes.forEach(route => {
+                const polyline = L.polyline(route, { color: 'blue', weight: 4 }).addTo(map);
+                currentRoutes.push(polyline);
+            });
+            if (currentMarkers.length > 0 || currentRoutes.length > 0) {
+                const allPoints = data.points.map(p => p.latlng);
+                const bounds = L.latLngBounds(allPoints);
+                map.fitBounds(bounds, { padding: [50, 50] });
+            }
+        }
+        // 切換日子
+        function switchDay(themeIndex, day) {
+            const days = document.querySelectorAll(`#theme-itinerary-${themeIndex} .itinerary-day`);
+            const tabs = document.querySelectorAll(`#theme-itinerary-${themeIndex} .day-tab`);
+            days.forEach(d => d.classList.add('hidden'));
+            tabs.forEach(t => {
+                t.classList.remove('bg-sky-500', 'text-white');
+                t.classList.add('bg-gray-200', 'text-gray-800');
+            });
+            document.getElementById(`itinerary-${themeIndex}-day${day}`).classList.remove('hidden');
+            tabs[day - 1].classList.add('bg-sky-500', 'text-white');
+            tabs[day - 1].classList.remove('bg-gray-200', 'text-gray-800');
+            drawMap(themeIndex, day); // 更新地圖為該日子！
+        }
+        // 主邏輯
+        const themeCards = document.querySelectorAll('.theme-card');
+        const themeContainers = document.querySelectorAll('[id^="theme-itinerary-"]');
+        themeCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const themeId = card.id;
+                const themeIndex = themeId.split('-')[1];
+                themeCards.forEach(c => c.classList.remove('border-sky-500'));
+                card.classList.add('border-sky-500');
+                themeContainers.forEach(container => container.classList.add('hidden'));
+                const targetContainer = document.getElementById(`theme-itinerary-${themeIndex}`);
+                if (targetContainer) {
+                    targetContainer.classList.remove('hidden');
+                    targetContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    switchDay(themeIndex, 1); // 預設 Day 1 並更新地圖
+                }
+            });
         });
-        document.getElementById(`itinerary-${themeIndex}-day${day}`).classList.remove('hidden');
-        tabs[day - 1].classList.add('bg-sky-500', 'text-white');
-        tabs[day - 1].classList.remove('bg-gray-200', 'text-gray-800');
-        drawMap(themeIndex, day);
-    }
-    const themeCards = document.querySelectorAll('.theme-card');
-    const themeContainers = document.querySelectorAll('[id^="theme-itinerary-"]');
-    themeCards.forEach(card => {
-        card.addEventListener('click', () => {
-            const themeId = card.id;
-            const themeIndex = themeId.split('-')[1];
-            themeCards.forEach(c => c.classList.remove('border-sky-500'));
-            card.classList.add('border-sky-500');
-            themeContainers.forEach(container => container.classList.add('hidden'));
-            const targetContainer = document.getElementById(`theme-itinerary-${themeIndex}`);
-            if (targetContainer) {
-                targetContainer.classList.remove('hidden');
-                targetContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                switchDay(themeIndex, 1);
+        // 添加日子tab事件
+        document.querySelectorAll('.day-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                const day = tab.dataset.day;
+                const themeContainer = tab.closest('[id^="theme-itinerary-"]');
+                const themeIndex = themeContainer.id.split('-')[2];
+                switchDay(themeIndex, day);
+            });
+        });
+        // 頁面載入預設
+        document.addEventListener('DOMContentLoaded', () => {
+            const defaultCard = document.getElementById('theme-1');
+            const defaultContainer = document.getElementById('theme-itinerary-1');
+            if (defaultCard && defaultContainer) {
+                defaultCard.classList.add('border-sky-500');
+                defaultContainer.classList.remove('hidden');
+                switchDay(1, 1); // 載入 Day 1 地圖
             }
         });
-    });
-    document.querySelectorAll('.day-tab').forEach(tab => {
-        tab.addEventListener('click', () => {
-            const day = tab.dataset.day;
-            const themeContainer = tab.closest('[id^="theme-itinerary-"]');
-            const themeIndex = themeContainer.id.split('-')[2];
-            switchDay(themeIndex, day);
-        });
-    });
-    document.addEventListener('DOMContentLoaded', () => {
-        const defaultCard = document.getElementById('theme-1');
-        const defaultContainer = document.getElementById('theme-itinerary-1');
-        if (defaultCard && defaultContainer) {
-            defaultCard.classList.add('border-sky-500');
-            defaultContainer.classList.remove('hidden');
-            switchDay(1, 1);
-        }
-    });
-</script>
+    </script>
 </body>
 </html>
