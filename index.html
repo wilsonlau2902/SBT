@@ -510,23 +510,20 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
     // 初始化地圖，設置中心點為香港，並帶有縮放級別
-    const map = L.map('map').setView([22.302711, 114.174154], 12);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-    let currentMarkers = [];
-    let currentRoutes = [];
-    // coordinate
-    const locations = {
+
+
+const placeholder = 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400&h=250&fit=crop';
+
+const locations = {
     '1': {
         '1': {
             points: [
-                { latlng: [22.31724695756069, 113.95341955545919], name: '港珠澳大橋香港口岸' },
-                { latlng: [22.25391519215563, 113.90497327116455], name: '天壇大佛' },
-                { latlng: [22.290385398196207, 113.93827696191224], name: '昂坪纜車' },
-                { latlng: [22.255443552078173, 113.90809798319489], name: '寶蓮禪寺' },
-                { latlng: [22.255443552078173, 113.90809798319489], name: '心經簡林' },
-                { latlng: [22.3134, 114.0416], name: '香港迪士尼樂園' }
+                { latlng: [22.31724695756069, 113.95341955545919], name: '港珠澳大橋香港口岸', img: placeholder },
+                { latlng: [22.25391519215563, 113.90497327116455], name: '天壇大佛', img: placeholder },
+                { latlng: [22.290385398196207, 113.93827696191224], name: '昂坪纜車', img: placeholder },
+                { latlng: [22.255443552078173, 113.90809798319489], name: '寶蓮禪寺', img: placeholder },
+                { latlng: [22.255443552078173, 113.90809798319489], name: '心經簡林', img: placeholder },
+                { latlng: [22.3134, 114.0416], name: '香港迪士尼樂園', img: placeholder }
             ],
             routes: [
                 [[22.3134, 114.0416], [22.2525, 113.9031]],
@@ -537,15 +534,15 @@
         },
         '2': {
             points: [
-                { latlng: [22.294272100430565, 114.17197233280869], name: '香港太空館' },
-                { latlng: [22.301187078358126, 114.17763989752605], name: '香港科學館' },
-                { latlng: [22.301829720571003, 114.17720742168758], name: '香港歷史博物館' },
-                { latlng: [22.296318451849594, 114.17239203430267], name: '重慶大廈' },
-                { latlng: [22.296167358578135, 114.16919749931279], name: '廣東道' },
-                { latlng: [22.29305860851323, 114.174075923015185], name: '星光大道' },
-                { latlng: [22.295467359132243, 114.16982531952144], name: '1881' },
-                { latlng: [22.293557070748573, 114.16954154835847], name: '鐘樓' },
-                { latlng: [22.294131829531953, 114.16848965725947], name: '尖沙咀天星碼頭' }
+                { latlng: [22.294272100430565, 114.17197233280869], name: '香港太空館', img: placeholder },
+                { latlng: [22.301187078358126, 114.17763989752605], name: '香港科學館', img: placeholder },
+                { latlng: [22.301829720571003, 114.17720742168758], name: '香港歷史博物館', img: placeholder },
+                { latlng: [22.296318451849594, 114.17239203430267], name: '重慶大廈', img: placeholder },
+                { latlng: [22.296167358578135, 114.16919749931279], name: '廣東道', img: placeholder },
+                { latlng: [22.29305860851323, 114.174075923015185], name: '星光大道', img: placeholder },
+                { latlng: [22.295467359132243, 114.16982531952144], name: '1881', img: placeholder },
+                { latlng: [22.293557070748573, 114.16954154835847], name: '鐘樓', img: placeholder },
+                { latlng: [22.294131829531953, 114.16848965725947], name: '尖沙咀天星碼頭', img: placeholder }
             ],
             routes: [
                 [[22.3130, 114.0435], [22.2982, 114.1738]],
@@ -559,9 +556,9 @@
         },
         '3': {
             points: [
-                { latlng: [22.28072846600863, 114.15784384398205], name: '中環' },
-                { latlng: [22.271516388850166, 114.14996988623358], name: '太平山頂' },
-                { latlng: [22.31724695756069, 113.95341955545919], name: '港珠澳大橋香港口岸' }
+                { latlng: [22.28072846600863, 114.15784384398205], name: '中環', img: placeholder },
+                { latlng: [22.271516388850166, 114.14996988623358], name: '太平山頂', img: placeholder },
+                { latlng: [22.31724695756069, 113.95341955545919], name: '港珠澳大橋香港口岸', img: placeholder }
             ],
             routes: [
                 [[22.2895, 114.1683], [22.2859, 114.1581]],
@@ -572,11 +569,11 @@
     '2': {
         '1': {
             points: [
-                { latlng: [22.31724695756069, 113.95341955545919], name: '港珠澳大橋香港口岸' },
-                { latlng: [22.2982, 114.1738], name: '尖沙咀' },
-                { latlng: [22.295203858334524, 114.17056039047556], name: '廣東道' },
-                { latlng: [22.29308133626364, 114.17411979901902], name: '星光大道' },
-                { latlng: [22.294131829531953, 114.16848965725947], name: '尖沙咀天星碼頭' }
+                { latlng: [22.31724695756069, 113.95341955545919], name: '港珠澳大橋香港口岸', img: placeholder },
+                { latlng: [22.2982, 114.1738], name: '尖沙咀', img: placeholder },
+                { latlng: [22.295203858334524, 114.17056039047556], name: '廣東道', img: placeholder },
+                { latlng: [22.29308133626364, 114.17411979901902], name: '星光大道', img: placeholder },
+                { latlng: [22.294131829531953, 114.16848965725947], name: '尖沙咀天星碼頭', img: placeholder }
             ],
             routes: [
                 [[22.2982, 114.1738], [22.2978, 114.1681]],
@@ -586,15 +583,15 @@
         },
         '2': {
             points: [
-                { latlng: [22.2783, 114.1804], name: '銅鑼灣' },
-                { latlng: [22.2859, 114.1581], name: '中環' },
-                { latlng: [22.2842, 114.1502], name: '太平山街' },
-                { latlng: [22.2842, 114.1502], name: '荷李活道' },
-                { latlng: [22.2833, 114.1559], name: '砵典乍街' },
-                { latlng: [22.2833, 114.1559], name: '中環街市' },
-                { latlng: [22.2833, 114.1559], name: '中環半山扶手電梯' },
-                { latlng: [22.2809, 114.1555], name: '蘭桂坊' },
-                { latlng: [22.2760, 114.1517], name: '蘇豪區' }
+                { latlng: [22.2783, 114.1804], name: '銅鑼灣', img: placeholder },
+                { latlng: [22.2859, 114.1581], name: '中環', img: placeholder },
+                { latlng: [22.2842, 114.1502], name: '太平山街', img: placeholder },
+                { latlng: [22.2842, 114.1502], name: '荷李活道', img: placeholder },
+                { latlng: [22.2833, 114.1559], name: '砵典乍街', img: placeholder },
+                { latlng: [22.2833, 114.1559], name: '中環街市', img: placeholder },
+                { latlng: [22.2833, 114.1559], name: '中環半山扶手電梯', img: placeholder },
+                { latlng: [22.2809, 114.1555], name: '蘭桂坊', img: placeholder },
+                { latlng: [22.2760, 114.1517], name: '蘇豪區', img: placeholder }
             ],
             routes: [
                 [[22.2892, 114.1715], [22.2783, 114.1804]],
@@ -608,13 +605,13 @@
         },
         '3': {
             points: [
-                { latlng: [22.3193, 114.1694], name: '旺角' },
-                { latlng: [22.3176, 114.1675], name: '廟街' },
-                { latlng: [22.3200, 114.1694], name: '女人街' },
-                { latlng: [22.3200, 114.1690], name: '波鞋街' },
-                { latlng: [22.3200, 114.1694], name: '西洋菜南街' },
-                { latlng: [22.3200, 114.1694], name: '金魚街' },
-                { latlng: [22.31724695756069, 113.95341955545919], name: '港珠澳大橋香港口岸' }
+                { latlng: [22.3193, 114.1694], name: '旺角', img: placeholder },
+                { latlng: [22.3176, 114.1675], name: '廟街', img: placeholder },
+                { latlng: [22.3200, 114.1694], name: '女人街', img: placeholder },
+                { latlng: [22.3200, 114.1690], name: '波鞋街', img: placeholder },
+                { latlng: [22.3200, 114.1694], name: '西洋菜南街', img: placeholder },
+                { latlng: [22.3200, 114.1694], name: '金魚街', img: placeholder },
+                { latlng: [22.31724695756069, 113.95341955545919], name: '港珠澳大橋香港口岸', img: placeholder }
             ],
             routes: [
                 [[22.2760, 114.1517], [22.3193, 114.1694]],
@@ -627,10 +624,10 @@
     '3': {
         '1': {
             points: [
-                { latlng: [22.31724695756069, 113.95341955545919], name: '港珠澳大橋香港口岸' },
-                { latlng: [22.3964, 114.1095], name: '西貢' },
-                { latlng: [22.3740, 114.2700], name: '橋咀洲' },
-                { latlng: [22.3740, 114.2700], name: '地質公園' }
+                { latlng: [22.31724695756069, 113.95341955545919], name: '港珠澳大橋香港口岸', img: placeholder },
+                { latlng: [22.3964, 114.1095], name: '西貢', img: placeholder },
+                { latlng: [22.3740, 114.2700], name: '橋咀洲', img: placeholder },
+                { latlng: [22.3740, 114.2700], name: '地質公園', img: placeholder }
             ],
             routes: [
                 [[22.3134, 114.0416], [22.3964, 114.1095]],
@@ -639,11 +636,11 @@
         },
         '2': {
             points: [
-                { latlng: [22.2489, 114.1753], name: '柴灣' },
-                { latlng: [22.2489, 114.1753], name: '龍脊' },
-                { latlng: [22.2489, 114.1753], name: '赤柱廣場' },
-                { latlng: [22.2180, 114.2122], name: '赤柱市集' },
-                { latlng: [22.2180, 114.2122], name: '美利樓' }
+                { latlng: [22.2489, 114.1753], name: '柴灣', img: placeholder },
+                { latlng: [22.2489, 114.1753], name: '龍脊', img: placeholder },
+                { latlng: [22.2489, 114.1753], name: '赤柱廣場', img: placeholder },
+                { latlng: [22.2180, 114.2122], name: '赤柱市集', img: placeholder },
+                { latlng: [22.2180, 114.2122], name: '美利樓', img: placeholder }
             ],
             routes: [
                 [[22.3740, 114.2700], [22.2489, 114.1753]],
@@ -652,11 +649,11 @@
         },
         '3': {
             points: [
-                { latlng: [22.31724695756069, 113.95341955545919], name: '港珠澳大橋香港口岸' },
-                { latlng: [22.25391519215563, 113.90497327116455], name: '天壇大佛' },
-                { latlng: [22.290385398196207, 113.93827696191224], name: '昂坪纜車' },
-                { latlng: [22.255443552078173, 113.90809798319489], name: '寶蓮禪寺' },
-                { latlng: [22.255443552078173, 113.90809798319489], name: '心經簡林' }
+                { latlng: [22.31724695756069, 113.95341955545919], name: '港珠澳大橋香港口岸', img: placeholder },
+                { latlng: [22.25391519215563, 113.90497327116455], name: '天壇大佛', img: placeholder },
+                { latlng: [22.290385398196207, 113.93827696191224], name: '昂坪纜車', img: placeholder },
+                { latlng: [22.255443552078173, 113.90809798319489], name: '寶蓮禪寺', img: placeholder },
+                { latlng: [22.255443552078173, 113.90809798319489], name: '心經簡林', img: placeholder }
             ],
             routes: [
                 [[22.2180, 114.2122], [22.2525, 113.9031]],
@@ -668,20 +665,20 @@
     '4': {
         '1': {
             points: [
-                { latlng: [22.31724695756069, 113.95341955545919], name: '港珠澳大橋香港口岸' },
-                { latlng: [22.3036, 114.1602], name: '西九文化區' },
-                { latlng: [22.3009, 114.1596], name: 'M+博物館' },
-                { latlng: [22.3016, 114.1555], name: '香港故宮文化博物館' },
-                { latlng: [22.3130, 114.1705], name: '油麻地' },
-                { latlng: [22.3130, 114.1705], name: '廟街' },
-                { latlng: [22.3130, 114.1705], name: '油麻地戲院' },
-                { latlng: [22.3130, 114.1705], name: '紅磚屋' },
-                { latlng: [22.3193, 114.1694], name: '旺角' },
-                { latlng: [22.3176, 114.1675], name: '廟街' },
-                { latlng: [22.3200, 114.1694], name: '女人街' },
-                { latlng: [22.3200, 114.1690], name: '波鞋街' },
-                { latlng: [22.3200, 114.1694], name: '西洋菜南街' },
-                { latlng: [22.3200, 114.1694], name: '金魚街' }
+                { latlng: [22.31724695756069, 113.95341955545919], name: '港珠澳大橋香港口岸', img: placeholder },
+                { latlng: [22.3036, 114.1602], name: '西九文化區', img: placeholder },
+                { latlng: [22.3009, 114.1596], name: 'M+博物館', img: placeholder },
+                { latlng: [22.3016, 114.1555], name: '香港故宮文化博物館', img: placeholder },
+                { latlng: [22.3130, 114.1705], name: '油麻地', img: placeholder },
+                { latlng: [22.3130, 114.1705], name: '廟街', img: placeholder },
+                { latlng: [22.3130, 114.1705], name: '油麻地戲院', img: placeholder },
+                { latlng: [22.3130, 114.1705], name: '紅磚屋', img: placeholder },
+                { latlng: [22.3193, 114.1694], name: '旺角', img: placeholder },
+                { latlng: [22.3176, 114.1675], name: '廟街', img: placeholder },
+                { latlng: [22.3200, 114.1694], name: '女人街', img: placeholder },
+                { latlng: [22.3200, 114.1690], name: '波鞋街', img: placeholder },
+                { latlng: [22.3200, 114.1694], name: '西洋菜南街', img: placeholder },
+                { latlng: [22.3200, 114.1694], name: '金魚街', img: placeholder }
             ],
             routes: [
                 [[22.3134, 114.0416], [22.3036, 114.1602]],
@@ -692,17 +689,17 @@
         },
         '2': {
             points: [
-                { latlng: [22.2859, 114.1581], name: '中環' },
-                { latlng: [22.2840, 114.1595], name: '大館' },
-                { latlng: [22.2840, 114.1502], name: '文武廟' },
-                { latlng: [22.2842, 114.1502], name: '太平山街' },
-                { latlng: [22.2842, 114.1502], name: '荷李活道' },
-                { latlng: [22.2833, 114.1559], name: '砵典乍街' },
-                { latlng: [22.2833, 114.1559], name: '中環街市' },
-                { latlng: [22.2814, 114.1540], name: '中環半山扶手電梯' },
-                { latlng: [22.2809, 114.1555], name: '蘭桂坊' },
-                { latlng: [22.2760, 114.1517], name: '蘇豪區' },
-                { latlng: [22.2760, 114.1517], name: '跑馬地' }
+                { latlng: [22.2859, 114.1581], name: '中環', img: placeholder },
+                { latlng: [22.2840, 114.1595], name: '大館', img: placeholder },
+                { latlng: [22.2840, 114.1502], name: '文武廟', img: placeholder },
+                { latlng: [22.2842, 114.1502], name: '太平山街', img: placeholder },
+                { latlng: [22.2842, 114.1502], name: '荷李活道', img: placeholder },
+                { latlng: [22.2833, 114.1559], name: '砵典乍街', img: placeholder },
+                { latlng: [22.2833, 114.1559], name: '中環街市', img: placeholder },
+                { latlng: [22.2814, 114.1540], name: '中環半山扶手電梯', img: placeholder },
+                { latlng: [22.2809, 114.1555], name: '蘭桂坊', img: placeholder },
+                { latlng: [22.2760, 114.1517], name: '蘇豪區', img: placeholder },
+                { latlng: [22.2760, 114.1517], name: '跑馬地', img: placeholder }
             ],
             routes: [
                 [[22.3130, 114.1705], [22.2859, 114.1581]],
@@ -717,11 +714,11 @@
         },
         '3': {
             points: [
-                { latlng: [22.31724695756069, 113.95341955545919], name: '港珠澳大橋香港口岸' },
-                { latlng: [22.2859, 114.1581], name: '中環' },
-                { latlng: [22.2814, 114.1540], name: '些利街清真寺' },
-                { latlng: [22.2820, 114.1550], name: '聖約翰座堂' },
-                { latlng: [22.2840, 114.1502], name: '文武廟' }
+                { latlng: [22.31724695756069, 113.95341955545919], name: '港珠澳大橋香港口岸', img: placeholder },
+                { latlng: [22.2859, 114.1581], name: '中環', img: placeholder },
+                { latlng: [22.2814, 114.1540], name: '些利街清真寺', img: placeholder },
+                { latlng: [22.2820, 114.1550], name: '聖約翰座堂', img: placeholder },
+                { latlng: [22.2840, 114.1502], name: '文武廟', img: placeholder }
             ],
             routes: [
                 [[22.2760, 114.1517], [22.2859, 114.1581]],
@@ -734,10 +731,10 @@
     '5': {
         '1': {
             points: [
-                { latlng: [22.31724695756069, 113.95341955545919], name: '港珠澳大橋香港口岸' },
-                { latlng: [22.2982, 114.1738], name: '尖沙咀' },
-                { latlng: [22.3036, 114.1602], name: '西九文化區' },
-                { latlng: [22.2892, 114.1715], name: '星光大道' }
+                { latlng: [22.31724695756069, 113.95341955545919], name: '港珠澳大橋香港口岸', img: placeholder },
+                { latlng: [22.2982, 114.1738], name: '尖沙咀', img: placeholder },
+                { latlng: [22.3036, 114.1602], name: '西九文化區', img: placeholder },
+                { latlng: [22.2892, 114.1715], name: '星光大道', img: placeholder }
             ],
             routes: [
                 [[22.2982, 114.1738], [22.3036, 114.1602]],
@@ -746,11 +743,11 @@
         },
         '2': {
             points: [
-                { latlng: [22.3130, 114.0435], name: '香港迪士尼樂園' },
-                { latlng: [22.2859, 114.1581], name: '中環' },
-                { latlng: [22.2833, 114.1559], name: '砵典乍街' },
-                { latlng: [22.2809, 114.1555], name: '蘭桂坊' },
-                { latlng: [22.2760, 114.1517], name: '蘇豪區' }
+                { latlng: [22.3130, 114.0435], name: '香港迪士尼樂園', img: placeholder },
+                { latlng: [22.2859, 114.1581], name: '中環', img: placeholder },
+                { latlng: [22.2833, 114.1559], name: '砵典乍街', img: placeholder },
+                { latlng: [22.2809, 114.1555], name: '蘭桂坊', img: placeholder },
+                { latlng: [22.2760, 114.1517], name: '蘇豪區', img: placeholder }
             ],
             routes: [
                 [[22.2892, 114.1715], [22.3130, 114.0435]],
@@ -761,8 +758,8 @@
         },
         '3': {
             points: [
-                { latlng: [22.31724695756069, 113.95341955545919], name: '港珠澳大橋香港口岸' },
-                { latlng: [22.2758, 114.1455], name: '太平山頂' }
+                { latlng: [22.31724695756069, 113.95341955545919], name: '港珠澳大橋香港口岸', img: placeholder },
+                { latlng: [22.2758, 114.1455], name: '太平山頂', img: placeholder }
             ],
             routes: [
                 [[22.2809, 114.1555], [22.2758, 114.1455]]
@@ -772,13 +769,13 @@
     '6': {
         '1': {
             points: [
-                { latlng: [22.31724695756069, 113.95341955545919], name: '港珠澳大橋香港口岸' },
-                { latlng: [22.3036, 114.1602], name: '西九文化區' },
-                { latlng: [22.3009, 114.1596], name: 'M+博物館' },
-                { latlng: [22.3009, 114.1596], name: 'M+香港故宮文化博物館' },
-                { latlng: [22.2982, 114.1738], name: '尖沙咀' },
-                { latlng: [22.2892, 114.1715], name: '星光大道' },
-                { latlng: [22.2933, 114.1611], name: '維多利亞港' }
+                { latlng: [22.31724695756069, 113.95341955545919], name: '港珠澳大橋香港口岸', img: placeholder },
+                { latlng: [22.3036, 114.1602], name: '西九文化區', img: placeholder },
+                { latlng: [22.3009, 114.1596], name: 'M+博物館', img: placeholder },
+                { latlng: [22.3009, 114.1596], name: '香港故宮文化博物館', img: placeholder },
+                { latlng: [22.2982, 114.1738], name: '尖沙咀', img: placeholder },
+                { latlng: [22.2892, 114.1715], name: '星光大道', img: placeholder },
+                { latlng: [22.2933, 114.1611], name: '維多利亞港', img: placeholder }
             ],
             routes: [
                 [[22.3134, 114.0416], [22.3036, 114.1602]],
@@ -790,20 +787,20 @@
         },
         '2': {
             points: [
-                { latlng: [22.2859, 114.1581], name: '中環' },
-                { latlng: [22.2840, 114.1502], name: '文武廟' },
-                { latlng: [22.2842, 114.1502], name: '太平山街' },
-                { latlng: [22.2842, 114.1502], name: '荷李活道' },
-                { latlng: [22.2833, 114.1559], name: '砵典乍街' },
-                { latlng: [22.2814, 114.1540], name: '中環半山扶手電梯' },
-                { latlng: [22.2783, 114.1804], name: '銅鑼灣' },
-                { latlng: [22.2783, 114.1804], name: '石塘咀山道' },
-                { latlng: [22.2783, 114.1804], name: '銅鑼灣' },
-                { latlng: [22.2783, 114.1804], name: '石塘咀山道' },
-                { latlng: [22.2783, 114.1804], name: '中環“三件套”' },
-                { latlng: [22.2809, 114.1555], name: '蘭桂坊' },
-                { latlng: [22.2760, 114.1517], name: '蘇豪區' },
-                { latlng: [22.2760, 114.1517], name: '跑馬地' }
+                { latlng: [22.2859, 114.1581], name: '中環', img: placeholder },
+                { latlng: [22.2840, 114.1502], name: '文武廟', img: placeholder },
+                { latlng: [22.2842, 114.1502], name: '太平山街', img: placeholder },
+                { latlng: [22.2842, 114.1502], name: '荷李活道', img: placeholder },
+                { latlng: [22.2833, 114.1559], name: '砵典乍街', img: placeholder },
+                { latlng: [22.2814, 114.1540], name: '中環半山扶手電梯', img: placeholder },
+                { latlng: [22.2783, 114.1804], name: '銅鑼灣', img: placeholder },
+                { latlng: [22.2783, 114.1804], name: '石塘咀山道', img: placeholder },
+                { latlng: [22.2783, 114.1804], name: '銅鑼灣', img: placeholder },
+                { latlng: [22.2783, 114.1804], name: '石塘咀山道', img: placeholder },
+                { latlng: [22.2783, 114.1804], name: '中環“三件套”', img: placeholder },
+                { latlng: [22.2809, 114.1555], name: '蘭桂坊', img: placeholder },
+                { latlng: [22.2760, 114.1517], name: '蘇豪區', img: placeholder },
+                { latlng: [22.2760, 114.1517], name: '跑馬地', img: placeholder }
             ],
             routes: [
                 [[22.2933, 114.1611], [22.2859, 114.1581]],
@@ -818,13 +815,13 @@
         },
         '3': {
             points: [
-                { latlng: [22.31724695756069, 113.95341955545919], name: '港珠澳大橋香港口岸' },
-                { latlng: [22.3193, 114.1694], name: '旺角' },
-                { latlng: [22.3176, 114.1675], name: '廟街' },
-                { latlng: [22.3200, 114.1694], name: '女人街' },
-                { latlng: [22.3200, 114.1690], name: '波鞋街' },
-                { latlng: [22.3200, 114.1694], name: '西洋菜南街' },
-                { latlng: [22.3200, 114.1694], name: '金魚街' }
+                { latlng: [22.31724695756069, 113.95341955545919], name: '港珠澳大橋香港口岸', img: placeholder },
+                { latlng: [22.3193, 114.1694], name: '旺角', img: placeholder },
+                { latlng: [22.3176, 114.1675], name: '廟街', img: placeholder },
+                { latlng: [22.3200, 114.1694], name: '女人街', img: placeholder },
+                { latlng: [22.3200, 114.1690], name: '波鞋街', img: placeholder },
+                { latlng: [22.3200, 114.1694], name: '西洋菜南街', img: placeholder },
+                { latlng: [22.3200, 114.1694], name: '金魚街', img: placeholder }
             ],
             routes: [
                 [[22.2760, 114.1517], [22.3193, 114.1694]],
@@ -834,6 +831,8 @@
         }
     }
 };
+
+    
     function clearMap() {
         currentMarkers.forEach(marker => map.removeLayer(marker));
         currentRoutes.forEach(route => map.removeLayer(route));
