@@ -879,17 +879,31 @@ function getLocationByName(name) {
     if (!data) return;
     // Markers: Get location info by name
     data.points.forEach(name => {
-        const loc = getLocationByName(name);
-        if (loc) {
-            const marker = L.marker(loc.latlng).addTo(map);
-            marker.on('click', function() {
-                let popupHtml = `<b>${loc.name}</b>`;
-                if (loc.img) popupHtml += `<br><img src="${loc.img}" style="max-width:200px;">`;
-                marker.bindPopup(popupHtml).openPopup();
-            });
-            currentMarkers.push(marker);
-        }
-    });
+    const loc = getLocationByName(name);
+    if (loc) {
+        let popupHtml = `<b>${loc.name}</b>`;
+        if (loc.img) popupHtml += `<br><img src="${loc.img}" style="max-width:200px;">`;
+        const marker = L.marker(loc.latlng).addTo(map);
+        marker.bindPopup(popupHtml);
+        currentMarkers.push(marker);
+    } else {
+        console.warn("Location not found:", name);
+    }
+});
+    data.points.forEach(name => {
+    const loc = getLocationByName(name);
+    if (loc) {
+        let popupHtml = `<b>${loc.name}</b>`;
+        if (loc.img) popupHtml += `<br><img src="${loc.img}" style="max-width:200px;">`;
+        const marker = L.marker(loc.latlng).addTo(map);
+        marker.bindPopup(popupHtml);
+        currentMarkers.push(marker);
+    } else {
+        console.warn("Location not found:", name);
+    }
+});
+
+        
     // Polylines: Use names to look up coordinates
     data.routes.forEach(route => {
         const from = getLocationByName(route[0]);
